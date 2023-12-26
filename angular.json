@@ -7,6 +7,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "getlucky-app": {
+      "i18n": {
+        "sourceLocale":"en-US",
+        "locales": {
+          "ar-LB":"src/locale/messages.ar.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -27,6 +33,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize":[
+              "en-US"
+            ],
             "outputPath": "dist/getlucky-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
