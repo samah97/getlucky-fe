@@ -126,7 +126,7 @@ setInterval(function time(){
   if((sec + '').length === 1){
         sec = '0' + sec;
   }
-  jQuery('#countdown2 h6').html(days+'DSS : '+hours+'H : '+min+'M : '+sec+'S ')
+  jQuery('#countdown2 h6').html(days+'D : '+hours+'H : '+min+'M : '+sec+'S ')
   jQuery('#countdown21 h6').html(days+'D : '+hours+'H : '+min+'M : '+sec+'S ')
   jQuery('#countdown22 h6').html(days+'D : '+hours+'H : '+min+'M : '+sec+'S ')
   jQuery('#countdown23 h6').html(days+'D : '+hours+'H : '+min+'M : '+sec+'S ')

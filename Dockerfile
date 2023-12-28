@@ -1,29 +1,20 @@
-# Use Node.js as the base image
-FROM node:latest AS builder
+# Stage 1
 
-# Set the working directory inside the container
+FROM node:10-alpine as build-step
+
+RUN mkdir -p /app
+
 WORKDIR /app
 
-# Copy package.json and yarn.lock to the working directory
-COPY package.json yarn.lock ./
+COPY package.json /app
 
-# Install dependencies using Yarn
-RUN yarn install
+RUN npm install
 
-# Copy the entire project directory into the container
-COPY . .
+COPY . /app
 
-# Build the Angular app
-RUN yarn build
+RUN npm run build --prod
 
-# Use a lightweight image for serving the Angular app
-FROM nginx:alpine
+# Stage 2
+FROM nginx:1.17.1-alpine
 
-# Copy the built Angular app from the builder stage to the NGINX web root directory
-COPY --from=builder /app/dist/getluck-app /usr/share/nginx/html
-
-# Expose the port that NGINX is listening on
-EXPOSE 80
-
-# Start NGINX when the container starts
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build-step /app/docs /usr/share/nginx/html

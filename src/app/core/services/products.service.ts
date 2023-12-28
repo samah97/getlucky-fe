@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
-  constructor(private readonly http:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
   all():Observable<any>{
     return this.http.get<any>("items");

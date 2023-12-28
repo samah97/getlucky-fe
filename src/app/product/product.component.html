@@ -1,14 +1,17 @@
 <!-- <div class="col-lg-4 col-md-6"> -->
-    <div class="row g-4">
-        <div *ngFor="let product of products" class="col-lg-4 col-md-6">
+    <!-- <div class="row g-4"> -->
+        <div *ngIf="product && showProduct" >
             <div class="product-card product-art-alpha">
                 <div class="product">
                     <img src="assets/images/arts/nft-1.png" alt="">
-                    <div class="countdown" id="countdown2">
-                        <h6> </h6>
+                    <div *ngIf="showCountdown" class="countdown" id="countdownNEW">
+                        <h6>
+                            <countdown #cd [config]="config" (event)="handleEvent($event)">
+                            </countdown>
+                        </h6>
                     </div>
                     <div class="product-overlay">
-                        <a href="auction-details.html" class="product-view"><i class="bi bi-eye"></i></a>
+                        <a (click)="showDetails(product.id)" class="product-view"><i class="bi bi-eye"></i></a>
                         <h6>Share On</h6>
                         <ul class="share-options">
                             <li><a href="https://www.facebook.com"><i class="bx bxl-facebook"></i></a></li>
@@ -44,7 +47,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
        
 
 <!-- </div> -->

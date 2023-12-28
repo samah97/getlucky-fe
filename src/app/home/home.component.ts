@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
-import { CategoryComponent } from '../category/category.component';
-import { ProductsComponent } from '../products/products.component';
+// import { CategoryComponent } from '../category/category.component';
+import {  } from '../product/product.component';
 import { CommonModule } from '@angular/common';
+import { ProductsService } from '../core/services/products.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  standalone:true,
-  imports: [CategoryComponent,ProductsComponent,CommonModule]
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-
+  products: any[] = [];
   
+  constructor(private readonly productsService:ProductsService){
+    this.initData();
+  }
 
-  constructor(){
+  initData():void{
+    this.productsService.all().subscribe((result)=>{
+      console.log(result);
+        this.products = result;
+    });
   }
 
 }
