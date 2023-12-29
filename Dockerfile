@@ -1,20 +1,35 @@
 # Stage 1
 
-FROM node:10-alpine as build-step
+FROM node:18.17.1 as build-step
 
-RUN mkdir -p /app
+# RUN mkdir -p /app
 
-WORKDIR /app
+# RUN npm install -g yarn
 
-COPY package.json /app
+# WORKDIR /app
+WORKDIR /opt/ng 
+COPY  package.json yarn.lock ./
 
-RUN npm install
+# COPY package.json yarn.lock /app/
 
-COPY . /app
+RUN yarn install
 
-RUN npm run build --prod
+ENV PATH="./node_modules/.bin:$PATH"
+
+COPY . ./ 
+
+RUN ng build --configuration production
+# COPY . /app
+
+# RUN npm run build --prod
+# RUN yarn build
 
 # Stage 2
 FROM nginx:1.17.1-alpine
 
-COPY --from=build-step /app/docs /usr/share/nginx/html
+# COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf 
+COPY --from=build-step /opt/ng/dist/getlucky-app/browser /usr/share/nginx/html
+
+# COPY --from=build-step /app/dist/getlucky-app /usr/share/nginx/html
+
+# COPY nginx.conf /etc/nginx/nginx.conf
