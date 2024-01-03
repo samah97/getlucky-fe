@@ -3,10 +3,10 @@ Template name : Bidgen - Bid and Auction HTML Template
 Author : egenstheme
 Version : 1.0.0
 Created : 03-03-2022
-Last update : 
+Last update :
 ================= */
 
-/* CSS index 
+/* CSS index
 -----------------------------------
 1. Global CSS
 2. Preloader Start
@@ -178,7 +178,7 @@ a{
     text-decoration: none;
 }
 
-.swiper-negetive-space-x {
+.swiper-negative-space-x {
     margin-left: 0px;
     margin-right: 0px;
     padding-left: 13px;
@@ -476,7 +476,7 @@ input{
 
     @include md-down-device{
         padding: 7px 15px;
-    
+
         }
 
     &:hover{
@@ -588,15 +588,15 @@ input{
         color: #FFFFFF;
         font-family: var(--ff-inter);
     }
-  
+
     &:hover {
       border-color: #dbdbdb;
     }
-  
+
     &:active, &.open, &:focus {
       border-color: #FF552E;
     }
-  
+
     &:after {
       border-bottom: 2px solid #fff;
       border-right: 2px solid #fff;
@@ -612,63 +612,63 @@ input{
       transition: all 0.15s ease-in-out;
       width: 5px;
     }
-  
+
     &.open {
       &:after {
         transform: rotate(-135deg);
       }
-  
+
       .list {
         opacity: 1;
         pointer-events: auto;
         transform: scale(1) translateY(0);
       }
     }
-  
+
     &.disabled {
       border-color: #ededed;
       color: #999;
       pointer-events: none;
-  
+
       &:after {
         border-color: #cccccc;
       }
     }
-  
+
     &.wide {
       width: 100%;
-  
+
       .list {
         left: 0 !important;
         right: 0 !important;
       }
     }
-  
+
     &.right {
       float: right;
-  
+
       .list {
         left: auto;
         right: 0;
       }
     }
-  
+
     &.small {
       font-size: 12px;
       height: 36px;
       line-height: 34px;
-  
+
       &:after {
         height: 4px;
         width: 4px;
       }
-  
+
       .option {
         line-height: 34px;
         min-height: 34px;
       }
     }
-  
+
     .list {
       background-color: #fff;
       border-radius: 5px;
@@ -687,12 +687,12 @@ input{
       transform: scale(0.75) translateY(-21px);
       transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
       z-index: 9;
-  
+
       &:hover .option:not(:hover) {
         background-color: transparent !important;
       }
     }
-  
+
     .option {
       cursor: pointer;
       font-weight: 400;
@@ -706,19 +706,19 @@ input{
       transition: all 0.2s;
       font-family: var(--ff-inter);
       font-size: 14px;
-  
+
       &:hover, &.focus {
         background-color: #f4f4f4;
       }
-  
+
       &.selected {
         &.focus {
           background-color: #f6f6f6;
         }
-  
+
         font-weight: 600;
       }
-  
+
       &.disabled {
         background-color: transparent;
         color: #999;
@@ -726,12 +726,12 @@ input{
       }
     }
   }
-  
+
   .no-csspointerevents .nice-select {
     .list {
       display: none;
     }
-  
+
     &.open .list {
       display: block;
     }
@@ -749,7 +749,7 @@ input{
 .menu-toggle-btn-full-shape.show-sidebar{
     transform: translateX(0) !important;
   }
-  
+
   .menu-toggle-btn-full-shape {
       position: relative;
     width: 100%;
@@ -891,7 +891,7 @@ input{
                 }
                 i{
                     transition: 0.4s ease;
-                    
+
                 }
             }
         }
@@ -960,7 +960,7 @@ header{
                     position: absolute;
                     top: 22px !important;
 
-                   
+
                 }
             }
         }
@@ -1085,11 +1085,11 @@ header{
         left: -250px !important;
         background-color: #111 ;
         border-radius: unset;
-        
+
         transition: 0.5s ease;
         // transform: translate(-75px, 19px) !important;
         // transform: translateY(0%);
-    
+
         @include md-down-device(){
             left: 10px !important;
             top: 22px !important;
@@ -1107,10 +1107,10 @@ header{
                 }
             }
         }
-    
+
         &.show{
             transform: translateY(0);
-    
+
         }
         &.account-list{
             padding: 20px 15px;
@@ -1276,7 +1276,7 @@ header .header-style-three {
                         &.active {
                             color: #f96822;
                             font-weight: 600;
-                            
+
                         }
 
                         &:hover {
@@ -1334,7 +1334,7 @@ header .header-style-three {
                 background: rgba(33, 36, 40, 0.8);
                 border: 1px solid rgba(255, 85, 46, 0.4);
                 border-radius: 10px 0 0 10px;
-               
+
             }
 
             button{
@@ -1402,17 +1402,17 @@ header .header-style-three {
                     }
                 }
             }
-    
+
             &.show{
                 transform: translateY(0);
-    
+
             }
             &.dollar-list{
                 padding: 20px 15px;
             }
         }
     }
-   
+
 }
 
 /*header style dark*/
@@ -1574,7 +1574,7 @@ header .header-style-dark {
                         &.active {
                             color: #f96822;
                             font-weight: 600;
-                            
+
                         }
 
                         &:hover {
@@ -1632,7 +1632,7 @@ header .header-style-dark {
                 background: rgba(33, 36, 40, 0.8);
                 border: 1px solid rgba(255, 85, 46, 0.4);
                 border-radius: 10px 0 0 10px;
-               
+
             }
 
             button{
@@ -1659,7 +1659,7 @@ header .header-style-dark {
                 }
             }
 
-            
+
         }
     }
 
@@ -1703,17 +1703,17 @@ header .header-style-dark {
                     }
                 }
             }
-    
+
             &.show{
                 transform: translateY(0);
-    
+
             }
             &.account-list{
                 padding: 20px 15px;
             }
         }
     }
-   
+
 }
 
 /*header style four*/
@@ -1938,7 +1938,7 @@ header .header-style-four {
 
                     i{
                         font-size: 12px;
-                        
+
                     }
                 }
                 &:hover{
@@ -1985,7 +1985,7 @@ header .header-style-four {
             }
         }
     }
-    
+
     .inner-social-icons{
         flex-wrap: wrap;
         gap: 18px;
@@ -2034,10 +2034,10 @@ header .header-style-four {
                     }
                 }
             }
-    
+
             &.show{
                 transform: translateY(0);
-    
+
             }
             &.account-list{
                 padding: 20px 15px;
@@ -2048,7 +2048,7 @@ header .header-style-four {
             }
         }
     }
-    
+
 }
 
 header{
@@ -2165,7 +2165,7 @@ header{
                 font-size: 14px;
                 font-weight: 600;
             }
-            
+
             &.swiper-pagination-bullet-active{
                 color: $orange-color;
                 position: relative;
@@ -2198,7 +2198,7 @@ header{
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
     }
     position: relative;
     .banner-left-area{
@@ -2217,7 +2217,7 @@ header{
             margin-left: auto;
             margin-right: auto;
         }
-       
+
        .banner-badge{
            background: #1B2027;
            font-size: 18px;
@@ -2227,7 +2227,7 @@ header{
            padding: 3px 10px;
            text-align: center;
            margin: 10px;
-       } 
+       }
     }
     .banner3-title{
         h1{
@@ -2428,11 +2428,11 @@ header{
               @include md-down-device(){
                 font-size: 20px;
             }
-    
+
             }
         }
     }
-      
+
 }
 
 @keyframes rotation{
@@ -2457,7 +2457,7 @@ header{
 
 /* hero area three*/
 .hero-style-dark{
-    
+
     .hero-pagination{
         position: absolute;
         left: 5%;
@@ -2482,7 +2482,7 @@ header{
             }
         }
     }
-    
+
     .hero-item{
         position: relative;
         background-repeat: no-repeat !important;
@@ -2503,9 +2503,9 @@ header{
             padding-top: 150px;
             padding-bottom: 105px;
         }
-        
 
-      
+
+
 
         &.swiper-slide-active{
             .hero-content-wrap{
@@ -2659,7 +2659,7 @@ header{
                             }
                         }
 
-                        
+
                     }
                 }
             }
@@ -2674,7 +2674,7 @@ header{
             }
         }
     }
-   
+
 }
 
 /*=======================================
@@ -2729,7 +2729,7 @@ header{
             border: none;
             padding-left: 0px;
             height: 20px;
-            
+
         }
     }
     .explore-btn{
@@ -2758,7 +2758,7 @@ header{
             color: #D90A2C;
         }
     }
-    
+
     .nice-select{
         border: none;
         color:#6A696C;
@@ -2842,7 +2842,7 @@ search-section start
                     fill: #fff;
                 }
             }
-        
+
     }
 
     .cate-count{
@@ -2856,7 +2856,7 @@ search-section start
         position: absolute;
         top: 10px;
         left: 10px;
-        
+
     }
 
     .category-icon{
@@ -2917,7 +2917,7 @@ category area end
         // .product{
         //     img{
         //         transform: scale(1.01);
-                
+
         //     }
         // }
 
@@ -2948,7 +2948,7 @@ category area end
             padding: 8px 16px;
             top: 0;
             left: 50%;
-            transform: translate(-50%, -50%); 
+            transform: translate(-50%, -50%);
             min-width: 215px;
             text-align: center;
             z-index: 1;
@@ -2958,7 +2958,7 @@ category area end
                 letter-spacing: 1px;
                 text-transform: uppercase;
                 color: #FFFFFF;
-                
+
             }
         }
 
@@ -3062,7 +3062,7 @@ category area end
                     display: flex;
                     align-items: center;
                     img{
-                        
+
                         width: 35px;
                         height: 35px;
                         border-radius: 50%;
@@ -3102,7 +3102,7 @@ category area end
                         }
                     }
                 }
-               
+
             }
         }
 
@@ -3242,7 +3242,7 @@ category area end
                     margin-left: -1px;
                     margin-top: -1px;
                 }
-                
+
                 .icon{
                     min-height: 92px;
                     display: inline-flex;
@@ -3277,12 +3277,12 @@ category area end
                     &:hover{
                         // border: 2px solid #FF552E;
                         background-color: transparent;
-    
+
                         h6{
                             background-color: #FF552E;
                             border-color: transparent ;
                         }
-    
+
                         .icon{
                             svg{
                                 fill: #FF552E;
@@ -3292,16 +3292,16 @@ category area end
                             color: #fff;
                         }
                     }
-    
+
                     &.active{
                         // border: 2px solid #FF552E;
                         background-color: transparent;
-    
+
                         h6{
                             background-color: #FF552E;
                             border-color: transparent ;
                         }
-    
+
                         .icon{
                             svg{
                                 fill: #FF552E;
@@ -3311,7 +3311,7 @@ category area end
                             color: #fff;
                         }
                     }
-                    
+
                     .icon{
                         min-height: 92px;
                         display: inline-flex;
@@ -3366,7 +3366,7 @@ category area end
                 h5{
                     color: #212428;
                 }
-            
+
             .artist-disc-footer{
                 .totol-art{
                     span{
@@ -3375,8 +3375,8 @@ category area end
                 }
             }
         }
-        
-        
+
+
     }
     .artist-index{
         padding: 1px 12px;
@@ -3472,7 +3472,7 @@ category area end
                     color: $orange-color;
 
                     }
-                
+
             }
         }
     }
@@ -3491,7 +3491,7 @@ category area end
 .buyer-card-alpha{
     margin-top: 25px;
     background: #212428;
-    border: 1px solid transparent;            
+    border: 1px solid transparent;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     display: flex;
@@ -3603,7 +3603,7 @@ category area end
         }
     }
     &:hover{
-    border: 1px solid rgba(#FF552E,0.7);            
+    border: 1px solid rgba(#FF552E,0.7);
     }
 }
 .buyer-area{
@@ -3620,7 +3620,7 @@ category area end
                 border-right: 2px solid #6A696C;
             }
         }
-        
+
     }
 }
 
@@ -3652,7 +3652,7 @@ category area end
                 }
             }
         }
-        
+
     }
     &:hover{
         .cover{
@@ -3794,7 +3794,7 @@ category area end
             text-transform: capitalize;
             color: #FFFFFF;
             font-family: var(--ff-inter);
-            
+
             a{
                 color: inherit;
                 transition: all 0.35s ease-in-out;
@@ -3915,7 +3915,7 @@ category area end
                 background: #D90A2C;
                 border-radius: 50%;
                 position: relative;
-                
+
                 i{
                     color: #fff;
                     font-size: 14px;
@@ -3968,7 +3968,7 @@ category area end
                 }
             }
 
-           
+
         }
         .blog-title{
             margin-top: 8px;
@@ -4072,7 +4072,7 @@ category area end
             box-shadow: 2px 5px 50px rgba($orange-color, 0.4);
         }
     }
-   
+
 }
 /*=======================================
  newslatter area end
@@ -4106,7 +4106,7 @@ category area end
                 position: relative;
                 display: inline-block;
                 padding-bottom: 8px;
-                
+
                 &::before{
                     position: absolute;
                     content: "";
@@ -4148,7 +4148,7 @@ category area end
             }
 
             .footer-contact-list{
-                
+
                 li{
                     display: flex;
                     align-items: center;
@@ -4201,14 +4201,14 @@ category area end
                     transition: all .3s;
 
                     &:hover{
-                        
+
                         background: #FF552E;
                         i{
                            color: #fff;
                         }
                     }
 
-                    
+
 
                     i{
                         line-height: 1;
@@ -4217,7 +4217,7 @@ category area end
             }
         }
     }
-    
+
 }
 .footer-bottom{
     max-width: 100%;
@@ -4241,7 +4241,7 @@ category area end
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
+
     .footer-main{
         padding-top: 90px;
         padding-bottom: 90px;
@@ -4279,14 +4279,14 @@ category area end
                     transition: all .3s;
 
                     &:hover{
-                        
+
                         background: #D90A2C;
                         i{
                            color: #fff;
                         }
                     }
 
-                    
+
 
                     i{
                         line-height: 1;
@@ -4335,7 +4335,7 @@ category area end
                 }
             }
             .footer-contact-list{
-                
+
                 li{
                     display: flex;
                     align-items: center;
@@ -4415,7 +4415,7 @@ category area end
                             background: #fff;
                             color: #D90A2C;
                         }
-                        
+
                     }
                 }
             }
@@ -4436,7 +4436,7 @@ category area end
             }
         }
     }
-    
+
 }
 /*=======================================
  footer area end
@@ -4541,7 +4541,7 @@ category area end
                 padding: 3.5px 10px;
                 position: relative;
 
-                &.status{   
+                &.status{
                     text-transform: capitalize;
                     &::before{
                         content: "";
@@ -4690,7 +4690,7 @@ category area end
             li{
                 span{
                     color: #fff;
-    
+
                     font-family: var(--ff-rubik);
                 }
                 h6{
@@ -4727,7 +4727,7 @@ category area end
         position: relative;
         display: inline-block;
         transition: all .3s;
-        
+
         &::before{
             position: absolute;
             content: "";
@@ -4969,13 +4969,13 @@ upcoming land auction area end
         transition: all .25s;
         z-index: -1;
     }
-    
+
     .banner-content{
         text-align: center;
         max-width: 745px;
         margin-left: auto;
         margin-right: auto;
-        
+
         h2{
             font-weight: 700;
             font-size: 35px;
@@ -5168,7 +5168,7 @@ land banner area end
             border-left: 2px solid #D90A2C;;
             .main-feature{
                 li{
-                                    
+
                 line-height: 38px;
                 font-weight: 500;
                 color: #6A696C;
@@ -5278,7 +5278,7 @@ learing process area end
     background:  linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)),url(../images/banner/testimonial4-bg.png) no-repeat center;
     background-size: cover;
     padding: 80px 0;
-    
+
 
     .testimonial-disc{
         strong{
@@ -5392,4 +5392,3 @@ learing process area end
 /*=======================================
 testimonial area end
 =======================================*/
-
