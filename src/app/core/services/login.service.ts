@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriesService {
+export class LoginService {
 
   constructor(private readonly http:HttpClient) { }
-  all():Observable<any>{
-    return this.http.get<any>("categories");
-  };
 
+  login(email, password):Observable<any>{
+    return this.http.post<any>("auth/authenticate", {"email": email, "password": password});
+  };
 }
