@@ -6,6 +6,7 @@ import { CountdownConfig, CountdownModule } from 'ngx-countdown';
 import { Product } from '../models/product';
 import { CountdownUtil } from '../core/common/util/countdown-util';
 import { Router } from '@angular/router';
+import { LefttimeCalculator } from '../core/common/util/lefttime-calculator';
 
 @Component({
   selector: 'app-product',
@@ -27,9 +28,9 @@ export class ProductComponent implements OnInit{
   constructor(private router:Router){}
 
   ngOnInit(): void {
-    if(this.product.endTime){
+    if(this.product.drawScheduledAt){
       this.showCountdown = true;
-      this.config.leftTime = this.product.endTime;
+      this.config.leftTime = LefttimeCalculator.calculate(this.product.drawScheduledAt);
     }
   }
 
@@ -39,9 +40,10 @@ export class ProductComponent implements OnInit{
     }
   }
 
-  showDetails(productId: string) {
-    this.router.navigate(['/products/detail',{productId:productId}],{queryParams: this.product, skipLocationChange:true})
-  }
+  // showDetails(productId: string) {
+  //   // this.router.navigate(['/products/detail',{productId:productId}],{queryParams: this.product, skipLocationChange:true})
+  //   this.router.navigate(['/products/detail',{productId:productId}])
+  // }
 
 
 }

@@ -3,7 +3,7 @@ export class Product {
     biddingPrice?:number;
     description?:String;
     imageLink?:String;
-    endTime?:number;
+    drawScheduledAt?:string;
 
     constructor(
         public id:string,

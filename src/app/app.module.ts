@@ -10,25 +10,30 @@ import { CommonModule } from '@angular/common';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { LoaderComponent } from './core/layout/loader/loader.component';
-// import { CategoryComponent } from './category/category.component';
-// import { HomeComponent } from './home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { ListErrorsComponent } from './core/common/list-errors/list-errors.component';
+import { ApiLoaderComponent } from './core/layout/api-loader/api-loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    ApiLoaderComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    HeaderComponent,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),
-    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

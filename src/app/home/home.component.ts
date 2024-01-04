@@ -18,7 +18,6 @@ export class HomeComponent {
 
   initData():void{
     this.productsService.all().subscribe((result)=>{
-      console.log(result);
         this.products = result;
     });
   }

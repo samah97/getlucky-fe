@@ -3,7 +3,7 @@
         <div *ngIf="product && showProduct" >
             <div class="product-card product-art-alpha">
                 <div class="product">
-                    <img src="assets/images/arts/nft-1.png" alt="">
+                    <img [src]="product.imageLink" srcQWEQWE="assets/images/arts/nft-1.png" alt="">
                     <div *ngIf="showCountdown" class="countdown" id="countdownNEW">
                         <h6>
                             <countdown #cd [config]="config" (event)="handleEvent($event)">
@@ -11,7 +11,7 @@
                         </h6>
                     </div>
                     <div class="product-overlay">
-                        <a (click)="showDetails(product.id)" class="product-view"><i class="bi bi-eye"></i></a>
+                        <a href="" [routerLink]="['/products', product.id]"  class="product-view"><i class="bi bi-eye"></i></a>
                         <h6>Share On</h6>
                         <ul class="share-options">
                             <li><a href="https://www.facebook.com"><i class="bx bxl-facebook"></i></a></li>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="product-disc">
-                    <h5 class="product-title"><a href="auction-details.html">{{product.name}}</a></h5>
+                    <h5 class="product-title"><a href="auction-details.html" [routerLink]="['/products', product.id]">{{product.name}}</a></h5>
                     <div class="product-metas">
                         <div class="author">
                             <!-- <div class="avater">
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="product-footer">
-                        <a href="auction-details.html" class="product-btn">Bid Now</a>
+                        <a href="auction-details.html" [routerLink]="['/products', product.id]" class="product-btn">Bid Now</a>
                         <ul class="product-actions">
                             <li><i class="bi bi-heart"></i></li>
                             <li><i class="bi bi-three-dots-vertical"></i></li>

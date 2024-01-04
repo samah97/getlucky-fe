@@ -28,7 +28,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-
+            "styles": [
+              "src/assets/css/style.scss",
+              "src/assets/css/style2.scss",
+              "src/assets/css/custom-style.scss"
+            ],
             "outputPath": "dist/getlucky-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -41,9 +45,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -107,7 +109,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/css/style.scss",
+              "src/assets/css/style2.scss",
+              "src/assets/css/custom-style.scss"
             ],
             "scripts": []
           }

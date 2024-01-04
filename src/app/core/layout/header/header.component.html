@@ -51,12 +51,18 @@
                                         <a id="dropdownMenu2" data-bs-toggle="dropdown" >
                                             <i class="bi bi-person"></i>
                                         </a>
-                                        <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
-                                            <li class="dropdown-item"><a href="login.html">My account</a></li>
+                                        <ul *ngIf="isLoggedIn | async; else loggedOut" class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
+                                            <li class="dropdown-item"><a href="/my-account.html">My account</a></li>
                                             <li class="dropdown-item"><a href="register.html">Settings</a></li>
-                                            <li class="dropdown-item"><a href="login.html">Login</a></li>
-                                          <li class="dropdown-item"><a href="register.html">Register</a></li>
+                                            <li class="dropdown-item"><a href="" (onclick)="logout()">Logout</a></li>
                                         </ul>
+                                        <ng-template #loggedOut>
+                                            <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
+                                                <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
+                                              <li class="dropdown-item"><a href="register.html">Register</a></li>
+                                            </ul>
+                                        </ng-template>
+
                                     </li>
                                 </ul>
                                 <div class="mobile-menu d-flex ">
@@ -101,7 +107,7 @@
                                     <ul class="sub-menu">
                                         <li><a href="about.html">about</a></li>
                                         <li><a href="winner.html">winner</a></li>
-                                        <li><a href="login.html">login</a></li>
+                                        <li><a href="" routerLink="/auth/login">login</a></li>
                                         <li><a href="register.html">register</a></li>
                                         <li><a href="faq.html">faq</a></li>
                                         <li><a href="privacy.html">Privacy Policy</a></li>
@@ -132,12 +138,17 @@
                                     <a id="dropdownMenu3" data-bs-toggle="dropdown" >
                                         <i class="bi bi-person"></i>
                                     </a>
-                                    <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
-                                        <li class="dropdown-item"><a href="login.html">My account</a></li>
+                                    <ul *ngIf="isLoggedIn | async; else loggedOutM" class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
+                                        <li class="dropdown-item"><a href="/auth/login">My account</a></li>
                                         <li class="dropdown-item"><a href="register.html">Settings</a></li>
-                                        <li class="dropdown-item"><a href="login.html">Login</a></li>
-                                      <li class="dropdown-item"><a href="register.html">Register</a></li>
+                                        <li class="dropdown-item"><a href="/" (onclick)="logout()">Logout</a></li>
                                     </ul>
+                                    <ng-template #loggedOutM>
+                                        <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">    
+                                            <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
+                                            <li class="dropdown-item"><a href="" routerLink="/auth/register">Register</a></li>
+                                        </ul>
+                                    </ng-template>
                                 </li>
                                 <li class="menu-sidebar-btn"><i class="bi bi-list"></i></li>
                             </ul>

@@ -1,0 +1,20 @@
+@use 'style';
+
+.header-area{
+    background-color: style.$primary-color;
+}
+.footer-style-three .footer-main{
+    margin-top:100px;
+}
+.widget-form .widget-btn{
+    background: style.$orange-color;
+}
+.widget-form .widget-btn:hover{
+    color: style.$orange-color;
+}
+
+.account-btn:disabled{
+    color: #000;
+    background: #e1e1e1;
+    cursor: default;
+}

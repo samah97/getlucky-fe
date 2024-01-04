@@ -50,6 +50,9 @@ Last update :
     --ff-releway : 'Raleway', sans-serif;
     --ff-rubik : 'Rubik', sans-serif;
     --ff-mulish : 'Mulish', sans-serif;
+
+
+
 }
 
 $primary-color: #000915;
@@ -2523,10 +2526,10 @@ header{
         }
 
         &.hero-item-one{
-            background: url(../images/banner/hero3-bg1.png), linear-gradient(rgba(1, 6, 10, 1) 100%, rgba(1, 6, 10, 1) 100%);
+            background: url(/assets/banner/hero3-bg1.png), linear-gradient(rgba(1, 6, 10, 1) 100%, rgba(1, 6, 10, 1) 100%);
         }
         &.hero-item-two{
-            background: url(../images/banner/hero3-bg2.png), linear-gradient(rgba(1, 6, 10, 1) 100%, rgba(1, 6, 10, 1) 100%);
+            background: url(/assets/banner/hero3-bg2.png), linear-gradient(rgba(1, 6, 10, 1) 100%, rgba(1, 6, 10, 1) 100%);
             background-size: cover;
         }
 
@@ -2586,7 +2589,7 @@ header{
         display: grid;
         grid-template-columns: repeat(2,1fr);
         .hero-content-layer{
-            background:  url(../images/shape/apertment-bg-shape.png), linear-gradient(rgba(23, 22, 26,1) 100%, rgba(23, 22, 26,1) 100%);
+            background:  url(/assets/shape/apertment-bg-shape.png), linear-gradient(rgba(23, 22, 26,1) 100%, rgba(23, 22, 26,1) 100%);
             background-repeat: no-repeat;
             // background-position: center;
             background-size: cover;
@@ -4001,7 +4004,7 @@ category area end
 =======================================*/
 .newslatter-style-three{
     .newslatter-wrapper{
-        background: url(../images/banner/newslatter-3-bg.png) no-repeat center;
+        background: url(/assets/banner/newslatter-3-bg.png) no-repeat center;
         background-size: cover;
         border-radius: 10px;
         padding: 70px 70px;
@@ -4087,7 +4090,7 @@ category area end
     border-top: 1px solid rgba(#C4C4C4,0.2);
 
     .footer-main{
-        // background: url(../images//shape/footer3-bg.png), linear-gradient(rgba(73, 78, 82,1) 100%, rgba(73, 78, 82,1) 100%);
+        // background: url(/assets//shape/footer3-bg.png), linear-gradient(rgba(73, 78, 82,1) 100%, rgba(73, 78, 82,1) 100%);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -4237,7 +4240,7 @@ category area end
 }
 
 .footer-style-four{
-    background: url(../images/shape/footer-bg4.png), linear-gradient(rgba(23, 22, 26, 1) 100%, rgba(23, 22, 26, 1) 100%);
+    background: url(/assets/shape/footer-bg4.png), linear-gradient(rgba(23, 22, 26, 1) 100%, rgba(23, 22, 26, 1) 100%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -4844,7 +4847,7 @@ category area end
 
 
         &.active{
-            background: url(../images/apartment/cate-tab-bg.png) no-repeat center;
+            background: url(/assets/apartment/cate-tab-bg.png) no-repeat center;
             background-size: cover;
 
             .cate-icon{
@@ -5275,7 +5278,7 @@ learing process area end
 21. Testimonial area start
 =======================================*/
 .testimonial-style-four{
-    background:  linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)),url(../images/banner/testimonial4-bg.png) no-repeat center;
+    background:  linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)),url(/assets/banner/testimonial4-bg.png) no-repeat center;
     background-size: cover;
     padding: 80px 0;
     

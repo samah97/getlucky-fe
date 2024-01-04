@@ -51,6 +51,8 @@ Last update :
     --f-primary: "Nunito", sans-serif;
     --f-secondary: 'Roboto', sans-serif;
     --f-tertiary : 'Quicksand', sans-serif;
+
+
 }
 
 $font1 : "Nunito", sans-serif;
@@ -62,6 +64,8 @@ $primary-color: #000915;
 $title-color: #00152B;
 $subtitle-color :#454545;
 $orange-color: #FF552E;
+
+
 
 // mixins
 // flex-box==========================
@@ -753,14 +757,14 @@ input{
 
 /*Reuseable breadcrumb*/
 .breadcrumb-style-one {
-    background-image: linear-gradient(rgba(#00010D,0.80),rgba(#00010D,0.80)), url('../images/banner/breadcrumb-bg.png') ;
+    background-image: linear-gradient(rgba(#00010D,0.80),rgba(#00010D,0.80)), url('/assets/banner/breadcrumb-bg.png') ;
     background-size: cover;
     padding-bottom: 230px;
     padding-top: 220px;  
     position: relative;
 
     &::before{
-        content: url('../images/banner/banner-left-top.png');
+        content: url('/assets/images/banner/banner-left-top.png');
         position: absolute;
         bottom: 0;
         right: 0;
@@ -773,7 +777,7 @@ input{
     }
 
     &::after{
-        content: url('../images/banner/banner-right-btm.png');
+        content: url('/assets/banner/banner-right-btm.png');
         position: absolute;
         top: 0;
         left: 0;
@@ -2040,7 +2044,7 @@ header{
 .hero-style-one{
     position: relative;
     .slide-background{
-        background: url(../images/banner/hero-banner1.png) no-repeat center;
+        background: url(/assets/banner/hero-banner1.png) no-repeat center;
         background-size: cover;
         position: absolute;
         inset: 0;
@@ -2290,11 +2294,11 @@ header{
     }
 
     &.style-one{
-        background: url(../images/banner/banner-sm2.png) no-repeat center;
+        background: url(/assets/banner/banner-sm2.png) no-repeat center;
         background-size: cover;
     }
     &.style-two{
-        background: url(../images/banner/banner-sm1.png) no-repeat center;
+        background: url(/assets/banner/banner-sm1.png) no-repeat center;
         background-size: cover;
         z-index: 1;
         padding-top: 115px;
@@ -2663,7 +2667,7 @@ header{
 
 .up-coming-area{
 
-    background: linear-gradient(rgba(0, 9, 21, .2) 100%, rgba(0, 9, 21, .2) 100%), url(../images/banner/upcoming-bg.png);
+    background: linear-gradient(rgba(0, 9, 21, .2) 100%, rgba(0, 9, 21, .2) 100%), url(/assets/banner/upcoming-bg.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -3244,7 +3248,7 @@ header{
 =======================================*/
 .blog-style-one{
 
-    background: linear-gradient(rgba(0, 9, 21, .8) 100%, rgba(0, 9, 21, .8) 100%), url(../images/banner/upcoming-bg.png);
+    background: linear-gradient(rgba(0, 9, 21, .8) 100%, rgba(0, 9, 21, .8) 100%), url(/assets/banner/upcoming-bg.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -3934,7 +3938,7 @@ header{
     }
     .testimonial-wrap{
         position: relative;
-        background: linear-gradient(rgba(0, 9, 21, .85) 100%, rgba(0, 9, 21, .85) 100%), url(../images/testimonial/testi-bg.png);
+        background: linear-gradient(rgba(0, 9, 21, .85) 100%, rgba(0, 9, 21, .85) 100%), url(/assets/testimonial/testi-bg.png);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -4170,7 +4174,7 @@ header{
  11. Footer area start
 =======================================*/
 .footer-style-one{
-    background:  url(../images/shape/footer-one-shape.png), linear-gradient(rgba(0,0,0,0.95) 100%, rgba(0,0,0,0.95) 100%);
+    background:  url(/assets/shape/footer-one-shape.png), linear-gradient(rgba(0,0,0,0.95) 100%, rgba(0,0,0,0.95) 100%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -4385,7 +4389,7 @@ header{
 }
 
 .footer-style-two{
-    background:  url(../images/shape/footer-bg2.png), linear-gradient(rgba(0, 21, 43,1) 100%, rgba(0, 21, 43,1) 100%);
+    background:  url(/assets/shape/footer-bg2.png), linear-gradient(rgba(0, 21, 43,1) 100%, rgba(0, 21, 43,1) 100%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -4702,7 +4706,7 @@ header{
 win process area end
 =======================================*/
 .newslatter-style-one{
-    background:  url(../images/shape/newslatter-bg1.png), linear-gradient(rgba(252, 252, 252,1) 100%, rgba(252, 252, 252,1) 100%);
+    background:  url(/assets/shape/newslatter-bg1.png), linear-gradient(rgba(252, 252, 252,1) 100%, rgba(252, 252, 252,1) 100%);
     background-size: cover;
     background-position: center-top;
     background-repeat: no-repeat;
@@ -4808,7 +4812,7 @@ win process area end
             content: "";
             inset: 0;
             border-radius: 5px;
-            background:  linear-gradient(rgba(0, 21, 43, .7) 100%, rgba(0, 21, 43, .7) 100%), url(../images/banner/category-hover-bg.png);
+            background:  linear-gradient(rgba(0, 21, 43, .7) 100%, rgba(0, 21, 43, .7) 100%), url(/assets/banner/category-hover-bg.png);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -4896,7 +4900,7 @@ category area end
 =======================================*/
 .about-wrpper{
 
-    background: url(../images/shape/about-us-vactor.png) no-repeat;
+    background: url(/assets/shape/about-us-vactor.png) no-repeat;
     background-position: center bottom;
 
     .about-disc{
@@ -5638,7 +5642,7 @@ error area end
     }
 }
 .about-video{
-    background-image: linear-gradient(rgba($title-color, 0.5), rgba($title-color, 0.5)),url('../images/product/about-vdo-bg.png');
+    background-image: linear-gradient(rgba($title-color, 0.5), rgba($title-color, 0.5)),url('/assets/product/about-vdo-bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 300px;
@@ -6024,7 +6028,7 @@ error area end
     }
 }
 .blog-video{
-    background-image: url('../images/blog/blogd-vdo.png');
+    background-image: url('/assets/blog/blogd-vdo.png');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 284px;
@@ -6264,7 +6268,7 @@ error area end
     }
 }
 .register-left-area{
-    background-image: url('../images/image-group/login-bg.png');
+    background-image: url('/assets/image-group/login-bg.png');
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;

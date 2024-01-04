@@ -21,7 +21,7 @@
                             <p>Current Bid</p>
                             <h5>$ {{product.biddingPrice}}</h5>
                         </div>
-                        <div *ngIf="product.endTime" class="auction-timer">
+                        <div *ngIf="product.drawScheduledAt" class="auction-timer">
                             <div  class="countdown" id="timer4">
                                 <countdown #cd [config]="config">
                                 </countdown>
@@ -163,8 +163,8 @@
                             <p class="widget-subtitle">Bid Amount : Minimum Bid 20.00$</p>
                             <form class="widget-form">
                                 <div class="form-group d-flex justify-content-center align-items-center">
-                                    <input type="text" placeholder="$00.00">
-                                    <button class="widget-btn">Place Bid</button>
+                                    <input type="text" placeholder="$00.00" value="{{product.biddingPrice}}" disabled>
+                                    <button (click)="bidNow(product.id)" class="widget-btn">Place Bid</button>
                                 </div>
                                 
                             </form>

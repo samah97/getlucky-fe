@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductModule } from '../app/product/product.module';
-import { HomeModule } from '../app/home/home.module';
-import { HomeComponent } from './home/home.component';
-import { ProductDetailsComponent } from './product/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -13,6 +9,14 @@ const routes: Routes = [
   {
     path:'products', 
     loadChildren: ()=>import("./product/product.module").then(m=> m.ProductModule)
+  },
+  {
+    path:'auth', 
+    loadChildren: ()=>import("./authentication/authentication.module").then(m=> m.AuthenticationModule)
+  },
+  {
+    path:'pages', 
+    loadChildren: ()=>import("./core/pages/pages.module").then(m=> m.PagesModule)
   },
 ];
 
