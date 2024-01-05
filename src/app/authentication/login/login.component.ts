@@ -18,22 +18,19 @@ export class LoginComponent {
   });
   errorMessage:String = '';
 
-  constructor(private readonly authenticationService:AuthenticationService, private router:Router){}
+  constructor(private readonly authenticationService:AuthenticationService, private router:Router) {}
 
   onSubmit() {
-    console.log(this.loginForm.value);
     this.authenticationService.login(this.loginForm.value)
     .subscribe({
         next:(response)=>{
-          console.log(response);
-          this.authenticationService.setToken(response.token);
           this.router.navigate(['/']);
         },
-        error: (err) => {;
-          this.errorMessage = err.error.detail; 
-          console.log(err.error.detail);
+        error: (err) => {
+          log.console(err)
+          this.errorMessage = err.error.detail;
         }
       }
-      );
+    );
   }
 }

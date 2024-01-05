@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginResponse } from '../../authentication/interfaces/login-response';
@@ -13,9 +14,8 @@ export class AuthenticationService {
   private localStorageKeyName = 'JWT';
   private isAuthenticated = new BehaviorSubject<boolean>(false);
 
+  constructor(private httpClient:HttpClient,@Inject(PLATFORM_ID) private platformId: Object) {
 
-  constructor(private httpClient:HttpClient,@Inject(PLATFORM_ID) private platformId: Object) { 
-    
   }
 
   checkAuthentication(): void {
@@ -26,15 +26,13 @@ export class AuthenticationService {
   }
 
   login(data:any):Observable<LoginResponse>{
-    console.log("Data that will be sent:")
-    console.log(data);
-    return this.httpClient.post<LoginResponse>('auth/authenticate',data);
+    return this.httpClient.post<LoginResponse>('auth/login',data, {headers: new HttpHeaders({
+                                                                            'Content-Type': 'application/json'}),
+                                                                   withCredentials: true});
   }
 
   register(data:any){
-    console.log("Registration Data that will be sent:")
-    console.log(data);
-    return this.httpClient.post('auth/new-account',data);
+    return this.httpClient.post('auth/signup',data);
   }
 
   setToken(token: string){
