@@ -20,6 +20,24 @@
   <link rel="stylesheet" href="./assets/css/style.scss"> -->
   <link rel="stylesheet" href="./assets/css/responsive.css">
   <!-- <link rel="stylesheet" href="./assets/css/custom-style.scss"> -->
+  <script src="https://accounts.google.com/gsi/client?onload=initGApi" async defer></script>
+
+  <!-- rewrite in Angular -->
+  <script>
+    function handleCredentialResponse(result) {
+        fetch("http://localhost:8080/oauth/google", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({
+              code: result.credential
+            }),
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Content-type': 'application/json; charset=UTF-8'
+            }
+        });
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>
