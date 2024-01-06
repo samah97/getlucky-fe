@@ -27,7 +27,7 @@ export class LoginComponent {
           this.router.navigate(['/']);
         },
         error: (err) => {
-          log.console(err)
+          console.log(err)
           this.errorMessage = err.error.detail;
         }
       }

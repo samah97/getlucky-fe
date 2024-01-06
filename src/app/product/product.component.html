@@ -1,53 +1,30 @@
-<!-- <div class="col-lg-4 col-md-6"> -->
-    <!-- <div class="row g-4"> -->
-        <div *ngIf="product && showProduct" >
-            <div class="product-card product-art-alpha">
-                <div class="product">
-                    <img [src]="product.imageLink" alt="">
-                    <div *ngIf="showCountdown" class="countdown" id="countdownNEW">
-                        <h6>
-                            <countdown #cd [config]="config" (event)="handleEvent($event)">
-                            </countdown>
-                        </h6>
-                    </div>
-                    <div class="product-overlay">
-                        <a href="" [routerLink]="['/products', product.id]"  class="product-view"><i class="bi bi-eye"></i></a>
-                        <h6>Share On</h6>
-                        <ul class="share-options">
-                            <li><a href="https://www.facebook.com"><i class="bx bxl-facebook"></i></a></li>
-                            <li><a href="https://twitter.com"><i class="bx bxl-twitter"></i></a></li>
-                            <li><a href="https://www.pinterest.com"><i class="bx bxl-pinterest"></i></a></li>
-                            <li><a href="https://www.instagram.com"><i class="bx bxl-instagram"></i></a></li>
-                            <li><a href="https://www.linkedin.com"><i class='bx bxl-linkedin'></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-disc">
-                    <h5 class="product-title"><a href="" [routerLink]="['/products', product.id]">{{product.name}}</a></h5>
-                    <div class="product-metas">
-                        <div class="author">
-                            <!-- <div class="avater">
-                                <img src="assets/images/arts/nft-author1.png" alt="">
-                                <span>By Liam Noah</span>
-                            </div> -->
-
-                            <div class="price">
-                                <ins>${{product.biddingPrice}}</ins><span>1/3</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-footer">
-                        <a href="" [routerLink]="['/products', product.id]" class="product-btn">Bid Now</a>
-                        <ul class="product-actions">
-                            <li><i class="bi bi-heart"></i></li>
-                            <li><i class="bi bi-three-dots-vertical"></i></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<div *ngIf="product && showProduct">
+  <div class="product-card product-art-alpha">
+    <div class="product" style="text-align: center">
+      <img [src]="product.imageLink" style="width: 20vw; height: 30vw; object-fit: scale-down" alt="">
+      <div *ngIf="showCountdown" class="countdown" id="countdownNEW">
+        <h6>
+          <countdown #cd [config]="config" (event)="handleEvent($event)">
+          </countdown>
+        </h6>
+      </div>
+    </div>
+    <div class="product-disc">
+      <h5 class="product-title"><a href="" [routerLink]="['/products', product.id]">{{product.name}}</a></h5>
+      <div class="product-metas">
+        <div class="author">
+          <div class="price">
+            <ins>${{product.biddingPrice}}</ins>
+          </div>
         </div>
-    <!-- </div> -->
-
-
-<!-- </div> -->
+      </div>
+      <div class="product-footer">
+          <a href="" [routerLink]="['/products', product.id]" class="product-btn">Bid Now</a>
+          <ul class="product-actions">
+              <li><i class="bi bi-heart"></i></li>
+              <li><i class="bi bi-three-dots-vertical"></i></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2948,7 +2948,7 @@ category area end
             border-radius: 35px;
             display: inline-block;
             position: absolute;
-            padding: 8px 16px;
+            padding: 8px 0;
             top: 0;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -2961,7 +2961,6 @@ category area end
                 letter-spacing: 1px;
                 text-transform: uppercase;
                 color: #FFFFFF;
-
             }
         }
 
@@ -3061,7 +3060,7 @@ category area end
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                .avater{
+                .avatar{
                     display: flex;
                     align-items: center;
                     img{
