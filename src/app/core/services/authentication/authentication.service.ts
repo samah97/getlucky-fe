@@ -35,7 +35,7 @@ export class AuthenticationService {
   }
 
   googleLogin(credential:string){
-    return this.httpClient.post<LoginResponse>('oauth/google', {"code":credential});
+    return this.httpClient.post<LoginResponse>('oauth/google', {"code":credential}, { withCredentials: true });
   }
 
   register(data:any){
@@ -75,4 +75,3 @@ export class AuthenticationService {
 
 
 }
-
