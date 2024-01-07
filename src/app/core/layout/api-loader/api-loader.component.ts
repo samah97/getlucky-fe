@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { LoaderService } from '../../services/loader.service';
+import { LoaderService } from '../../services/authentication/loader.service';
 import { Subscription } from 'rxjs';
 import { ApiLoaderService } from '../../services/api-loader.service';
 import { trigger } from '@angular/animations';

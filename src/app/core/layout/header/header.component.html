@@ -52,7 +52,7 @@
                                             <i class="bi bi-person"></i>
                                         </a>
                                         <ul *ngIf="isLoggedIn | async; else loggedOut" class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
-                                            <li class="dropdown-item"><a href="/my-account.html">My account</a></li>
+                                            <li class="dropdown-item"><a href="/profile">My account</a></li>
                                             <li class="dropdown-item"><a href="register.html">Settings</a></li>
                                             <li class="dropdown-item"><a href="" (onclick)="logout()">Logout</a></li>
                                         </ul>
@@ -92,7 +92,7 @@
                                         <li><a href="index-art-dark.html">Home Dark-art</a></li>
                                     </ul>
                                 </li>
-                                
+
                                 <li class="has-child-menu">
                                     <a href="javascript:void(0)">Auction</a>
                                     <i class="fl flaticon-plus">+</i>
@@ -100,7 +100,7 @@
                                         <li><a href="auction.html">auction</a></li>
                                         <li><a href="auction-details.html">auction details</a></li>
                                     </ul>
-                                </li>                                
+                                </li>
                                 <li class="has-child-menu">
                                     <a href="javascript:void(0)">Pages</a>
                                     <i class="fl flaticon-plus">+</i>
@@ -113,7 +113,7 @@
                                         <li><a href="privacy.html">Privacy Policy</a></li>
                                         <li><a href="404.html">Error</a></li>
                                     </ul>
-                                </li>                                
+                                </li>
                                 <li class="has-child-menu">
                                     <a href="javascript:void(0)">Blog</a>
                                     <i class="fl flaticon-plus">+</i>
@@ -122,7 +122,7 @@
                                         <li><a href="blog-standard.html">Blog Standard</a></li>
                                         <li><a href="blog-details.html">Blog Details</a></li>
                                     </ul>
-                                </li>                                
+                                </li>
                                 <li><a href="contact.html">contact</a></li>
                             </ul>
                         </nav>
@@ -139,12 +139,12 @@
                                         <i class="bi bi-person"></i>
                                     </a>
                                     <ul *ngIf="isLoggedIn | async; else loggedOutM" class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
-                                        <li class="dropdown-item"><a href="/auth/login">My account</a></li>
+                                        <li class="dropdown-item"><a href="/profile">My account</a></li>
                                         <li class="dropdown-item"><a href="register.html">Settings</a></li>
                                         <li class="dropdown-item"><a href="/" (onclick)="logout()">Logout</a></li>
                                     </ul>
                                     <ng-template #loggedOutM>
-                                        <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">    
+                                        <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
                                             <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
                                             <li class="dropdown-item"><a href="" routerLink="/auth/register">Register</a></li>
                                         </ul>

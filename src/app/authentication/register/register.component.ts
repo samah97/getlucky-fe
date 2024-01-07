@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../../core/services/authentication.service';
+import { AuthenticationService } from '../../core/services/authentication/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -28,7 +28,7 @@ export class RegisterComponent {
           this.router.navigate(['/pages/registration-success']);
         },
         error: (err) => {;
-          this.errorMessage = err.error.detail; 
+          this.errorMessage = err.error.detail;
           console.log(err.error.detail);
         }
       }

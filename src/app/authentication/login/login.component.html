@@ -57,12 +57,22 @@
                     <div class="alternate-signup-box">
                         <h6>or Sign up WITH</h6>
                         <div class="btn-group gap-4">
-                          <div id="g_id_onload"
-                               data-client_id="266596464361-4sneak44viaa4q7pt9478g7nfci7hkec.apps.googleusercontent.com"
-                               data-callback="handleCredentialResponse">
-                          </div>
-                          <div class="g_id_signin" data-type="standard"></div>
-                          <a href="" class="facebook-btn d-flex align-items-center"><i class='bx bxl-facebook' ></i>Sign up with facebook</a>
+                            <!-- <div class="g-signin2" data-onsuccess="googleLogin" (click)="signInWithGoogle()"></div>
+                            <a href="" class="google-btn d-flex align-items-center" >
+                                <i class='bx bxl-google'></i><span>Signup with google</span>
+                            </a> -->
+                            <!-- <button class="" (click)="signInWithGoogle()">
+                                <i class='bx bxl-google'></i><span>Sign in with Google</span>
+                            </button> -->
+                            <div id="g_id_onload"
+                            data-client_id="266596464361-4sneak44viaa4q7pt9478g7nfci7hkec.apps.googleusercontent.com"
+                            data-callback="handleCredentialResponse">
+                            </div>
+                            <div class="g_id_signin" data-type="standard"></div>
+
+                            <a href="" class="facebook-btn d-flex align-items-center">
+                                <i class='bx bxl-facebook' ></i>Sign up with facebook
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -70,3 +80,4 @@
         </div>
     </div>
 </section>
+

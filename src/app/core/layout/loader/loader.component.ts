@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoaderService } from '../../services/loader.service';
+import { LoaderService } from '../../services/authentication/loader.service';
 
 @Component({
   selector: 'app-loader',

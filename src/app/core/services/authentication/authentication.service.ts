@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { LoginResponse } from '../../authentication/interfaces/login-response';
+import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
+import { LoginResponse } from '../../../authentication/interfaces/login-response';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class AuthenticationService {
   private token:string = ''
   private localStorageKeyName = 'JWT';
   private isAuthenticated = new BehaviorSubject<boolean>(false);
+
 
   constructor(private httpClient:HttpClient,@Inject(PLATFORM_ID) private platformId: Object) {
 
@@ -25,10 +26,16 @@ export class AuthenticationService {
     }
   }
 
-  login(data:any):Observable<LoginResponse>{
-    return this.httpClient.post<LoginResponse>('auth/login',data, {headers: new HttpHeaders({
-                                                                            'Content-Type': 'application/json'}),
-                                                                   withCredentials: true});
+  login(email:string, password:string):Observable<LoginResponse>{
+    console.log("Data that will be sent:")
+    // console.log();
+    return this.httpClient.post<LoginResponse>('auth/authenticate',
+        {email, password}
+    ).pipe(shareReplay(1));
+  }
+
+  googleLogin(credential:string){
+    return this.httpClient.post<LoginResponse>('oauth/google', {"code":credential});
   }
 
   register(data:any){
@@ -37,16 +44,23 @@ export class AuthenticationService {
 
   setToken(token: string){
     this.token = token;
-    localStorage.setItem(this.localStorageKeyName, this.token);
+    // localStorage.setItem(this.localStorageKeyName, this.token);
     this.isAuthenticated.next(true);
+
+
+    window.sessionStorage.setItem(this.localStorageKeyName, token);
   }
 
-  isLoggedIn(): Observable<boolean> {
+  isLoggedInObservable(): Observable<boolean> {
     // const jwt = localStorage.getItem(this.localStorageKeyName);
     // // Optionally, you can add more checks to validate the token's integrity and expiration
     // return !!jwt;
     console.log(this.isAuthenticated.asObservable());
     return this.isAuthenticated.asObservable();
+  }
+
+  isLoggedIn(): boolean {
+    return this.isAuthenticated.getValue();
   }
 
   logout(): void {
@@ -61,3 +75,4 @@ export class AuthenticationService {
 
 
 }
+

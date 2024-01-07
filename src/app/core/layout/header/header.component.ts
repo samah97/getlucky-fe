@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { TokenStorageService } from '../../services/authentication/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,14 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class HeaderComponent {
 
-  isLoggedIn = this.authenticationService.isLoggedIn();
+  isLoggedIn = this.tokenStorageService.isLoggedInObservable();
 
-  constructor(private readonly authenticationService:AuthenticationService){
+  constructor(private readonly tokenStorageService:TokenStorageService){
   }
 
 
   logout() {
-    this.authenticationService.logout();
+    this.tokenStorageService.signOut();
   }
 
 }

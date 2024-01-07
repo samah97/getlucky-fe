@@ -29,16 +29,18 @@ export class ApiInterceptor implements HttpInterceptor {
     }
 
     let withCredentials = false;
-    
-    let url = `http://localhost:8080/v1/`;
 
+    let url = `http://localhost:8080/`;
+    if (req.url !='oauth/google'){
+      url+='v1/';
+    }
     if(req.url != "authenticate"){
       // url += `v1/`;
       withCredentials = true;
     }
     url+=req.url;
     const apiReq = req.clone({ url: url});
-    
+
     return next.handle(apiReq).pipe(
       catchError((error: HttpErrorResponse) => {
         // Handle error

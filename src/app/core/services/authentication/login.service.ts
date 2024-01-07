@@ -9,7 +9,10 @@ export class LoginService {
 
   constructor(private readonly http:HttpClient) { }
 
-  login(email, password):Observable<any>{
+  login(email:string, password:string):Observable<any>{
     return this.http.post<any>("auth/authenticate", {"email": email, "password": password});
   };
+
+
+
 }

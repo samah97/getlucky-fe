@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { LoaderService } from './core/services/loader.service';
-import { AuthenticationService } from './core/services/authentication.service';
+import { LoaderService } from './core/services/authentication/loader.service';
+import { AuthenticationService } from './core/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',

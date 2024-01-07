@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/layout/header/header.component';
-import { ApiInterceptor } from './core/interceptors/api.interceptor';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { ProductDetailsComponent } from './product/product-details/product-details.component';
-import { FooterComponent } from './core/layout/footer/footer.component';
-import { LoaderComponent } from './core/layout/loader/loader.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TokenInterceptor } from './core/interceptors/token.interceptor';
-import { ListErrorsComponent } from './core/common/list-errors/list-errors.component';
-import { ApiLoaderComponent } from './core/layout/api-loader/api-loader.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './core/layout/header/header.component';
+import {ApiInterceptor} from './core/interceptors/api.interceptor';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
+import {FooterComponent} from './core/layout/footer/footer.component';
+import {LoaderComponent} from './core/layout/loader/loader.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {TokenInterceptor} from './core/interceptors/token.interceptor';
+import {ApiLoaderComponent} from './core/layout/api-loader/api-loader.component';
+import {SocialLoginModule} from '@abacritt/angularx-social-login';
+import {ProfileComponent} from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +28,34 @@ import { ApiLoaderComponent } from './core/layout/api-loader/api-loader.componen
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
   providers: [
     provideClientHydration(),
     {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    // {
+    //   provide: 'SocialAuthServiceConfig',
+    //   useValue: {
+    //     autoLogin: false,
+    //     providers: [
+    //       {
+    //         id: GoogleLoginProvider.PROVIDER_ID,
+    //         provider: new GoogleLoginProvider(
+    //           '266596464361-4sneak44viaa4q7pt9478g7nfci7hkec.apps.googleusercontent.com'
+    //         )
+    //       },
+    //       // {
+    //       //   id: FacebookLoginProvider.PROVIDER_ID,
+    //       //   provider: new FacebookLoginProvider('246108031837524')
+    //       // }
+    //     ],
+    //     onError: (err) => {
+    //       console.error(err);
+    //     }
+    //   } as SocialAuthServiceConfig,
+    // }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { AuthGuard } from '../auth-guard';
 
 const routes: Routes = [
-  { path: ":id", component: ProductDetailsComponent }
+  { path: ":id", component: ProductDetailsComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -13,5 +14,5 @@ const routes: Routes = [
 export class ProductRoutingModule {
 
 
-  
+
 }

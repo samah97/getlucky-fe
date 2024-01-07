@@ -5,6 +5,7 @@
   <title>GetluckyApp</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
@@ -20,23 +21,23 @@
   <link rel="stylesheet" href="./assets/css/style.scss"> -->
   <link rel="stylesheet" href="./assets/css/responsive.css">
   <!-- <link rel="stylesheet" href="./assets/css/custom-style.scss"> -->
-  <script src="https://accounts.google.com/gsi/client?onload=initGApi" async defer></script>
+<!--  <script src="https://accounts.google.com/gsi/client?onload=initGApi" async defer></script>-->
 
   <!-- rewrite in Angular -->
   <script>
-    function handleCredentialResponse(result) {
-        fetch("http://localhost:8080/oauth/google", {
-            method: "POST",
-            credentials: "include",
-            body: JSON.stringify({
-              code: result.credential
-            }),
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest',
-              'Content-type': 'application/json; charset=UTF-8'
-            }
-        });
-    }
+    // function handleCredentialResponse(result) {
+    //     fetch("http://localhost:8080/oauth/google", {
+    //         method: "POST",
+    //         credentials: "include",
+    //         body: JSON.stringify({
+    //           code: result.credential
+    //         }),
+    //         headers: {
+    //           'X-Requested-With': 'XMLHttpRequest',
+    //           'Content-type': 'application/json; charset=UTF-8'
+    //         }
+    //     });
+    // }
   </script>
 </head>
 <body>
@@ -50,5 +51,22 @@
   <script src="./assets/js/jquery.nice-select.js"></script>
   <!-- Custom JavaScript -->
   <script src="./assets/js/main.js"></script>
+  <script>
+    // function handleCredentialResponse(googleUser){
+    //     console.log("HELLOOOO");
+    //     console.log(googleUser);
+    //     // let profile = googleUser.getBasicProfile();
+    //     // let fullName = profile.getName();
+    //     // let email = profile.getEmail();
+    //     // let imageUrl = profile.getImageUrl();
+    //
+    //     // console.log(profile);
+    //     // console.log(fullName);
+    //     // console.log(email);
+    //     // console.log(imageUrl);
+    //
+    // }
+</script>
+<!--  <script src="https://accounts.google.com/gsi/client" async defer></script>-->
 </body>
 </html>

@@ -3,20 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:'', 
+    path:'',
     loadChildren: ()=>import("./home/home.module").then(m=> m.HomeModule)
   },
   {
-    path:'products', 
+    path:'products',
     loadChildren: ()=>import("./product/product.module").then(m=> m.ProductModule)
   },
   {
-    path:'auth', 
+    path:'auth',
     loadChildren: ()=>import("./authentication/authentication.module").then(m=> m.AuthenticationModule)
   },
   {
-    path:'pages', 
+    path:'pages',
     loadChildren: ()=>import("./core/pages/pages.module").then(m=> m.PagesModule)
+  },
+  {
+    path:'profile',
+    loadChildren: ()=>import("./profile/profile.module").then(m=> m.ProfileModule)
   },
 ];
 
@@ -27,5 +31,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 
 
-  
+
  }
