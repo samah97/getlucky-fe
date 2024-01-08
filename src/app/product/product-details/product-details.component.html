@@ -2,10 +2,10 @@
 <div class="bg--dark breadcrumb-style-one mb-0 ">
   <div class="container">
     <div class="col-lg-12 text-center">
-      <h1 class="breadcrumb-title">Auction Details</h1>
+      <h1 class="breadcrumb-title">Product Details</h1>
       <ul class="d-flex justify-content-center breadcrumb-items">
-        <li class="breadcrumb-item"><i class="bi bi-house-door"></i> <a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active">Auction Details</li>
+        <li class="breadcrumb-item"><i class="bi bi-house-door"></i> <a href="" [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item active">Product Details</li>
       </ul>
     </div>
   </div>
@@ -173,13 +173,13 @@
           <div class="single-widget">
             <h5 class="wdget-title wdget-title2">Bid Now</h5>
             <p class="widget-subtitle">Bid Amount : Minimum Bid 20.00$</p>
-            <form class="widget-form">
+<!--            <form class="widget-form" >-->
               <div class="form-group d-flex justify-content-center align-items-center">
                 <input type="text" placeholder="$00.00" value="{{product.biddingPrice}}" disabled>
                 <button (click)="bidNow(product.id)" class="widget-btn">Place Bid</button>
               </div>
 
-            </form>
+<!--            </form>-->
           </div>
           <div class="single-widget">
             <h5 class="wdget-title">Bidding History</h5>
@@ -216,3 +216,6 @@
     </div>
   </div>
 </section>
+<app-dialog [displayDialog]="dialog.display" [dialogMessage]="dialog.message" [buttonClickHandler]="dialog.buttonClickHandler.bind(this)"
+  [buttonLabel]="dialog.buttonLabel" [dialogHeader]="dialog.header"
+></app-dialog>

@@ -1,1 +1,56 @@
-<p>profile works!</p>
+<!-- =============== breadcrumb area start =============== -->
+<div class="breadcrumb breadcrumb-style-one mb-0 ">
+  <div class="container">
+    <div class="col-lg-12 text-center">
+      <h1 class="breadcrumb-title">My Profile</h1>
+      <ul class="d-flex justify-content-center breadcrumb-items">
+        <li class="breadcrumb-item"><i class="bi bi-house-door"></i> <a href="">Home</a></li>
+        <li class="breadcrumb-item active">My Profile</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- =============== breadcrumb area end =============== -->
+
+<!-- =============== contact wrapper start =============== -->
+<div class="contact-wrapper  mt-110">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 mt-8 mt-lg-0 ">
+        <div class="contact-form">
+          <h4>Your details</h4>
+          <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" id="profile_form" method="post">
+            <div class="contact-input-group">
+              <label for="first-Name">First Name</label>
+              <input type="text" id="first-Name" placeholder="First Name" formControlName="firstName"> <!--[value]="user.firstName"-->
+            </div>
+            <div class="contact-input-group">
+              <label for="first-Name">Last Name</label>
+              <input type="text" id="last-Name" placeholder="Last Name" formControlName="lastName">
+            </div>
+            <div class="contact-input-group">
+              <label for="email">Email</label>
+              <input type="text" id="email" placeholder="Enter Your Email" formControlName="email">
+            </div>
+            <div class="contact-input-group">
+              <label for="phone">Phone</label>
+              <input type="text" id="phone" placeholder="Enter Your Phone Number" formControlName="phone">
+            </div>
+            <div class="contact-input-group">
+              <label for="phone">Date Of Birth</label>
+              <input type="date" id="date-of-birth" placeholder="Enter Your Date Of Birth" formControlName="dateOfBirth">
+            </div>
+<!--            <div class="contact-input-group">-->
+<!--              <label for="email">Message</label>-->
+<!--              <textarea id="massege" cols="30" rows="7" placeholder="Type your Message"></textarea>-->
+<!--            </div>-->
+            <div class="contact-input-group mt-0">
+              <button type="submit" class="submit-btn">Save Profile</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- =============== contact wrapper end =============== -->

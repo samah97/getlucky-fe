@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {PageNotFoundComponent} from "./core/pages/page-not-found/page-not-found.component";
+import {AuthGuard} from "./auth-guard";
+
 
 const routes: Routes = [
   {
     path:'',
     loadChildren: ()=>import("./home/home.module").then(m=> m.HomeModule)
+  },
+  {
+    path:'profile',
+    loadChildren: ()=>import("./profile/profile.module").then(m=> m.ProfileModule),
+    canActivate:[AuthGuard]
   },
   {
     path:'products',
@@ -19,8 +27,8 @@ const routes: Routes = [
     loadChildren: ()=>import("./core/pages/pages.module").then(m=> m.PagesModule)
   },
   {
-    path:'profile',
-    loadChildren: ()=>import("./profile/profile.module").then(m=> m.ProfileModule)
+    path:'**',
+    component:PageNotFoundComponent
   },
 ];
 
@@ -29,7 +37,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-
-
-
  }

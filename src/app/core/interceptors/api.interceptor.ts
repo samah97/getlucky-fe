@@ -35,11 +35,10 @@ export class ApiInterceptor implements HttpInterceptor {
       url+='v1/';
     }
     if(req.url != "authenticate"){
-      // url += `v1/`;
-      withCredentials = true;
+      // withCredentials = true;
     }
     url+=req.url;
-    const apiReq = req.clone({ url: url});
+    const apiReq = req.clone({ url: url, withCredentials:true});
 
     return next.handle(apiReq).pipe(
       catchError((error: HttpErrorResponse) => {

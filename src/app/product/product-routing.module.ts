@@ -4,7 +4,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { AuthGuard } from '../auth-guard';
 
 const routes: Routes = [
-  { path: ":id", component: ProductDetailsComponent, canActivate:[AuthGuard]}
+  { path: "details/:id",
+    component: ProductDetailsComponent,
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({
@@ -12,7 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ProductRoutingModule {
-
-
-
 }

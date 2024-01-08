@@ -32,7 +32,10 @@
             "styles": [
               "src/assets/css/style.scss",
               "src/assets/css/style2.scss",
-              "src/assets/css/custom-style.scss"
+              "src/assets/css/custom-style.scss",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "outputPath": "dist/getlucky-app",
             "index": "src/index.html",

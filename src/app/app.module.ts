@@ -12,8 +12,9 @@ import {LoaderComponent} from './core/layout/loader/loader.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TokenInterceptor} from './core/interceptors/token.interceptor';
 import {ApiLoaderComponent} from './core/layout/api-loader/api-loader.component';
-import {SocialLoginModule} from '@abacritt/angularx-social-login';
-import {ProfileComponent} from './profile/profile.component';
+import {SharedModule} from "./core/shared/shared.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,17 +25,18 @@ import {ProfileComponent} from './profile/profile.component';
     ApiLoaderComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SharedModule
   ],
   providers: [
     provideClientHydration(),
     {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     // {
     //   provide: 'SocialAuthServiceConfig',
     //   useValue: {
@@ -56,6 +58,9 @@ import {ProfileComponent} from './profile/profile.component';
     //     }
     //   } as SocialAuthServiceConfig,
     // }
+  ],
+  exports: [
+    // DialogComponent
   ],
   bootstrap: [AppComponent]
 })

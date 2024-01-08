@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CountdownPipe } from '../core/pipes/countdown.pipe';
 import { CountdownModule } from 'ngx-countdown';
 import { ProductRoutingModule } from './product-routing.module';
+import {SharedModule} from "../core/shared/shared.module";
 
 
 
@@ -19,7 +20,8 @@ import { ProductRoutingModule } from './product-routing.module';
     CountdownPipe,
     ProductRoutingModule,
     CommonModule,
-    CountdownModule
+    CountdownModule,
+    SharedModule
   ],
   exports:[
     ProductComponent

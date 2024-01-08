@@ -20,10 +20,4 @@ export class AppComponent {
       }
     });
   }
-
-
-  ngOnInit() {
-    this.authenticationService.checkAuthentication();
-  }
-
 }

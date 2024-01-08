@@ -3,27 +3,25 @@ import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } fr
 import { AuthenticationService } from "./core/services/authentication/authentication.service";
 import { Observable } from "rxjs";
 import { nextTick } from "process";
+import { TokenStorageService } from "./core/services/authentication/token-storage.service";
 
 @Injectable({
     providedIn:'root'
 })
 export class AuthGuard{
 
-    constructor(private authenticationService:AuthenticationService, private router:Router){
+    constructor(private tokenStorageService:TokenStorageService, private router:Router){
 
     }
 
     canActivate(): boolean {
-        // console.log("CAN ACTIVATE");
-        // console.log("logged? ");
-        // console.log(this.authenticationService.isLoggedIn());
-        // if(this.authenticationService.isLoggedIn()){
-        //     return true;
-        // }else{
-        //     this.router.navigate(['/auth/login']);
-        //     return false;
-        // }
-        return true;
+        console.log(this.tokenStorageService.isLoggedIn());
+        if(this.tokenStorageService.isLoggedIn()){
+            return true;
+        }else{
+            this.router.navigate(['/auth/login']);
+            return false;
+        }
     }
 
     // canActivate(next:ActivatedRouteSnapshot,

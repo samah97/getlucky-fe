@@ -54,7 +54,7 @@
                                         <ul *ngIf="isLoggedIn | async; else loggedOut" class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
                                             <li class="dropdown-item"><a href="/profile">My account</a></li>
                                             <li class="dropdown-item"><a href="register.html">Settings</a></li>
-                                            <li class="dropdown-item"><a href="" (onclick)="logout()">Logout</a></li>
+                                            <li class="dropdown-item"><a href="" (click)="logout()">Logout</a></li>
                                         </ul>
                                         <ng-template #loggedOut>
                                             <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
@@ -141,7 +141,7 @@
                                     <ul *ngIf="isLoggedIn | async; else loggedOutM" class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
                                         <li class="dropdown-item"><a href="/profile">My account</a></li>
                                         <li class="dropdown-item"><a href="register.html">Settings</a></li>
-                                        <li class="dropdown-item"><a href="/" (onclick)="logout()">Logout</a></li>
+                                        <li class="dropdown-item"><a href="" (click)="logout()">Logout</a></li>
                                     </ul>
                                     <ng-template #loggedOutM>
                                         <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">

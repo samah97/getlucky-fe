@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit, OnDestroy {
               private renderer: Renderer2,
               @Inject(DOCUMENT) private document: Document
   ) {
-    // this.loadGoogleSDK();
+
   }
 
   ngOnDestroy(): void {
       if(isPlatformBrowser(this.platformId)){
         (window as any).handleCredentialResponse = undefined;
       }
-    }
+   }
 
   ngOnInit(): void {
     this.bindCallbackFunction();
@@ -90,10 +90,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSuccessfulLogin(response:LoginResponse){
-    console.log(response);
+    // console.log(response);
     // this.authenticationService.setToken(response.token);
     // this.tokenStorageService.saveToken(response.token);
-    this.tokenStorageService.saveToken("");
+    this.tokenStorageService.saveToken("qweqweqe123123123i1238912391283123");
     this.isLoggedIn = true;
     this.router.navigate(['/']);
   }

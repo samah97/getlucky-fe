@@ -1,0 +1,9 @@
+.product-image{
+    width: 20vw;
+    height: 30vw;
+    object-fit: scale-down;
+}
+
+.product-image:hover{
+    cursor: pointer;
+}

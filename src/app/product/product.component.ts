@@ -39,6 +39,10 @@ export class ProductComponent implements OnInit{
       this.showProduct = false
     }
   }
+  redirectToDetails() {
+    console.log("HERE");
+    this.router.navigate(['/products/details/'+this.product.id])
+  }
 
   // showDetails(productId: string) {
   //   // this.router.navigate(['/products/detail',{productId:productId}],{queryParams: this.product, skipLocationChange:true})
