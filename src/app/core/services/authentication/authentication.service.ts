@@ -29,13 +29,13 @@ export class AuthenticationService {
   login(email:string, password:string):Observable<LoginResponse>{
     console.log("Data that will be sent:")
     // console.log();
-    return this.httpClient.post<LoginResponse>('auth/authenticate',
-        {email, password}
+    return this.httpClient.post<LoginResponse>('auth/login',
+        {email, password}, { withCredentials: true }
     ).pipe(shareReplay(1));
   }
 
   googleLogin(credential:string){
-    return this.httpClient.post<LoginResponse>('oauth/google', {"code":credential});
+    return this.httpClient.post<LoginResponse>('oauth/google', {"code":credential}, { withCredentials: true });
   }
 
   register(data:any){
@@ -75,4 +75,3 @@ export class AuthenticationService {
 
 
 }
-

@@ -4093,10 +4093,8 @@ category area end
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        padding-top: 130px;
-        padding-bottom: 85px;
-
-
+        padding-top: 15px;
+        padding-bottom: 15px;
 
         .footer-widget{
             padding-top: 30px;
@@ -4245,12 +4243,12 @@ category area end
     background-size: cover;
 
     .footer-main{
-        padding-top: 90px;
-        padding-bottom: 90px;
+        padding-top: 5px;
+        padding-bottom: 5px;
 
         @include md-down-device(){
-            padding-top: 80px;
-            padding-bottom: 80px;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         .footer-widget{

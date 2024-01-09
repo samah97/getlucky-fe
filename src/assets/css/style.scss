@@ -4179,12 +4179,12 @@ header{
     background-position: center;
     background-size: cover;
     .footer-main{
-        padding-top: 90px;
-        padding-bottom: 90px;
+        padding-top: 5px;
+        padding-bottom: 5px;
 
         @include md-down-device(){
-            padding-top: 80px;
-            padding-bottom: 80px;
+            padding-top: 5px;
+            padding-bottom: 5px;
 
         }
         .footer-widget{
@@ -4394,12 +4394,12 @@ header{
     background-position: center;
     background-size: cover;
     .footer-main{
-        padding-top: 80px;
-        padding-bottom: 80px;
+        padding-top: 15px;
+        padding-bottom: 15px;
 
         @include md-down-device(){
-            padding-top: 80px;
-            padding-bottom: 80px;
+            padding-top: 15px;
+            padding-bottom: 15px;
         }
     }
 

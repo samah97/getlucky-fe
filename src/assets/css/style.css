@@ -3966,14 +3966,14 @@ header.sticky-header .header-style-two .main-nav ul .has-child-menu::after {
 }
 
 .footer-style-one .footer-main {
-    padding-top: 90px;
-    padding-bottom: 90px
+    padding-top: 5px;
+    padding-bottom: 5px
 }
 
 @media(max-width: 767px) {
     .footer-style-one .footer-main {
-        padding-top: 80px;
-        padding-bottom: 80px
+        padding-top: 15px;
+        padding-bottom: 15px
     }
 }
 
@@ -4200,14 +4200,14 @@ header.sticky-header .header-style-two .main-nav ul .has-child-menu::after {
 }
 
 .footer-style-two .footer-main {
-    padding-top: 80px;
-    padding-bottom: 80px
+    padding-top: 15px;
+    padding-bottom: 15px
 }
 
 @media(max-width: 767px) {
     .footer-style-two .footer-main {
-        padding-top: 80px;
-        padding-bottom: 80px
+        padding-top: 15px;
+        padding-bottom: 15px
     }
 }
 
