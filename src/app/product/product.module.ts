@@ -6,13 +6,16 @@ import { CountdownPipe } from '../core/pipes/countdown.pipe';
 import { CountdownModule } from 'ngx-countdown';
 import { ProductRoutingModule } from './product-routing.module';
 import {SharedModule} from "../core/shared/shared.module";
+import { ProductsListComponent } from './products-list/products-list.component';
+import {BreadcrumbComponent} from "../core/shared/breadcrumb/breadcrumb.component";
 
 
 
 @NgModule({
   declarations: [
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductsListComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +24,7 @@ import {SharedModule} from "../core/shared/shared.module";
     ProductRoutingModule,
     CommonModule,
     CountdownModule,
-    SharedModule
+    SharedModule,
   ],
   exports:[
     ProductComponent

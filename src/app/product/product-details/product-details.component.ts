@@ -66,6 +66,14 @@ export class ProductDetailsComponent implements OnInit{
       {
         next:(response)=>{
           console.log(response);
+          this.orderService.hostedCheckout(response.orderId).subscribe({
+            next:value => {
+              console.log("Received URL = "+value.url);
+              window.location.href = value.url;
+              // console.log("Hosted Checkout Response");
+              // console.log(value);
+            }
+          });
         },
         error: (err) => {
           console.log("ERROR Is= ");

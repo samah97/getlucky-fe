@@ -6,12 +6,15 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import {ButtonModule} from "primeng/button";
 import {ToastModule} from "primeng/toast";
 import {AutoFocusModule} from "primeng/autofocus";
+import {BreadcrumbComponent} from "./breadcrumb/breadcrumb.component";
+import {RouterLink} from "@angular/router";
 
 
 
 @NgModule({
   declarations: [
-    DialogComponent
+    DialogComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
@@ -19,9 +22,11 @@ import {AutoFocusModule} from "primeng/autofocus";
     ButtonModule,
     ToastModule,
     AutoFocusModule,
+    RouterLink
   ],
   exports:[
-    DialogComponent
+    DialogComponent,
+    BreadcrumbComponent
   ]
 })
 export class SharedModule { }

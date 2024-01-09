@@ -26,6 +26,8 @@ export class AuthInterceptor implements HttpInterceptor {
           // Redirect to the login page (or any other route)
           this.router.navigate(['/auth/login']);
         }
+        console.log("API Error");
+        console.log(error);
         // Return an observable with a user-facing error message
         return throwError(() => new Error(error.error.detail));
       })

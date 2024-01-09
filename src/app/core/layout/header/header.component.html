@@ -81,49 +81,24 @@
                                 <a href="#"><img src="assets/images/icon/orange-logo.png" alt=""></a>
                             </div>
                             <ul>
-                                <li class="has-child-menu">
-                                    <a href="javascript:void(0)">Home</a>
-                                    <i class="fl flaticon-plus">+</i>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home Accessories </a></li>
-                                        <li><a href="index-car.html">Home Car</a></li>
-                                        <li><a href="index-land.html">Home Land</a></li>
-                                        <li><a href="index-art-light.html">Home Light-art</a></li>
-                                        <li><a href="index-art-dark.html">Home Dark-art</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="javascript:void(0)" [routerLink]="['/']" >Home</a>
                                 </li>
 
-                                <li class="has-child-menu">
-                                    <a href="javascript:void(0)">Auction</a>
+                                <li>
+                                    <a href="javascript:void(0)" [routerLink]="['/products/list']">Products</a>
+                                </li>
+                                <li><a href="contact.html" [routerLink]="['/pages/contact-us']">contact</a></li>
+                                <li>
+                                    <a href="javascript:void(0)">More</a>
                                     <i class="fl flaticon-plus">+</i>
                                     <ul class="sub-menu">
-                                        <li><a href="auction.html">auction</a></li>
-                                        <li><a href="auction-details.html">auction details</a></li>
+                                        <li><a href="about.html" [routerLink]="['/pages/about-us']" >About Us</a></li>
+                                        <li><a href="winner.html" [routerLink]="['/pages/faq']">FAQ</a></li>
+                                        <li><a href="privacy.html" [routerLink]="['/pages/privacy-policy']">Privacy Policy</a></li>
+                                      <li><a href="privacy.html" [routerLink]="['/pages/terms-conditions']">Terms & Conditions</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-child-menu">
-                                    <a href="javascript:void(0)">Pages</a>
-                                    <i class="fl flaticon-plus">+</i>
-                                    <ul class="sub-menu">
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="winner.html">winner</a></li>
-                                        <li><a href="" routerLink="/auth/login">login</a></li>
-                                        <li><a href="register.html">register</a></li>
-                                        <li><a href="faq.html">faq</a></li>
-                                        <li><a href="privacy.html">Privacy Policy</a></li>
-                                        <li><a href="404.html">Error</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-child-menu">
-                                    <a href="javascript:void(0)">Blog</a>
-                                    <i class="fl flaticon-plus">+</i>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-standard.html">Blog Standard</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">contact</a></li>
                             </ul>
                         </nav>
                     </div>

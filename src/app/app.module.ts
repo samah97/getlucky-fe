@@ -15,6 +15,7 @@ import {ApiLoaderComponent} from './core/layout/api-loader/api-loader.component'
 import {SharedModule} from "./core/shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
+import { BreadcrumbComponent } from './core/shared/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    ApiLoaderComponent
+    ApiLoaderComponent,
   ],
   imports: [
     BrowserAnimationsModule,
