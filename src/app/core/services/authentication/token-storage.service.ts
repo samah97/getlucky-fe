@@ -2,6 +2,8 @@ import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {DOCUMENT, isPlatformBrowser} from "@angular/common";
 import {CookieHandlerService} from "../cookie-handler.service";
+import {AuthenticationService} from "./authentication.service";
+import {response} from "express";
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -13,18 +15,21 @@ export class TokenStorageService {
 
   private isAuthenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private cookieHandlerService:CookieHandlerService) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private authenticationService:AuthenticationService) {
     this.isAuthenticated.next(this.isLoggedIn());
   }
 
   signOut():Promise<void> {
     return new Promise((resolve, reject) => {
-      console.log("SIGNING OUT");
-      if(isPlatformBrowser(this.platformId)){
-        console.log("REMOVING ITEM");
-        localStorage.removeItem(TOKEN_KEY);
-      }
-      this.isAuthenticated.next(false);
+      this.authenticationService.logout().subscribe({
+        next:()=>{
+
+          // if(isPlatformBrowser(this.platformId)){
+          //   localStorage.removeItem(TOKEN_KEY);
+          // }
+          // this.isAuthenticated.next(false);
+        }
+      });
     });
   }
 

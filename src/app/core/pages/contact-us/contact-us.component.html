@@ -1,0 +1,62 @@
+<app-breadcrumb [title]="'Contact Us'" *ngIf="showBreadcrumb" ></app-breadcrumb>
+<!-- =============== contact wrapper start =============== -->
+<div class="contact-wrapper  mt-110">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header mx-auto text-center">
+          <h3>Any Asking To The Developers?</h3>
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="contact-box-wrap">
+          <h4>Contact Us</h4>
+
+          <div class="single-contact-box">
+            <h6>Let’s Talk</h6>
+            <a href="mailto:{{contactEmail}}" class="mail">{{contactEmail}}</a>
+<!--            <a href="mailto:support@example.com" class="mail">support@example.com</a>-->
+            <a href="tel:{{contactNumber}}" class="phone">{{contactNumber}}</a>
+          </div>
+          <div class="single-contact-box">
+            <h6>Loacation.</h6>
+            <a href="javascript:void(0)" class="location">Utrecht, Netherlands</a>
+          </div>
+          <div class="single-contact-box">
+            <h6>Social Site Link</h6>
+            <a href="javascript:void(0)" class="weblink">Facebook: https://www.facebook.com/egenstheme</a>
+            <a href="javascript:void(0)" class="weblink">Twitter: https://www.twitter.com/egenstheme</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7 mt-5 mt-lg-0">
+        <div class="contact-form">
+          <h4>Questions or Comments?</h4>
+          <form [formGroup]="contactUsForm" (submit)="submitForm()"   action="#" id="contact_form" method="post">
+            <div class="contact-input-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" placeholder="Full Name" formControlName="fullName">
+            </div>
+            <div class="contact-input-group">
+              <label for="email">Email</label>
+              <input type="text" id="email" placeholder="Enter Your Email"  formControlName="email">
+            </div>
+            <div class="contact-input-group">
+              <label for="email">Message</label>
+              <textarea id="massege" cols="30" rows="7" placeholder="Type your Message" formControlName="message"></textarea>
+            </div>
+            <div class="contact-input-group mt-0">
+              <button type="submit" class="submit-btn" [disabled]="!contactUsForm.valid">Submit Comment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- =============== contact wrapper end =============== -->

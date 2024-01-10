@@ -7,6 +7,11 @@ import { OrderPaidComponent } from './order-paid/order-paid.component';
 import {SharedModule} from "../shared/shared.module";
 import { OrderFailedComponent } from './order-failed/order-failed.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { FaqComponent } from './faq/faq.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 
 
 
@@ -16,12 +21,17 @@ import { AboutUsComponent } from './about-us/about-us.component';
     PageNotFoundComponent,
     OrderPaidComponent,
     OrderFailedComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent,
+    FaqComponent,
+    PrivacyPolicyComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

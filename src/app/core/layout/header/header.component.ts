@@ -16,7 +16,8 @@ export class HeaderComponent {
 
   logout() {
     this.tokenStorageService.signOut().then(()=>{
-      this.router.navigate(["/"]);
+      console.log("LOGGED OUT SUCCESFULLY!")
+      // this.router.navigate(["/"]);
     });
   }
 

@@ -5,7 +5,7 @@
 				<i class='bx bx-x'></i>
 			</div>
 			<div class="sidebar-logo">
-				<a href="index.html"><img src="assets/images/icon/orange-logo.png" alt=""></a>
+				<a href="" [routerLink]="['/']" ><img src="assets/images/icon/orange-logo.png" alt=""></a>
 			</div>
 		</div>
 		<div class="sidebar-body">
@@ -53,13 +53,13 @@
                                         </a>
                                         <ul *ngIf="isLoggedIn | async; else loggedOut" class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
                                             <li class="dropdown-item"><a href="/profile">My account</a></li>
-                                            <li class="dropdown-item"><a href="register.html">Settings</a></li>
+                                            <li class="dropdown-item"><a href="">Settings</a></li>
                                             <li class="dropdown-item"><a href="" (click)="logout()">Logout</a></li>
                                         </ul>
                                         <ng-template #loggedOut>
                                             <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
                                                 <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
-                                              <li class="dropdown-item"><a href="register.html">Register</a></li>
+                                              <li class="dropdown-item"><a href="" routerLink="/auth/register">Register</a></li>
                                             </ul>
                                         </ng-template>
 
@@ -88,15 +88,15 @@
                                 <li>
                                     <a href="javascript:void(0)" [routerLink]="['/products/list']">Products</a>
                                 </li>
-                                <li><a href="contact.html" [routerLink]="['/pages/contact-us']">contact</a></li>
+                                <li><a href="" [routerLink]="['/pages/contact-us']">contact</a></li>
                                 <li>
                                     <a href="javascript:void(0)">More</a>
                                     <i class="fl flaticon-plus">+</i>
                                     <ul class="sub-menu">
-                                        <li><a href="about.html" [routerLink]="['/pages/about-us']" >About Us</a></li>
-                                        <li><a href="winner.html" [routerLink]="['/pages/faq']">FAQ</a></li>
-                                        <li><a href="privacy.html" [routerLink]="['/pages/privacy-policy']">Privacy Policy</a></li>
-                                      <li><a href="privacy.html" [routerLink]="['/pages/terms-conditions']">Terms & Conditions</a></li>
+                                        <li><a href="" [routerLink]="['/pages/about-us']" >About Us</a></li>
+                                        <li><a href="" [routerLink]="['/pages/faq']">FAQ</a></li>
+                                        <li><a href="" [routerLink]="['/pages/privacy-policy']">Privacy Policy</a></li>
+                                      <li><a href="" [routerLink]="['/pages/terms-conditions']">Terms & Conditions</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -115,7 +115,7 @@
                                     </a>
                                     <ul *ngIf="isLoggedIn | async; else loggedOutM" class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
                                         <li class="dropdown-item"><a href="/profile">My account</a></li>
-                                        <li class="dropdown-item"><a href="register.html">Settings</a></li>
+                                        <li class="dropdown-item"><a href="">Settings</a></li>
                                         <li class="dropdown-item"><a href="" (click)="logout()">Logout</a></li>
                                     </ul>
                                     <ng-template #loggedOutM>

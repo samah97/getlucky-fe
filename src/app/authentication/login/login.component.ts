@@ -11,11 +11,12 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../core/services/authentication/authentication.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { TokenStorageService } from '../../core/services/authentication/token-storage.service';
 import {DOCUMENT, isPlatformBrowser} from "@angular/common";
 import {GoogleScriptGenerator} from "../../core/common/util/google-script-generator";
 import {LoginResponse} from "../interfaces/login-response";
+import {RouterStorageService} from "../../core/services/router-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -33,11 +34,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private readonly authenticationService: AuthenticationService,
               private router: Router,
+              private activatedRoute:ActivatedRoute,
               private tokenStorageService: TokenStorageService,
+              private routerStorageService:RouterStorageService,
               private  zone:NgZone,
               @Inject(PLATFORM_ID) private platformId: Object,
               private renderer: Renderer2,
-              @Inject(DOCUMENT) private document: Document
+              @Inject(DOCUMENT) private document: Document,
   ) {
 
   }
@@ -49,11 +52,18 @@ export class LoginComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
+    this.checkExistQueryParams();
     this.bindCallbackFunction();
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      // this.roles = this.tokenStorage.getUser().roles;
     }
+  }
+
+  private checkExistQueryParams() {
+    this.activatedRoute.queryParams.subscribe((params)=>{
+      console.log(params);
+      this.errorMessage = params?.['message'];
+    })
   }
 
   bindCallbackFunction(): void {
@@ -90,11 +100,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSuccessfulLogin(response:LoginResponse){
-    // console.log(response);
-    // this.authenticationService.setToken(response.token);
-    // this.tokenStorageService.saveToken(response.token);
+
     this.tokenStorageService.saveToken("qweqweqe123123123i1238912391283123");
     this.isLoggedIn = true;
-    this.router.navigate(['/']);
+    const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route
+    this.routerStorageService.clearRedirectUrl();
+    this.router.navigate([redirectUrl]);
   }
 }

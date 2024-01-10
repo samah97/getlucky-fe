@@ -7,6 +7,7 @@ import {ProductsService} from '../../core/services/products.service';
 import {LefttimeCalculator} from '../../core/common/util/lefttime-calculator';
 import {OrderService} from "../../core/services/order.service";
 import {OrderRequest} from "../../core/interfaces/order-request";
+import {FormControl, FormGroup, Validators, ɵValue} from "@angular/forms";
 
 @Component({
   selector: 'app-product-details',
@@ -22,13 +23,16 @@ export class ProductDetailsComponent implements OnInit{
     buttonClickHandler:this.closeDialog,
     header:''
   }
-
   productId:any;
   product:Product = new Product("","");
   config: CountdownConfig = {
     format: 'dd:HH:mm:ss',
     prettyText: (text) => CountdownUtil.formatCountdown(text)
   };
+
+  bidForm = new FormGroup({
+    quantity: new FormControl('1',{validators:[Validators.required, Validators.min(1)], nonNullable:true})
+  });
 
   constructor(private route:ActivatedRoute,
               private readonly productService:ProductsService,
@@ -61,32 +65,37 @@ export class ProductDetailsComponent implements OnInit{
   }
 
   bidNow(productId: string) {
-    const orderRequest = this.createOrderRequest(productId)
-    this.orderService.makeOrder(orderRequest).subscribe(
-      {
-        next:(response)=>{
-          console.log(response);
-          this.orderService.hostedCheckout(response.orderId).subscribe({
-            next:value => {
-              console.log("Received URL = "+value.url);
-              window.location.href = value.url;
-              // console.log("Hosted Checkout Response");
-              // console.log(value);
-            }
-          });
-        },
-        error: (err) => {
-          console.log("ERROR Is= ");
-          console.log(err);
-          this.showErrorDialog(err);
-        }
-      });
+    console.log("Submitting");
+    if(this.bidForm.valid){
+      console.log(this.bidForm.value);
+      const orderRequest = this.createOrderRequest(productId,this.bidForm.value.quantity)
+      this.orderService.makeOrder(orderRequest).subscribe(
+        {
+          next:(response)=>{
+            console.log(response);
+            this.orderService.hostedCheckout(response.orderId).subscribe({
+              next:value => {
+                console.log("Received URL = "+value.url);
+                window.location.href = value.url;
+                // console.log("Hosted Checkout Response");
+                // console.log(value);
+              }
+            });
+          },
+          error: (err) => {
+            console.log("ERROR Is= ");
+            console.log(err);
+            this.showErrorDialog(err);
+          }
+        });
+    }
+
   }
 
-  createOrderRequest(productId:string):OrderRequest{
+  createOrderRequest(productId: string, quantity:any):OrderRequest{
     const order: OrderRequest = {
       orderItems: {
-        [productId]: { quantity: 1 },
+        [productId]: { quantity: quantity },
       },
       shippingAddress: null,
       billingAddress: null,
@@ -108,5 +117,13 @@ export class ProductDetailsComponent implements OnInit{
 
   closeDialog(){
     this.dialog.display = false;
+  }
+
+  quantityChange() {
+    if (parseInt(this.bidForm.value.quantity!) < 1){
+        this.bidForm.patchValue({
+          quantity: '1'
+        });
+    }
   }
 }

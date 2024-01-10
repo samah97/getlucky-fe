@@ -19,13 +19,6 @@ export class AuthenticationService {
 
   }
 
-  checkAuthentication(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('authToken');
-      this.isAuthenticated.next(!!token);
-    }
-  }
-
   login(email:string, password:string):Observable<LoginResponse>{
     console.log("Data that will be sent:")
     // console.log();
@@ -42,36 +35,7 @@ export class AuthenticationService {
     return this.httpClient.post('auth/signup',data);
   }
 
-  setToken(token: string){
-    this.token = token;
-    // localStorage.setItem(this.localStorageKeyName, this.token);
-    this.isAuthenticated.next(true);
-
-
-    window.sessionStorage.setItem(this.localStorageKeyName, token);
+  logout(){
+    return this.httpClient.post<any>("auth/logout",{});
   }
-
-  isLoggedInObservable(): Observable<boolean> {
-    // const jwt = localStorage.getItem(this.localStorageKeyName);
-    // // Optionally, you can add more checks to validate the token's integrity and expiration
-    // return !!jwt;
-    console.log(this.isAuthenticated.asObservable());
-    return this.isAuthenticated.asObservable();
-  }
-
-  isLoggedIn(): boolean {
-    return this.isAuthenticated.getValue();
-  }
-
-  logout(): void {
-    localStorage.removeItem(this.localStorageKeyName);
-    this.token = '';
-    this.isAuthenticated.next(false);
-  }
-
-  getToken(): string {
-    return this.token;
-  }
-
-
 }

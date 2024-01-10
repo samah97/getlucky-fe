@@ -8,6 +8,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import {SharedModule} from "../core/shared/shared.module";
 import { ProductsListComponent } from './products-list/products-list.component';
 import {BreadcrumbComponent} from "../core/shared/breadcrumb/breadcrumb.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -17,15 +18,17 @@ import {BreadcrumbComponent} from "../core/shared/breadcrumb/breadcrumb.componen
     ProductDetailsComponent,
     ProductsListComponent
   ],
-  imports: [
-    CommonModule,
-    NgIf,
-    CountdownPipe,
-    ProductRoutingModule,
-    CommonModule,
-    CountdownModule,
-    SharedModule,
-  ],
+    imports: [
+        CommonModule,
+        NgIf,
+        CountdownPipe,
+        ProductRoutingModule,
+        CommonModule,
+        CountdownModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
   exports:[
     ProductComponent
   ]
