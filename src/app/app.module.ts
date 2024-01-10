@@ -10,13 +10,10 @@ import {CommonModule} from '@angular/common';
 import {FooterComponent} from './core/layout/footer/footer.component';
 import {LoaderComponent} from './core/layout/loader/loader.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TokenInterceptor} from './core/interceptors/token.interceptor';
 import {ApiLoaderComponent} from './core/layout/api-loader/api-loader.component';
 import {SharedModule} from "./core/shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
-import { BreadcrumbComponent } from './core/shared/breadcrumb/breadcrumb.component';
-
+import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +33,7 @@ import { BreadcrumbComponent } from './core/shared/breadcrumb/breadcrumb.compone
   providers: [
     provideClientHydration(),
     {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     // {
     //   provide: 'SocialAuthServiceConfig',
     //   useValue: {
