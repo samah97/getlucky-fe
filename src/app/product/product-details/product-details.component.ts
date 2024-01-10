@@ -73,11 +73,12 @@ export class ProductDetailsComponent implements OnInit{
         {
           next:(response)=>{
             console.log(response);
-            this.orderService.hostedCheckout(response.orderId).subscribe({
-              next:value => {
-                window.location.href = value.url;
-              }
-            });
+            this.orderService.checkoutAndRedirect(response.orderId);
+            // this.orderService.hostedCheckout(response.orderId).subscribe({
+            //   next:value => {
+            //     window.location.href = value.url;
+            //   }
+            // });
           },
           error: (err) => {
             console.log(err);

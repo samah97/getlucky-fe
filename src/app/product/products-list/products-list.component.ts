@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ProductsService} from "../../core/services/products.service";
 
 @Component({
@@ -8,6 +8,7 @@ import {ProductsService} from "../../core/services/products.service";
 })
 export class ProductsListComponent implements OnInit{
   products: any[] = [];
+  @Input() showBreadcrumb!: boolean;
 
   constructor(private readonly productsService:ProductsService) {
   }
@@ -15,8 +16,6 @@ export class ProductsListComponent implements OnInit{
   ngOnInit(): void {
     this.initData();
   }
-
-
 
   initData():void{
     this.productsService.all().subscribe((result)=>{

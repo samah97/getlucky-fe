@@ -29,8 +29,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         FormsModule,
         ReactiveFormsModule,
     ],
-  exports:[
-    ProductComponent
+  exports: [
+    ProductComponent,
+    ProductsListComponent
   ]
 })
 export class ProductModule { }

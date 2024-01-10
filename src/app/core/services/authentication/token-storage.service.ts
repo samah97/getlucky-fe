@@ -23,11 +23,10 @@ export class TokenStorageService {
     return new Promise((resolve, reject) => {
       this.authenticationService.logout().subscribe({
         next:()=>{
-
-          // if(isPlatformBrowser(this.platformId)){
-          //   localStorage.removeItem(TOKEN_KEY);
-          // }
-          // this.isAuthenticated.next(false);
+          if(isPlatformBrowser(this.platformId)){
+            localStorage.removeItem(TOKEN_KEY);
+          }
+          this.isAuthenticated.next(false);
         }
       });
     });

@@ -1,0 +1,57 @@
+<app-breadcrumb [title]="'My Orders'" ></app-breadcrumb>
+<section class="pt-110">
+<!--  <div class="container ">-->
+<!--    <div class="row align-items-center gy-4 mt-60 mb-60">-->
+<!--      <div class="col-lg-10 ">-->
+<!--        <div class="section-title">-->
+<!--          <h3>My Orders</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="pp-buttons-wrap">
+          <div class="nav flex-row nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-btn-pp1" data-bs-toggle="pill" data-bs-target="#v-pills-pp1" type="button" role="tab" aria-controls="v-pills-pp-paid" aria-selected="true">Paid </button>
+            <button class="nav-link" id="v-btn-pp2" data-bs-toggle="pill" data-bs-target="#v-pills-pp2" type="button" role="tab" aria-controls="v-pills-pp-pending" aria-selected="false">Pending Payment</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 pt-5 pt-lg-0">
+        <div class="tab-content pp-tab-contents" id="v-pills-tabContent">
+          <div class="tab-pane fade show active pp-tab-body" id="v-pills-pp1" role="tabpanel" aria-labelledby="v-btn-pp-paid">
+              <div class="orders" *ngFor="let paidOrder of paidOrders">
+                <app-order [order]="paidOrder"></app-order>
+              </div>
+          </div>
+          <div class="tab-pane fade show pp-tab-body" id="v-pills-pp2" role="tabpanel" aria-labelledby="v-btn-pp-pending">
+            <div class="orders" *ngFor="let ppOrder of pendingPaymentOrders">
+              <app-order [order]="ppOrder"></app-order>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<div class="live-auction-area pt-110">
+  <div class="container">
+    <div class="row align-items-center gy-4 mb-60">
+      <div class="col-lg-6 ">
+        <div class="section-title">
+          <h3>Other Products</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4">
+      <ng-container *ngIf="products">
+        <app-product *ngFor="let product of products" [product]="product" class="col-lg-4 col-md-6"></app-product>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

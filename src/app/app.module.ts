@@ -14,13 +14,14 @@ import {ApiLoaderComponent} from './core/layout/api-loader/api-loader.component'
 import {SharedModule} from "./core/shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
+import { OrderStatusTransformPipe } from './core/pipes/order-status-transform.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    ApiLoaderComponent,
+    ApiLoaderComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -55,9 +56,6 @@ import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
     //     }
     //   } as SocialAuthServiceConfig,
     // }
-  ],
-  exports: [
-    // DialogComponent
   ],
   bootstrap: [AppComponent]
 })

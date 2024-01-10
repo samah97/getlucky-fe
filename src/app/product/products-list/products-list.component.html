@@ -10,7 +10,7 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
-<app-breadcrumb [title]="'Products'"></app-breadcrumb>
+<app-breadcrumb *ngIf="showBreadcrumb" [title]="'Products'"></app-breadcrumb>
 <!-- =============== breadcrumb area end =============== -->
 <section>
   <div class="row g-4 bg--dark">
