@@ -5,3 +5,27 @@
   background: #9f9f9f;
   color:#fff;
 }
+.item-bid-timer,
+.details-social-area ul i{
+  background:#FF552E;
+}
+.widget-right-area h4,
+.widget-right-area .paragraph,
+.wdget-title,
+.widget-subtitle,
+.details-social-area ul i,
+.describe-content p
+{
+  color: #e2e2e2;
+}
+
+.wdget-title::before,
+.wdget-title::after{
+  background: #e2e2e2;
+}
+.widget-right-area{
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #ff552e;
+  padding: 10px;
+  background-color: #111313;
+}

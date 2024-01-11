@@ -23,3 +23,18 @@
 .about-disc h2{
   margin-top:7%;
 }
+.about-wrpper .about-disc h2,
+{
+  color:#e7e7e7;
+}
+
+.about-wrpper .about-disc h2::before,
+.about-wrpper .about-disc .highlighted-texts::before{
+  background:#e7e7e7;
+}
+
+.about-wrpper .about-disc .highlighted-texts h4,
+.about-wrpper .about-disc p{
+  color:#aeaeae;
+}
+

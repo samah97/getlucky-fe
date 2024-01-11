@@ -5,3 +5,15 @@
   background: #9f9f9f;
   color:#fff;
 }
+
+.contact-form,
+.contact-box-wrap{
+  border-radius:10px;
+}
+
+.contact-box-wrap .single-contact-box{
+  background: #e7e7e7;
+}
+.contact-form .contact-input-group button[type=submit]{
+  background:#ff552e;
+}

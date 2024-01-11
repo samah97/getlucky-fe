@@ -1,0 +1,28 @@
+.contact-wrapper{
+  margin-top:140px;
+}
+.contact-form{
+  background: #aeaeae;
+  box-shadow: 0 0 11px #ff552e;
+  padding: 40px 15px;
+  padding-top: 10px;
+  border-radius:10px;
+}
+.contact-form .contact-input-group input, .contact-form .contact-input-group .comment-form textarea, .comment-form .contact-form .contact-input-group textarea{
+  height:40px;
+}
+
+.contact-form .contact-input-group button[type=submit]{
+  background:#ff552e;
+}
+
+.contact-form .contact-input-group label{
+  margin-bottom: 5px;
+}
+.nav-link{
+  background: #ebebeb;
+  color: #020914;
+}
+.nav-link.active{
+  background:#ff552e !important;
+}
