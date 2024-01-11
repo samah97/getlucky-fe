@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   private user: User;
   errorMsg: string = "";
   profileForm: FormGroup = new FormGroup({});
+  changePasswordErrorMsg: string = "";
+  changePasswordForm: FormGroup = new FormGroup({});
 
   constructor(private readonly userService: UserService, private fb: FormBuilder) {
   }
@@ -65,5 +67,9 @@ export class ProfileComponent implements OnInit {
         this.errorMsg = err;
       }
     });
+  }
+
+  onSubmitChangePassword() {
+
   }
 }
