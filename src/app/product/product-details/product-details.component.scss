@@ -1,3 +1,5 @@
+$orange-color:var(--orange-color);
+
 .widget-btn:disabled{
   background: #9f9f9f;
 }
@@ -7,7 +9,7 @@
 }
 .item-bid-timer,
 .details-social-area ul i{
-  background:#FF552E;
+  background:$orange-color;
 }
 .widget-right-area h4,
 .widget-right-area .paragraph,
@@ -25,7 +27,13 @@
 }
 .widget-right-area{
   border-radius: 10px;
-  box-shadow: 1px 1px 10px #ff552e;
+  box-shadow: 1px 1px 10px $orange-color;
   padding: 10px;
   background-color: #111313;
+}
+.orange-span{
+  color:$orange-color;
+}
+.price-info{
+  margin-top: 10px;;
 }

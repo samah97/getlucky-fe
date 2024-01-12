@@ -165,6 +165,9 @@
                 <button type="submit" [disabled]="!bidForm.valid" class="widget-btn">Place Bid</button>
 <!--                (click)="bidNow(product.id)"-->
               </div>
+              <p class="widget-subtitle price-info">
+                Amount you'll pay for buying <span class="orange-span">{{quantity}}</span> bid(s) is: <span class="orange-span">{{total}} $</span>
+              </p>
             </form>
           </div>
 <!--          <div class="single-widget">-->

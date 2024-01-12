@@ -20,15 +20,15 @@
   <!-- <link rel="stylesheet" href="./assets/css/style2.scss">
   <link rel="stylesheet" href="./assets/css/style.scss"> -->
   <link rel="stylesheet" href="./assets/css/responsive.css">
-  <!-- <link rel="stylesheet" href="./assets/css/custom-style.scss"> -->
-<!--  <script src="https://accounts.google.com/gsi/client?onload=initGApi" async defer></script>-->
-
-
 </head>
 <body class="bg--dark">
-
+  <div id="fb-root"></div>
     <app-root></app-root>
 
+    <fb:login-button 
+    scope="public_profile,email"
+    onlogin="checkLoginState();">
+  </fb:login-button>
   <!--Javascript -->
   <script src="./assets/js/jquery-3.6.0.min.js"></script>
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
@@ -37,6 +37,7 @@
   <script src="./assets/js/jquery.nice-select.js"></script>
   <!-- Custom JavaScript -->
   <script src="./assets/js/main.js"></script>
+
   <script>
     // function handleCredentialResponse(googleUser){
     //     console.log("HELLOOOO");

@@ -23,11 +23,11 @@ import {RouterStorageService} from "../../core/services/router-storage.service";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     username: new FormControl('', {validators: [Validators.required, Validators.email], nonNullable: true}),
-    password: new FormControl('', {validators: [Validators.required], nonNullable: true})
+    password: new FormControl('', {validators: [Validators.required, Validators.minLength(8)], nonNullable: true})
   });
   errorMessage: String = '';
   isLoggedIn = false;
@@ -36,24 +36,15 @@ export class LoginComponent implements OnInit, OnDestroy {
               private router: Router,
               private activatedRoute:ActivatedRoute,
               private tokenStorageService: TokenStorageService,
-              private routerStorageService:RouterStorageService,
-              private  zone:NgZone,
-              @Inject(PLATFORM_ID) private platformId: Object,
-              private renderer: Renderer2,
-              @Inject(DOCUMENT) private document: Document,
+              private routerStorageService:RouterStorageService
+              
   ) {
 
   }
 
-  ngOnDestroy(): void {
-      if(isPlatformBrowser(this.platformId)){
-        (window as any).handleCredentialResponse = undefined;
-      }
-   }
-
   ngOnInit(): void {
+    this.checkUserAlreadyLoggedIn();
     this.checkExistQueryParams();
-    this.bindCallbackFunction();
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
     }
@@ -63,25 +54,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.activatedRoute.queryParams.subscribe((params)=>{
       console.log(params);
       this.errorMessage = params?.['message'];
-    })
-  }
-
-  bindCallbackFunction(): void {
-    if(isPlatformBrowser(this.platformId)){
-      (window as any).handleCredentialResponse = this.handleCredentialResponse.bind(this);
-      this.loadGoogleScript();
-    }
-  }
-
-  loadGoogleScript(): void {
-    GoogleScriptGenerator.appendScript(this.renderer,this.document);
-  }
-
-  handleCredentialResponse(result: any) {
-    this.zone.run(()=>{
-      console.log("OAuth response received:", result);
-        this.authenticationService.googleLogin(result.credential).subscribe(
-          (response)=>this.onSuccessfulLogin(response))
     })
   }
 
@@ -99,12 +71,25 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
-  onSuccessfulLogin(response:LoginResponse){
-
+  onSuccessfulLogin = (response:LoginResponse)=>{
+    console.log(this);
+    console.log("In onSuccessfulLogin");
+    console.log(response);
     this.tokenStorageService.saveToken("qweqweqe123123123i1238912391283123");
     this.isLoggedIn = true;
     const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route
     this.routerStorageService.clearRedirectUrl();
     this.router.navigate([redirectUrl]);
   }
+  // onSuccessfulLogin(response:LoginResponse){
+    
+  // }
+
+  checkUserAlreadyLoggedIn() {
+    if(this.tokenStorageService.isLoggedIn()){
+      this.router.navigate(['/profile']);
+    }
+  }
+  
 }
+

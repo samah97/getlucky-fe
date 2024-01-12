@@ -19,25 +19,39 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-12 pt-5 pt-lg-0">
+      <div class="col-lg-12 pt-lg-0">
         <div class="tab-content pp-tab-contents" id="v-pills-tabContent">
           <div class="tab-pane fade show active pp-tab-body" id="v-pills-pp1" role="tabpanel" aria-labelledby="v-btn-pp-paid">
-              <div class="orders" *ngFor="let paidOrder of paidOrders">
-                <app-order [order]="paidOrder"></app-order>
+            <div *ngIf="paidOrders.length > 0; else noOrders">
+              <div class="orders" *ngFor="let paidOrder of paidOrders" >
+                  <app-order [order]="paidOrder"></app-order>
               </div>
+            </div>
+            <ng-template #noOrders>
+                <h4>You don't have any orders to show at the moment.</h4>
+                <div class="text-center pt-50">
+                  <a class="widget-btn" routerLink="/products/list">Explore Items</a>
+                </div>
+            </ng-template>
           </div>
           <div class="tab-pane fade show pp-tab-body" id="v-pills-pp2" role="tabpanel" aria-labelledby="v-btn-pp-pending">
-            <div class="orders" *ngFor="let ppOrder of pendingPaymentOrders">
-              <app-order [order]="ppOrder"></app-order>
+            <div *ngIf="paidOrders.length > 0; else noOrders2"></div>
+              <div class="orders" *ngFor="let ppOrder of pendingPaymentOrders">
+                <app-order [order]="ppOrder"></app-order>
+              </div>
             </div>
+            <ng-template #noOrders2>
+              <h4>You don't have any orders to show at the moment.</h4>
+              <div class="text-center pt-50">
+                <a class="widget-btn" routerLink="/products/list">Explore Items</a>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-
 </section>
+
 <div class="live-auction-area pt-110">
   <div class="container">
     <div class="row align-items-center gy-4 mb-60">

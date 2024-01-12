@@ -1,5 +1,5 @@
 
-<section class="register-section pt-110">
+<section class="register-section">
     <div class="container">
         <div class="row d-flex justify-content-center text-center">
             <div class="col-12">
@@ -39,7 +39,7 @@
                             </div>
                             <!-- <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
                             <label class="check-box-text">Remember Me</label> -->
-                            <a href="#" class="forgot-pass">Forgotten Password</a>
+                            <a href="#" routerLink="/auth/forget-password" class="forgot-pass">Forgotten Password</a>
                         </div>
                         <button type="submit" class="account-btn" [disabled]="!loginForm.valid">LOGIN ACCOUNT</button>
                     </form>
@@ -53,15 +53,7 @@
                             <!-- <button class="" (click)="signInWithGoogle()">
                                 <i class='bx bxl-google'></i><span>Sign in with Google</span>
                             </button> -->
-                            <div id="g_id_onload"
-                            data-client_id="266596464361-4sneak44viaa4q7pt9478g7nfci7hkec.apps.googleusercontent.com"
-                            data-callback="handleCredentialResponse">
-                            </div>
-                            <div class="g_id_signin" data-type="standard"></div>
-
-                            <a href="" class="facebook-btn d-flex align-items-center">
-                                <i class='bx bxl-facebook' ></i>Login with Facebook
-                            </a>
+                            <google-login [successfulLogin]="onSuccessfulLogin"></google-login>
                         </div>
                     </div>
                 </div>

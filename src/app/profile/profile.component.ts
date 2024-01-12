@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "../core/services/user.service";
 import { User } from "../core/interfaces/user";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { CustomValidators } from '../core/common/validators/custom-validators';
 
 @Component({
   selector: 'app-profile',
@@ -26,8 +27,8 @@ export class ProfileComponent implements OnInit {
 
   initForm() {
     this.profileForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      firstName: new FormControl('', {validators:[Validators.required, CustomValidators.nameValidator()]}),
+      lastName: new FormControl('', {validators:[Validators.required, CustomValidators.nameValidator()]}),
       email: new FormControl('', [Validators.required, Validators.email]),
       phoneNumber: new FormControl(''),
       dateOfBirth: new FormControl('', [Validators.required]),
@@ -49,27 +50,28 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = this.profileForm.value;
-    const user: User = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      dateOfBirth: formData.dateOfBirth,
-      phoneNumber: formData.phoneNumber
-    }
-    console.info("Submitting UserProfile form...");
-    this.userService.updateProfile(user).subscribe({
-      next: value => {
-        console.info("UserProfile updated");
-      },
-      error: err => {
-        console.warn("UserProfile could not be updated");
-        this.errorMsg = err;
+    if(this.profileForm.valid){
+      const formData = this.profileForm.value;
+      const user: User = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        dateOfBirth: formData.dateOfBirth,
+        phoneNumber: formData.phoneNumber
       }
-    });
+      this.userService.updateProfile(user).subscribe({
+        next: value => {
+          
+        },
+        error: err => {
+          this.errorMsg = err;
+        }
+      });
+    }
+    
   }
 
   onSubmitChangePassword() {
-
+    
   }
 }

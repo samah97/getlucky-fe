@@ -8,6 +8,7 @@ import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {FaqComponent} from "./faq/faq.component";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
   { path: "registration-success", component:RegistrationSuccessComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "faq", component:FaqComponent},
   { path: "privacy-policy", component:PrivacyPolicyComponent},
   { path: "terms-conditions", component:TermsAndConditionsComponent},
+  { path: "result", component:ResultComponent},
 ];
 
 

@@ -1,11 +1,31 @@
 @use 'style';
+@use 'variables';
 
 .header-area{
-    background-color: style.$primary-color;
+    background-color: variables.$primary-color;
 }
 .footer-style-three .footer-main{
     margin-top:15px;
 }
+
+.widget-btn {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+  color: #fff;
+  background: variables.$orange-color;
+  text-align: center;
+  display: inline-block;
+  text-transform: uppercase;
+  min-width: 130px;
+  /* border: 1px solid #00152B; */
+  outline: none;
+  border-radius: 0px 5px 5px 0px;
+  padding: 10px 10px;
+  margin-left: -1px;
+  transition: 0.4s ease;
+}
+
 .widget-form .widget-btn{
     background: style.$orange-color;
 }
@@ -13,43 +33,54 @@
     color: style.$orange-color;
 }
 
-.account-btn:disabled{
-    color: #000;
-    background: #e1e1e1;
+.account-btn{
+  color:#e2e2e2;
+}
+
+.account-btn,.submit-btn{
+  &:disabled{
+    color: #000 !important;
+    background-color: #c1c1c1  !important;
     cursor: default;
+  }
 }
 
 .page-header h3{
   color:#e2e2e2;
 }
-
-.breadcrumb-style-one {
-  background-image: linear-gradient(rgba(0, 1, 13, 0.8), rgba(0, 1, 13, 0.8)), url(/assets/banner/breadcrumb-bg.png);
-  background-size: cover;
-  padding-bottom: 20px;
-  padding-top: 140px;
-  position: relative;
+.mt-170{
+  margin-top:170px;
 }
 
 
-@media(min-width: 992px)and (max-width: 1199px) {
-  .breadcrumb-style-one {
-    padding-bottom: 20px;
-    padding-top: 100px
-  }
+
+.register-btn-group .login-btn.style2,
+.right-form-area .account-btn,
+.register-btn-group .register-btn{
+  background-color: variables.$orange-color;
+}
+.right-form-area h3,
+.right-form-area .alternate-signup-box h6{
+  color:variables.$orange-color;
 }
 
-@media(min-width: 768px)and (max-width: 991px) {
-  .breadcrumb-style-one {
-    padding-bottom: 20px;
-    padding-top: 100px
-  }
+.right-form-area label,
+.right-form-area .forgot-pass{
+  color:#a4a1a1;
 }
-
-@media(max-width: 767px) {
-  .breadcrumb-style-one {
-    padding-bottom: 20px;
-    padding-top: 100px
-  }
+.register-btn-group .login-btn{
+  background-color: #fff;
 }
-
+.right-form-area label, .right-form-area .forgot-pass{
+  color:#000;
+}
+.right-form-area{
+  background-color: variables.$forms-bg-color;
+}
+.right-form-area .alternate-signup-box{
+  border-color: #000;
+}
+.section-header-two h3::before{
+  background: 
+  linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fefeff 15.63%, #393939 82.29%, rgba(255, 255, 255, 0) 100%);
+}

@@ -30,6 +30,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "styles": [
+              "src/styles.scss",
               "src/assets/css/style.scss",
               "src/assets/css/style2.scss",
               "src/assets/css/custom-style.scss",

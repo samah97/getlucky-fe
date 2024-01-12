@@ -30,6 +30,9 @@ export class ProductDetailsComponent implements OnInit{
     prettyText: (text) => CountdownUtil.formatCountdown(text)
   };
 
+  quantity:number = 1;
+  total: number;
+
   bidForm = new FormGroup({
     quantity: new FormControl('1',{validators:[Validators.required, Validators.min(1)], nonNullable:true})
   });
@@ -49,10 +52,11 @@ export class ProductDetailsComponent implements OnInit{
     //   this.productId = productId;
     // })
     console.log(this.productId);
-    this.initData();
+    
   }
 
   ngOnInit(): void {
+    this.initData();
   }
 
   initData() {
@@ -61,6 +65,7 @@ export class ProductDetailsComponent implements OnInit{
         if(this.product.drawScheduledAt){
           this.config.leftTime = LefttimeCalculator.calculate(this.product.drawScheduledAt);
         }
+        this.total = this.calculateTotalPrice();
     });
   }
 
@@ -74,11 +79,6 @@ export class ProductDetailsComponent implements OnInit{
           next:(response)=>{
             console.log(response);
             this.orderService.checkoutAndRedirect(response.orderId);
-            // this.orderService.hostedCheckout(response.orderId).subscribe({
-            //   next:value => {
-            //     window.location.href = value.url;
-            //   }
-            // });
           },
           error: (err) => {
             console.log(err);
@@ -116,11 +116,26 @@ export class ProductDetailsComponent implements OnInit{
     this.dialog.display = false;
   }
 
+  calculateTotalPrice(): number {
+
+    const quantity = parseInt(this.bidForm.value.quantity ?? '1');    
+    return quantity * (this.product!.biddingPrice || 0);
+  }
+
   quantityChange() {
-    if (parseInt(this.bidForm.value.quantity!) < 1){
+    let quantityData = parseInt(this.bidForm.value.quantity!); 
+    if (quantityData < 1){
         this.bidForm.patchValue({
           quantity: '1'
         });
+        quantityData = 1;
     }
+    this.quantity = quantityData;
+    this.total = this.calculateTotalPrice();
+
+
+
   }
+
+  
 }

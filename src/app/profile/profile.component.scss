@@ -1,9 +1,9 @@
-.contact-wrapper{
-  margin-top:140px;
-}
+$orange-color:var(--orange-color);
+
 .contact-form{
   background: #aeaeae;
-  box-shadow: 0 0 11px #ff552e;
+  //box-shadow: 0 0 11px #ff552e;
+  box-shadow: 0 0 11px $orange-color;
   padding: 40px 15px;
   padding-top: 10px;
   border-radius:10px;
@@ -13,7 +13,7 @@
 }
 
 .contact-form .contact-input-group button[type=submit]{
-  background:#ff552e;
+  background:$orange-color;
 }
 
 .contact-form .contact-input-group label{
@@ -24,5 +24,10 @@
   color: #020914;
 }
 .nav-link.active{
-  background:#ff552e !important;
+  background:$orange-color !important;
+}
+@media(max-width: 992px) {
+  .nav.flex-column.nav-pills{
+      margin-bottom: 20px; 
+  }
 }

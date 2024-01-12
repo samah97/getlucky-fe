@@ -38,4 +38,18 @@ export class AuthenticationService {
   logout(){
     return this.httpClient.post<any>("auth/logout",{});
   }
+
+  forgetPassword(email:string):Observable<any>{
+    return this.httpClient.post<any>("accounts/reset-pass",{email});
+  }
+
+  resetPassword(password:string,userId:string,confirmationToken:string):Observable<any>{
+    return this.httpClient.post<any>("accounts/change-pass/"+userId,{
+      resetToken:confirmationToken,
+      password
+    });
+  }
+
+
+
 }

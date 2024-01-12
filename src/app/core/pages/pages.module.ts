@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { FaqComponent } from './faq/faq.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { ResultComponent } from './result/result.component';
 
 
 
@@ -25,7 +26,8 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     ContactUsComponent,
     FaqComponent,
     PrivacyPolicyComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    ResultComponent
   ],
   imports: [
     CommonModule,

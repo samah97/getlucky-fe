@@ -34,7 +34,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.tokenStorageService.signOut();
             this.router.navigate(['/auth/login'],{queryParams: {message:message}});
           }
-          return throwError(() => error)
+          return throwError(() => error.error.detail)
         }),
       )
       ;
