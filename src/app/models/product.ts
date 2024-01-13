@@ -1,12 +1,12 @@
 export class Product {
 
-    biddingPrice?:number;
-    description?:String;
-    imageLink?:String;
-    drawScheduledAt?:string;
+    biddingPrice: number;
+    description: string;
+    imageLink: string;
+    drawScheduledAt: string;
 
     constructor(
-        public id:string,
-        public name:string,
-    ){}
+        public id: string,
+        public name: string,
+    ) { }
 }

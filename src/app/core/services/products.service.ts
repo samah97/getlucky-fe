@@ -8,16 +8,13 @@ import { Product } from '../../models/product';
 })
 export class ProductsService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  all():Observable<any>{
+  all(): Observable<any> {
     return this.http.get<any>("items");
-  };
-
-  findById(id:string):Observable<Product>{
-    return this.http.get<any>("items/"+id);
   }
 
-
-
+  findById(id: string): Observable<Product> {
+    return this.http.get<Product>("items/" + id);
+  }
 }

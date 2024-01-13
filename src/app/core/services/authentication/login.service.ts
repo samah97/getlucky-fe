@@ -7,12 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  constructor(private readonly http:HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
-  login(email:string, password:string):Observable<any>{
-    return this.http.post<any>("auth/authenticate", {"email": email, "password": password});
-  };
-
-
-
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>("auth/login", { "email": email, "password": password });
+  }
 }
