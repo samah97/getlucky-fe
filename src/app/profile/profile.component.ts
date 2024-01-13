@@ -27,8 +27,8 @@ export class ProfileComponent implements OnInit {
 
   initForm() {
     this.profileForm = new FormGroup({
-      firstName: new FormControl('', {validators:[Validators.required, CustomValidators.nameValidator()]}),
-      lastName: new FormControl('', {validators:[Validators.required, CustomValidators.nameValidator()]}),
+      firstName: new FormControl('', { validators: [Validators.required, CustomValidators.nameValidator()] }),
+      lastName: new FormControl('', { validators: [Validators.required, CustomValidators.nameValidator()] }),
       email: new FormControl('', [Validators.required, Validators.email]),
       phoneNumber: new FormControl(''),
       dateOfBirth: new FormControl('', [Validators.required]),
@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.profileForm.valid){
+    if (this.profileForm.valid) {
       const formData = this.profileForm.value;
       const user: User = {
         firstName: formData.firstName,
@@ -61,17 +61,16 @@ export class ProfileComponent implements OnInit {
       }
       this.userService.updateProfile(user).subscribe({
         next: value => {
-          
+
         },
         error: err => {
           this.errorMsg = err;
         }
       });
     }
-    
   }
 
   onSubmitChangePassword() {
-    
+
   }
 }
