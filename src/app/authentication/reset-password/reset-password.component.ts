@@ -19,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
     newPassword: new FormControl('', { validators: [Validators.required] }),
     confirmNewPassword: new FormControl('', { validators: [Validators.required] }),
   });
-  errorMessage: any;
+  errorMessage: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {
   }

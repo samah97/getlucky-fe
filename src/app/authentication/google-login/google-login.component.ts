@@ -44,6 +44,6 @@ export class GoogleLoginComponent implements OnInit, OnDestroy {
     this.zone.run(() => {
       this.authenticationService.googleLogin(result.credential).subscribe(
         (response) => this.successfulLogin(response))
-    })
+    });
   }
 }
