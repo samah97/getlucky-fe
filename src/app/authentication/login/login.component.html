@@ -9,18 +9,10 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center gy-4">
-            <!-- <div class="col-lg-6">
-                <div class="register-left-area style2">
-                    <h3>Hello Again</h3>
-                    <p>Wellcome Back You’ve Been Missed</p>
-                    <a href="index.html" class="transparent-btn">Back Home</a>
-                </div>
-            </div> -->
             <div class="col-lg-6">
                 <div class="right-form-area">
                     <h3>Login Your Account</h3>
                     <app-list-errors *ngIf="errorMessage" [errorMessage]="errorMessage"></app-list-errors>
-                    <!-- <p *ngIf="errorMessage">{{errorMessage}}</p> -->
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-100">
                         <div class="form-inner">
                             <label for="username">User Name*</label>
@@ -32,23 +24,14 @@
                                 placeholder="Password" />
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                         </div>
-                        <div class="form-inner d-flex justify-content-between flex-wrap">
-                            <!-- <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-                            <label class="check-box-text">Remember Me</label> -->
-                            <a href="#" routerLink="/auth/forget-password" class="forgot-pass">Forgotten Password</a>
+                        <div class="d-flex flex-wrap mb-3">
+                            <a href="#" routerLink="/auth/forget-password">Forgotten Password?</a>
                         </div>
                         <button type="submit" class="account-btn" [disabled]="!loginForm.valid">LOGIN ACCOUNT</button>
                     </form>
                     <div class="alternate-signup-box">
-                        <h6>or Continue with</h6>
+                        <h6>&mdash; or &mdash;</h6>
                         <div class="btn-group gap-4">
-                            <!-- <div class="g-signin2" data-onsuccess="googleLogin" (click)="signInWithGoogle()"></div>
-                            <a href="" class="google-btn d-flex align-items-center" >
-                                <i class='bx bxl-google'></i><span>Signup with google</span>
-                            </a> -->
-                            <!-- <button class="" (click)="signInWithGoogle()">
-                                <i class='bx bxl-google'></i><span>Sign in with Google</span>
-                            </button> -->
                             <google-login [successfulLogin]="onSuccessfulLogin"></google-login>
                         </div>
                     </div>

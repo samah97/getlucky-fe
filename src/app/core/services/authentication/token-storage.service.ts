@@ -1,13 +1,9 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {DOCUMENT, isPlatformBrowser} from "@angular/common";
-import {CookieHandlerService} from "../cookie-handler.service";
-import {AuthenticationService} from "./authentication.service";
-import {response} from "express";
+import { isPlatformBrowser } from "@angular/common";
+import { AuthenticationService } from "./authentication.service";
 
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
-const COOKIE_KEY = 'token';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,15 +11,15 @@ export class TokenStorageService {
 
   private isAuthenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private authenticationService:AuthenticationService) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private authenticationService: AuthenticationService) {
     this.isAuthenticated.next(this.isLoggedIn());
   }
 
-  signOut():Promise<void> {
+  signOut(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.authenticationService.logout().subscribe({
-        next:()=>{
-          if(isPlatformBrowser(this.platformId)){
+        next: () => {
+          if (isPlatformBrowser(this.platformId)) {
             localStorage.removeItem(TOKEN_KEY);
           }
           this.isAuthenticated.next(false);
@@ -33,9 +29,8 @@ export class TokenStorageService {
   }
 
   public saveToken(token: string): void {
-    if(isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem(TOKEN_KEY, token);
-      // sessionStorage.setItem(TOKEN_KEY, token);
       this.isAuthenticated.next(true);
       console.log("Token Saved");
     }
@@ -43,7 +38,7 @@ export class TokenStorageService {
 
   public getToken(): string | null {
 
-    if(isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem(TOKEN_KEY);
     }
     return null;
@@ -54,22 +49,12 @@ export class TokenStorageService {
     // window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  // public getUser(): any {
-  //   const user = window.sessionStorage.getItem(USER_KEY);
-  //   if (user) {
-  //     return JSON.parse(user);
-  //   }
-  //
-  //   return {};
-  // }
-
   isLoggedInObservable(): Observable<boolean> {
     console.log(this.isAuthenticated.asObservable());
     return this.isAuthenticated.asObservable();
   }
 
-  isLoggedIn():boolean{
+  isLoggedIn(): boolean {
     return !!this.getToken();
   }
-
 }

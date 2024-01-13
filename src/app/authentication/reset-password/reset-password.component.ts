@@ -25,7 +25,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params: any) => {
       // Access the dynamic route parameters
       this.id = params['id'];
       this.token = params['token'];

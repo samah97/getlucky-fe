@@ -22,29 +22,16 @@ export class AuthGuard {
     }
 
     // canActivate(next:ActivatedRouteSnapshot,
-    //     state: RouterStateSnapshot):boolean{
-    //         if(this.authenticationService.isLoggedIn()){
+    //     state: RouterStateSnapshot): boolean {
+    //         if (this.authenticationService.isLoggedIn()) {
     //             return true;
-    //         }else{
+    //         } else {
     //             this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url }});
     //             return false;
     //         }
     // }
 }
 
-export const canActivate: CanActivateFn = (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-) => {
-    const authService = inject(AuthenticationService);
-    const router = inject(Router);
-
+export const canActivate: CanActivateFn = () => {
     return inject(AuthGuard).canActivate();
-
-    // return authService.checkLogin().pipe(
-    //   map(() => true),
-    //   catchError(() => {
-    //     return router.createUrlTree(['route-to-fallback-page']);
-    //   })
-    // );
 };

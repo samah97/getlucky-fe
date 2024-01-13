@@ -10,8 +10,8 @@ describe('ListErrorsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ListErrorsComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(ListErrorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

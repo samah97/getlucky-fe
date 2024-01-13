@@ -8,7 +8,7 @@ import { LoginResponse } from '../../../authentication/interfaces/login-response
 })
 export class AuthenticationService {
 
-  constructor(private httpClient: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private httpClient: HttpClient, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   login(email: string, password: string): Observable<LoginResponse> {

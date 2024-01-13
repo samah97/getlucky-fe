@@ -7,18 +7,16 @@ import {
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import {ApiLoaderService} from "../services/api-loader.service";
-import {Router} from "@angular/router";
-import {TokenStorageService} from "../services/authentication/token-storage.service";
-import {RouterStorageService} from "../services/router-storage.service";
+import { Router } from "@angular/router";
+import { TokenStorageService } from "../services/authentication/token-storage.service";
+import { RouterStorageService } from "../services/router-storage.service";
 
-const message:any = 'Please login to continue';
+const message: any = 'Please login to continue';
 
 @Injectable({ providedIn: "root" })
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router,private tokenStorageService:TokenStorageService, private routerStorageService:RouterStorageService){
-
+  constructor(private router: Router, private tokenStorageService: TokenStorageService, private routerStorageService: RouterStorageService) {
   }
 
   intercept(
@@ -32,11 +30,10 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (error.status === 403) {
             this.routerStorageService.setRedirectUrl(this.router.url);
             this.tokenStorageService.signOut();
-            this.router.navigate(['/auth/login'],{queryParams: {message:message}});
+            this.router.navigate(['/auth/login'], { queryParams: { message: message } });
           }
           return throwError(() => error.error.detail)
         }),
-      )
-      ;
+      );
   }
 }

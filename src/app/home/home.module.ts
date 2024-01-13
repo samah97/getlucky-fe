@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { ProductModule } from '../product/product.module';
 import { HomeRoutingModule } from './home-routing.module';
@@ -13,7 +13,7 @@ import { HomeRoutingModule } from './home-routing.module';
     ProductModule,
     HomeRoutingModule
   ],
-  exports:[
+  exports: [
     HomeComponent
   ]
 })

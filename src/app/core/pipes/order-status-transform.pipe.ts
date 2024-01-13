@@ -8,8 +8,6 @@ import { OrderStatus, StatusClasses } from "../enums/order-status";
 export class OrderStatusTransformPipe implements PipeTransform {
 
   transform(status: string, prop: string): string {
-    const displayValue = '';
-    const styleClassName = '';
     const enumKey = status as keyof typeof OrderStatus
     if (prop === 'displayValue') {
       return OrderStatus[enumKey] ?? '';

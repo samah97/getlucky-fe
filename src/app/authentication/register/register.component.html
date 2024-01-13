@@ -15,17 +15,17 @@
                     <app-list-errors *ngIf="errorMessage" [errorMessage]="errorMessage"></app-list-errors>
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-100">
                         <div class="form-inner">
-                            <label>Email *</label>
-                            <input type="text" placeholder="Your email" formControlName="email">
+                            <label for="email">Email *</label>
+                            <input type="text" id="email" placeholder="Your email" formControlName="email">
                         </div>
                         <div class="form-inner">
-                            <label>Password *</label>
+                            <label for="password">Password *</label>
                             <input type="password" name="password" formControlName="password" id="password"
                                 placeholder="Password" />
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                         </div>
                         <div class="form-inner">
-                            <label>Confirm Password *</label>
+                            <label for="password2">Confirm Password *</label>
                             <input type="password" formControlName="confirmPassword" id="password2"
                                 placeholder="Confirm Password" />
                             <i class="bi bi-eye-slash" id="togglePassword2"></i>
@@ -38,7 +38,7 @@
                             ACCOUNT</button>
                     </form>
                     <div class="alternate-signup-box">
-                        <h6>-- or --</h6>
+                        <h6>&mdash; or &mdash;</h6>
                         <div class="btn-group gap-4">
                             <google-login [successfulLogin]="handleGoogleSuccess"></google-login>
                             <a href="" class="facebook-btn d-flex align-items-center"><i

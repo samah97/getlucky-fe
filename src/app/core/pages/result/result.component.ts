@@ -6,26 +6,24 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './result.component.html',
   styleUrl: './result.component.scss'
 })
-export class ResultComponent implements OnInit{
-  
+export class ResultComponent implements OnInit {
 
-  title:string
-  message:string
-  redirectUrl:string;
 
-  constructor(private activatedRoute:ActivatedRoute, private router:Router){
+  title: string
+  message: string
+  redirectUrl: string;
 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params)=>{
-      if(!params.hasOwnProperty('message')){
+    this.activatedRoute.queryParams.subscribe((params) => {
+      if (!params.hasOwnProperty('message')) {
         this.router.navigate(['/']);
-      }else{
+      } else {
         this.title = params?.['title'] ?? 'Thank You';
-        this.message = params?.['message'];      
+        this.message = params?.['message'];
       }
     });
   }
-
 }
