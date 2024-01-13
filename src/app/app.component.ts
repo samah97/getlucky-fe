@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { LoaderService } from './core/services/authentication/loader.service';
-import { AuthenticationService } from './core/services/authentication/authentication.service';
-import {ViewportScroller} from "@angular/common";
+import { ViewportScroller } from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -12,8 +11,8 @@ import {ViewportScroller} from "@angular/common";
 export class AppComponent {
   title = 'getlucky-app';
 
-  constructor(private router: Router, private loaderService: LoaderService,private viewportScroller:ViewportScroller) {
-    this.router.events.subscribe(event => {
+  constructor(private router: Router, private loaderService: LoaderService, private viewportScroller: ViewportScroller) {
+    this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationStart) {
         this.loaderService.show();
       } else if (event instanceof NavigationEnd) {
@@ -21,7 +20,5 @@ export class AppComponent {
         this.viewportScroller.scrollToPosition([0, 0]);
       }
     });
-
-
   }
 }

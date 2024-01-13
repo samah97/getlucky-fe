@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="resetPasswordSuccess">
         <source>Your password has been reset, you can now login!</source>
-        <target>Your translated message here</target>
+        <target>Your password has been reset, you can now login!</target>
       </trans-unit>
     </body>
   </file>

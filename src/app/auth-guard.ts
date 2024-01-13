@@ -1,24 +1,21 @@
 import { Injectable, inject } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
 import { AuthenticationService } from "./core/services/authentication/authentication.service";
-import { Observable } from "rxjs";
-import { nextTick } from "process";
 import { TokenStorageService } from "./core/services/authentication/token-storage.service";
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
-export class AuthGuard{
+export class AuthGuard {
 
-    constructor(private tokenStorageService:TokenStorageService, private router:Router){
-
+    constructor(private tokenStorageService: TokenStorageService, private router: Router) {
     }
 
     canActivate(): boolean {
         console.log(this.tokenStorageService.isLoggedIn());
-        if(this.tokenStorageService.isLoggedIn()){
+        if (this.tokenStorageService.isLoggedIn()) {
             return true;
-        }else{
+        } else {
             this.router.navigate(['/auth/login']);
             return false;
         }
@@ -38,8 +35,7 @@ export class AuthGuard{
 export const canActivate: CanActivateFn = (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ) => {
-    console.log("IN THIS WEIRD FUNCTIONS")
+) => {
     const authService = inject(AuthenticationService);
     const router = inject(Router);
 
@@ -51,4 +47,4 @@ export const canActivate: CanActivateFn = (
     //     return router.createUrlTree(['route-to-fallback-page']);
     //   })
     // );
-  };
+};

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', { validators: [Validators.required, Validators.email], nonNullable: true }),
     password: new FormControl('', { validators: [Validators.required], nonNullable: true })
   });
-  errorMessage: String = '';
+  errorMessage: string = '';
   isLoggedIn = false;
 
   constructor(private readonly authenticationService: AuthenticationService,
@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   private checkExistQueryParams() {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      console.log(params);
+    this.activatedRoute.queryParams.subscribe((params: any) => {
       this.errorMessage = params?.['message'];
     })
   }
@@ -61,6 +60,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessfulLogin = (response: LoginResponse) => {
+    log.info(response);
     this.tokenStorageService.saveToken("whatisthis");
     this.isLoggedIn = true;
     const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route

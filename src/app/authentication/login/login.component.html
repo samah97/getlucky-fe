@@ -1,11 +1,10 @@
-
 <section class="register-section">
     <div class="container">
         <div class="row d-flex justify-content-center text-center">
             <div class="col-12">
                 <div class="register-btn-group">
                     <a href="" routerLink="/auth/register" class="register-btn style2">Register</a>
-                    <a href=""  routerLink="/auth/login" class="login-btn style2">Login</a>
+                    <a href="" routerLink="/auth/login" class="login-btn style2">Login</a>
                 </div>
             </div>
         </div>
@@ -24,19 +23,16 @@
                     <!-- <p *ngIf="errorMessage">{{errorMessage}}</p> -->
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-100">
                         <div class="form-inner">
-                            <label>User Name*</label>
-                            <input type="text" formControlName="username" placeholder="User Name">
+                            <label for="username">User Name*</label>
+                            <input type="text" id="username" formControlName="username" placeholder="User Name">
                         </div>
                         <div class="form-inner">
-                            <label>Password *</label>
-                            <input type="password" formControlName="password" name="password" id="password" placeholder="Password"/>
+                            <label for="password">Password *</label>
+                            <input type="password" formControlName="password" name="password" id="password"
+                                placeholder="Password" />
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                         </div>
                         <div class="form-inner d-flex justify-content-between flex-wrap">
-                            <div class="form-group">
-                                <input type="checkbox" id="html">
-                                <label for="html">I agree to the Terms & Policy</label>
-                            </div>
                             <!-- <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
                             <label class="check-box-text">Remember Me</label> -->
                             <a href="#" routerLink="/auth/forget-password" class="forgot-pass">Forgotten Password</a>

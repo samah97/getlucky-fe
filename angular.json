@@ -2,13 +2,15 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "yarn",
-    "analytics": false
+    "packageManager": "npm",
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "newProjectRoot": "projects",
   "projects": {
     "getlucky-app": {
-
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -50,7 +52,6 @@
               "src/favicon.ico",
               "src/assets"
             ],
-
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -119,6 +120,15 @@
               "src/assets/css/custom-style.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
