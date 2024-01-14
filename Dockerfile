@@ -1,13 +1,13 @@
 # Stage 1
 
-FROM node:18.17.1 as build-step
+FROM node:21.5.0 as build-step
 
 # RUN mkdir -p /app
 
 # RUN npm install -g yarn
 
 # WORKDIR /app
-WORKDIR /opt/ng 
+WORKDIR /opt/ng
 COPY  package.json yarn.lock ./
 
 # COPY package.json yarn.lock /app/
@@ -16,7 +16,7 @@ RUN yarn install
 
 ENV PATH="./node_modules/.bin:$PATH"
 
-COPY . ./ 
+COPY . ./
 
 RUN ng build --configuration production
 # COPY . /app
@@ -25,9 +25,9 @@ RUN ng build --configuration production
 # RUN yarn build
 
 # Stage 2
-FROM nginx:1.17.1-alpine
+FROM nginx:1.25.3-alpine
 
-# COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf 
+# COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build-step /opt/ng/dist/getlucky-app/browser /usr/share/nginx/html
 
 # COPY --from=build-step /app/dist/getlucky-app /usr/share/nginx/html
