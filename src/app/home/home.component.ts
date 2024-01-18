@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-// import { CategoryComponent } from '../category/category.component';
-import { } from '../product/product.component';
 import { ProductsService } from '../core/services/products.service';
 
 @Component({

@@ -1,6 +1,5 @@
 import { Injectable, inject } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
-import { AuthenticationService } from "./core/services/authentication/authentication.service";
+import {  CanActivateFn, Router} from "@angular/router";
 import { TokenStorageService } from "./core/services/authentication/token-storage.service";
 
 @Injectable({
@@ -12,7 +11,6 @@ export class AuthGuard {
     }
 
     canActivate(): boolean {
-        console.log(this.tokenStorageService.isLoggedIn());
         if (this.tokenStorageService.isLoggedIn()) {
             return true;
         } else {
@@ -21,15 +19,7 @@ export class AuthGuard {
         }
     }
 
-    // canActivate(next:ActivatedRouteSnapshot,
-    //     state: RouterStateSnapshot): boolean {
-    //         if (this.authenticationService.isLoggedIn()) {
-    //             return true;
-    //         } else {
-    //             this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url }});
-    //             return false;
-    //         }
-    // }
+
 }
 
 export const canActivate: CanActivateFn = () => {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { LoaderService } from './core/services/authentication/loader.service';
+import { LoaderService } from './core/services/loader.service';
 import { ViewportScroller } from "@angular/common";
 
 @Component({

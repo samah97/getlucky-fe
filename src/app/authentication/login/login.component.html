@@ -33,6 +33,9 @@
                         <h6>&mdash; or &mdash;</h6>
                         <div class="btn-group gap-4">
                             <google-login [successfulLogin]="onSuccessfulLogin"></google-login>
+                            <button (click)="loginWithFacebook()"  class="facebook-btn d-flex align-items-center">
+                                <i  class='bx bxl-facebook'></i>Login with Facebook
+                            </button>
                         </div>
                     </div>
                 </div>

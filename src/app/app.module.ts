@@ -14,6 +14,8 @@ import { ApiLoaderComponent } from './core/layout/api-loader/api-loader.componen
 import { SharedModule } from "./core/shared/shared.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ErrorInterceptor } from "./core/interceptors/error.interceptor";
+import {environment} from "../environments/environment";
+import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,12 +30,17 @@ import { ErrorInterceptor } from "./core/interceptors/error.interceptor";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    RecaptchaV3Module
   ],
   providers: [
     provideClientHydration(),
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {
+        provide:RECAPTCHA_V3_SITE_KEY,
+        useValue:environment.siteKey
+    }
   ],
   bootstrap: [AppComponent]
 })

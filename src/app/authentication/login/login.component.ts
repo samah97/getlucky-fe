@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from '../../core/services/authentication/token-storage.service';
 import { LoginResponse } from "../interfaces/login-response";
 import { RouterStorageService } from "../../core/services/router-storage.service";
+import {FacebookLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tokenStorageService: TokenStorageService,
-    private routerStorageService: RouterStorageService
+    private routerStorageService: RouterStorageService,
+    private socialAuthService:SocialAuthService
   ) {
   }
 
@@ -72,6 +74,12 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorageService.isLoggedIn()) {
       this.router.navigate(['/profile']);
     }
+  }
+
+  loginWithFacebook() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(()=>{
+
+    });
   }
 }
 

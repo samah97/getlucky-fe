@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 import { LoginResponse } from '../../../authentication/interfaces/login-response';
+import {environment} from "../../../../environments/environment";
+
+const apiRoute = environment.apiVersion+'auth';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,7 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string): Observable<LoginResponse> {
-    return this.httpClient.post<LoginResponse>('auth/login',
+    return this.httpClient.post<LoginResponse>(apiRoute+'/login',
       { email, password }, { withCredentials: true }
     ).pipe(shareReplay(1));
   }
@@ -22,11 +25,11 @@ export class AuthenticationService {
   }
 
   register(data: any) {
-    return this.httpClient.post('auth/signup', data);
+    return this.httpClient.post(apiRoute+'/signup', data);
   }
 
   logout() {
-    return this.httpClient.post<any>("auth/logout", {});
+    return this.httpClient.post<any>(apiRoute+"/logout", {});
   }
 
   forgetPassword(email: string): Observable<any> {

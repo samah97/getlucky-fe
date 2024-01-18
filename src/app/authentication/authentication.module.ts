@@ -8,6 +8,7 @@ import { ListErrorsComponent } from '../core/common/list-errors/list-errors.comp
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { GoogleLoginComponent } from './google-login/google-login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import {FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 
 @NgModule({
   declarations: [
@@ -21,8 +22,21 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     CommonModule,
     AuthenticationRoutingModule,
     ReactiveFormsModule,
-    ListErrorsComponent
-  ]
+    ListErrorsComponent,
+    SocialLoginModule
+  ],
+    providers:[{
+        provide:'SocialAuthServiceConfig',
+        useValue:{
+            autoLogin: false,
+            providers:[
+                {
+                    id:FacebookLoginProvider.PROVIDER_ID,
+                    provider: new FacebookLoginProvider('246108031837524')
+                }
+            ]
+        } as SocialAuthServiceConfig
+    }]
 })
 export class AuthenticationModule {
 

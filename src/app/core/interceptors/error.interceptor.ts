@@ -27,7 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       .handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if (error.status === 403) {
+          if (error.status === 403 || error.status === 401) {
             this.routerStorageService.setRedirectUrl(this.router.url);
             this.tokenStorageService.signOut();
             this.router.navigate(['/auth/login'], { queryParams: { message: message } });

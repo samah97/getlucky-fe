@@ -10,6 +10,7 @@ import { ApiLoaderService } from "../services/api-loader.service";
 import { TokenStorageService } from "../services/authentication/token-storage.service";
 import { RouterStorageService } from "../services/router-storage.service";
 import { Router } from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 const message: string = 'Please login to continue';
 
@@ -24,12 +25,7 @@ export class ApiInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.apiLoaderService.show();
-
-    let url = 'http://localhost:8080/';
-    if (req.url != 'oauth/google') {
-      url += 'v1/';
-    }
-    url += req.url;
+    const url = environment.apiUrl + req.url;
     const apiReq = req.clone({ url: url, withCredentials: true });
 
     return next.handle(apiReq).pipe(

@@ -23,10 +23,11 @@ export class OrderComponent implements OnInit {
       this.showPaymentButton = true;
     }
   }
-  getTotalPrice() {
+  getTotalPrice():number {
     this.totalPrice = this.order.items.reduce((total, orderItem) => {
       return total + (orderItem.quantity * orderItem.item.price);
     }, 0);
+    return 0;
   }
 
   payOrder() {

@@ -3,8 +3,9 @@ import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { OrderRequest } from "../interfaces/order-request";
 import { Order } from "../../models/order";
+import {environment} from "../../../environments/environment";
 
-
+const apiRoute = environment.apiVersion+'orders'
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   myOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>("orders");
+    return this.http.get<Order[]>(apiRoute);
   }
 
   makeOrder(request: OrderRequest): Observable<any> {
-    return this.http.post<any>("orders", request);
+    return this.http.post<any>(apiRoute, request);
   }
 
   hostedCheckout(orderId: string): Observable<any> {
