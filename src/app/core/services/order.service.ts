@@ -24,7 +24,7 @@ export class OrderService {
   }
 
   hostedCheckout(orderId: string): Observable<any> {
-    return this.http.post<any>("payments/checkout/hosted/" + orderId, {});
+    return this.http.post<any>(environment.apiVersion+"payments/checkout/hosted/" + orderId, {});
   }
 
   checkoutAndRedirect(orderId: string) {

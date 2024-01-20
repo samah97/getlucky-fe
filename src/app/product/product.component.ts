@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.showProduct = this.product.available;
     if (this.product.drawScheduledAt) {
       this.showCountdown = true;
       this.config.leftTime = LefttimeCalculator.calculate(this.product.drawScheduledAt);

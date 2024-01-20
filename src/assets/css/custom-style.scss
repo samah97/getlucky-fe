@@ -1,6 +1,8 @@
 @use 'style';
 @use 'variables';
-
+body{
+    color: #828c96;
+}
 .header-area{
     background-color: variables.$primary-color;
 }
@@ -81,6 +83,70 @@
   border-color: #000;
 }
 .section-header-two h3::before{
-  background: 
+  background:
   linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fefeff 15.63%, #393939 82.29%, rgba(255, 255, 255, 0) 100%);
+}
+@mixin custom-input-group($gap, $btn-gap) {
+    select{
+        display: block;
+        padding: 8px 15px;
+        width: 100%;
+        background: rgba(#D1D1D1,0.2);
+        border: 1px solid transparent;
+        border-radius: 5px;
+        height: 58px;
+        border-radius: 5px;
+        padding: 15px 20px;
+
+        @include md-down-device(){
+            background: rgba(#D1D1D1,0.5);
+        }
+
+        &::placeholder{
+            font-size: 14px;
+            color: #5C5C5C;
+            font-family: var(--f-secondary);
+        }
+
+    }
+}
+
+.nice-select{
+    float:none;
+    width:100%;
+    border: 1px solid transparent;
+    background: rgba(#D1D1D1,0.2);
+    color:rgb(0, 0, 0);
+    border-radius: 5px;
+    height: 58px;
+    padding: 15px 20px;
+
+    span{
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+    }
+
+    &:after{
+        border-bottom: 2px solid rgb(0, 0, 0);
+        border-right: 2px solid rgb(0, 0, 0);
+    }
+    &.active, &.open, &:focus {
+        border-color: var(--orange-color);
+    }
+}
+.p-button{
+    background-color: #0c4128 !important;
+}
+.p-dialog .p-dialog-content p{
+    font-size: 1.3rem !important;
+}
+.error-wrapper-start .error-content .error-texts h2{
+    color:#fff;
+}
+.alpha-btn-md-dark{
+    background: variables.$orange-color;
+}
+
+.right-form-area input[type=checkbox] + label:before{
+    background-color: variables.$orange-color;
 }

@@ -10,6 +10,7 @@ import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { TokenStorageService } from "../services/authentication/token-storage.service";
 import { RouterStorageService } from "../services/router-storage.service";
+import {ErrorResponse} from "../../models/error-response";
 
 const message: any = 'Please login to continue';
 
@@ -32,7 +33,9 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.tokenStorageService.signOut();
             this.router.navigate(['/auth/login'], { queryParams: { message: message } });
           }
-          return throwError(() => error.error.detail)
+          //JSON.stringify(error.error)
+          // console.log("Error from backend = "+JSON.stringify(error.error));
+          return throwError(() => error.error as ErrorResponse);
         }),
       );
   }

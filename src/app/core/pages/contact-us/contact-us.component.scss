@@ -17,3 +17,18 @@
 .contact-form .contact-input-group button[type=submit]{
   background:#ff552e;
 }
+.contact-box-wrap{
+    .single-contact-box{
+        background-color:#00152B;
+
+        .weblink,.mail,h6{
+            color:#fff;
+        }
+
+        &:hover{
+            a,h6{
+                color: var(--orange-color);
+            }
+        }
+    }
+}

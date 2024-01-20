@@ -7,6 +7,7 @@ import { ToastModule } from "primeng/toast";
 import { AutoFocusModule } from "primeng/autofocus";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { RouterLink } from "@angular/router";
+import {AvatarModule} from "primeng/avatar";
 
 
 
@@ -15,14 +16,15 @@ import { RouterLink } from "@angular/router";
     DialogComponent,
     BreadcrumbComponent
   ],
-  imports: [
-    CommonModule,
-    DialogModule,
-    ButtonModule,
-    ToastModule,
-    AutoFocusModule,
-    RouterLink
-  ],
+    imports: [
+        CommonModule,
+        DialogModule,
+        ButtonModule,
+        ToastModule,
+        AutoFocusModule,
+        RouterLink,
+        AvatarModule
+    ],
   exports: [
     DialogComponent,
     BreadcrumbComponent

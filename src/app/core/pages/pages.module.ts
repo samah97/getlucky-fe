@@ -29,11 +29,11 @@ import { ResultComponent } from './result/result.component';
     TermsAndConditionsComponent,
     ResultComponent
   ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule,
-    SharedModule,
+    imports: [
+        CommonModule,
+        PagesRoutingModule,
+        SharedModule,
     ReactiveFormsModule
-  ]
+    ]
 })
 export class PagesModule { }

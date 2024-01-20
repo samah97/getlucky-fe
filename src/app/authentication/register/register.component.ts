@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../core/services/authentication/token-storage.service';
 import { LoginResponse } from '../interfaces/login-response';
+import {FacebookLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 
 const success_message = 'Registration successful, you will receive an email shortly to confirm your account!';
 
@@ -25,7 +26,8 @@ export class RegisterComponent {
 
   constructor(private readonly authenticationService: AuthenticationService,
     private router: Router,
-    private tokenStorageService: TokenStorageService) {
+    private tokenStorageService: TokenStorageService,
+    private socialAuthService:SocialAuthService) {
   }
 
   onSubmit() {
@@ -51,4 +53,11 @@ export class RegisterComponent {
     this.tokenStorageService.saveToken("whatinthegoogleisthis");
     this.router.navigate(['/']);
   }
+
+    loginWithFacebook() {
+        console.log("HERE");
+        this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(()=>{
+
+        });
+    }
 }

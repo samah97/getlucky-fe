@@ -20,11 +20,7 @@
             <h6>Let’s Talk</h6>
             <a href="mailto:{{contactEmail}}" class="mail">{{contactEmail}}</a>
 <!--            <a href="mailto:support@example.com" class="mail">support@example.com</a>-->
-            <a href="tel:{{contactNumber}}" class="phone">{{contactNumber}}</a>
-          </div>
-          <div class="single-contact-box">
-            <h6>Loacation.</h6>
-            <a href="javascript:void(0)" class="location">Utrecht, Netherlands</a>
+<!--            <a href="tel:{{contactNumber}}" class="phone">{{contactNumber}}</a>-->
           </div>
           <div class="single-contact-box">
             <h6>Social Site Link</h6>
@@ -47,6 +43,21 @@
               <input type="text" id="email" placeholder="Enter Your Email"  formControlName="email">
             </div>
             <div class="contact-input-group">
+                <label for="subject" >Subject</label>
+                <select id="subject" formControlName="subject" class="nice-select">
+                    <option *ngFor="let option of subjectsOptions" [value]="option.value">
+                        {{ option.label }}
+                    </option>
+                </select>
+<!--                <ng-select [options]="subjectsOptions" id="subject" formControlName="subject"></ng-select>-->
+<!--                  <ng-select id="subject" class="nice-select" formControlName="subject">-->
+<!--                      <option value="FEEDBACK">Feedback</option>-->
+<!--                      <option value="COMPLAINT">Complaint</option>-->
+<!--                      <option value="GENERAL_SUPPORT">General Support</option>-->
+<!--                      <option value="GENERAL_INFO">General Info</option>-->
+<!--                  </ng-select>-->
+            </div>
+            <div class="contact-input-group">
               <label for="email">Message</label>
               <textarea id="massege" cols="30" rows="7" placeholder="Type your Message" formControlName="message"></textarea>
             </div>
@@ -60,3 +71,6 @@
   </div>
 </div>
 <!-- =============== contact wrapper end =============== -->
+<app-dialog [displayDialog]="dialog.display" [dialogMessage]="dialog.message" [buttonClickHandler]="dialog.buttonClickHandler.bind(this)"
+            [buttonLabel]="dialog.buttonLabel"
+></app-dialog>

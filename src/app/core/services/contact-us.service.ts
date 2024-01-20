@@ -10,11 +10,12 @@ export class ContactUsService {
 
   constructor(private httpClient:HttpClient) { }
 
-  submit(fullName:string, email:string, message:string, recaptchaToken:string):Observable<any>{
-    return this.httpClient.post(environment.apiVersion+"contact-us",{
-      fullName:fullName,
+  submit(fullName:string, email:string, message:string,subject:string, recaptchaToken:string):Observable<any>{
+    return this.httpClient.post(environment.apiVersion+"contact/us",{
+      name:fullName,
       email:email,
-      message:message
+      text:message,
+      subject:subject
     },{
         headers: new HttpHeaders({
             'RECAPTCHA-TOKEN':recaptchaToken

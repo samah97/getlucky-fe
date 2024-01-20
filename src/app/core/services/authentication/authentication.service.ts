@@ -31,15 +31,4 @@ export class AuthenticationService {
   logout() {
     return this.httpClient.post<any>(apiRoute+"/logout", {});
   }
-
-  forgetPassword(email: string): Observable<any> {
-    return this.httpClient.post<any>("accounts/reset-pass", { email });
-  }
-
-  resetPassword(password: string, userId: string, confirmationToken: string): Observable<any> {
-    return this.httpClient.post<any>("accounts/change-reset-pass/" + userId, {
-      resetToken: confirmationToken,
-      password
-    });
-  }
 }

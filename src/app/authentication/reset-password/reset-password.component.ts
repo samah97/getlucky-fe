@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UUIDValidator } from '../../core/common/util/uuidvalidator';
 import { AuthenticationService } from '../../core/services/authentication/authentication.service';
+import {AccountService} from "../../core/services/account.service";
 
 const SUCCESS_MESSAGE = 'Your password has been reset, you can now login!';
 
@@ -21,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
   });
   errorMessage: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {
+  constructor(private route: ActivatedRoute, private router: Router, private accountService:AccountService) {
   }
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetPasswordForm.valid) {
       const formData = this.resetPasswordForm.value;
       if (formData.newPassword) {
-        this.authenticationService.resetPassword(formData.newPassword, this.id, this.token).subscribe({
+        this.accountService.resetPassword(formData.newPassword, this.id, this.token).subscribe({
           next: () => {
             this.router.navigate(['/pages/result'], { queryParams: { title: 'Perfect!', message: SUCCESS_MESSAGE }, skipLocationChange: true });
           },

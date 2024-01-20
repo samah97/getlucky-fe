@@ -30,9 +30,11 @@
                                 placeholder="Confirm Password" />
                             <i class="bi bi-eye-slash" id="togglePassword2"></i>
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="consent" formControlName="consent">
-                            <label for="consent">I agree to the Terms of Service & Privacy Policy *</label>
+                        <div class="form-inner d-flex justify-content-between flex-wrap">
+                            <div class="form-group">
+                                <input type="checkbox" id="consent" formControlName="consent">
+                                <label for="consent">I agree to the Terms of Service & Privacy Policy *</label>
+                            </div>
                         </div>
                         <button type="submit" [disabled]="!registerForm.valid" class="account-btn">CREATE AN
                             ACCOUNT</button>
@@ -41,7 +43,7 @@
                         <h6>&mdash; or &mdash;</h6>
                         <div class="btn-group gap-4">
                             <google-login [successfulLogin]="handleGoogleSuccess"></google-login>
-                            <a href="" class="facebook-btn d-flex align-items-center"><i
+                            <a href="javascript:void(0);" (click)="loginWithFacebook()" class="facebook-btn d-flex align-items-center"><i
                                     class='bx bxl-facebook'></i>Login with Facebook</a>
                         </div>
                     </div>

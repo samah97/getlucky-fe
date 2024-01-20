@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../core/services/authentication/authentication.service';
 import { Router } from '@angular/router';
+import {AccountService} from "../../core/services/account.service";
 
 const SUCCESS_MESSAGE = 'You will receive an email shortly to reset your password';
 
@@ -17,12 +18,12 @@ export class ForgetPasswordComponent {
     email: new FormControl('', { validators: [Validators.required, Validators.email], nonNullable: true })
   });
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private accountService: AccountService, private router: Router) {
   }
 
   onSubmit() {
     const formData = this.forgetPasswordForm.value;
-    this.authenticationService.forgetPassword(formData.email!)
+    this.accountService.forgetPassword(formData.email!)
       .subscribe({
         next: (response) => {
           console.log(response);

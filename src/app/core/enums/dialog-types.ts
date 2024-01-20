@@ -1,0 +1,3 @@
+export enum DIALOG_TYPES {
+    INFO,ERROR, SUCCESS
+}

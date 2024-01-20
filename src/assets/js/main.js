@@ -42,12 +42,12 @@
   // mobile-search-area
   $('.search-btn').on("click", function(){
     $('.mobile-search').addClass('slide');
-    
+
   });
 
   $('.search-cross-btn').on("click", function(){
     $('.mobile-search').removeClass('slide');
-    
+
   });
 
    // Menu Toggle button sidebar
@@ -80,7 +80,7 @@
          }
        })
    }
-  
+
 
   $('.custom-select').niceSelect();
 
@@ -222,20 +222,20 @@ setInterval(function time(){
       nextYear = yyyy + 1,
       dayMonth = "09/30/",
       birthday = dayMonth + yyyy;
-  
+
   today = mm + "/" + dd + "/" + yyyy;
   if (today > birthday) {
     birthday = dayMonth + nextYear;
   }
   //end
-  
+
   const countDown = new Date(birthday).getTime(),
-      x = setInterval(function() {    
+      x = setInterval(function() {
 
         const now = new Date().getTime(),
               distance = countDown - now;
 
-          
+
 
         //do something later when date is reached
         if (distance < 0) {
@@ -517,7 +517,7 @@ setInterval(function() {
       clickable: true,
       el: ".hero-pagination",
     },
-    
+
   });
 
   var testimonialSliderOne = new Swiper('.testimonial-slider', {
@@ -556,7 +556,7 @@ setInterval(function() {
       768:{
         slidesPerView: 3
       },
-      992:{ 
+      992:{
         slidesPerView: 4
       },
       1200:{
@@ -568,7 +568,7 @@ setInterval(function() {
       1600:{
         slidesPerView: 6
       },
-     
+
     }
   });
 
@@ -594,13 +594,13 @@ setInterval(function() {
       768:{
         slidesPerView: 1
       },
-      992:{ 
+      992:{
         slidesPerView: 2
       },
       1200:{
         slidesPerView: 2
       },
-     
+
     }
   });
   var testimonialSlider_four = new Swiper('.testimonial-slider-four', {
@@ -656,13 +656,13 @@ setInterval(function() {
       768:{
         slidesPerView: 4
       },
-      992:{ 
+      992:{
         slidesPerView: 5
       },
       1200:{
         slidesPerView: 6
       },
-     
+
     }
   });
 
@@ -678,7 +678,7 @@ setInterval(function() {
         nextEl: '.category-next3',
         prevEl: '.category-prev3',
       },
-  
+
       breakpoints: {
         480:{
           slidesPerView: 2
@@ -686,13 +686,13 @@ setInterval(function() {
         768:{
           slidesPerView: 4
         },
-        992:{ 
+        992:{
           slidesPerView: 5
         },
         1200:{
           slidesPerView: 6
         },
-       
+
       }
     });
 
@@ -714,13 +714,13 @@ setInterval(function() {
       768:{
         slidesPerView: 3
       },
-      992:{ 
+      992:{
         slidesPerView: 4
       },
       1200:{
         slidesPerView: 4
       },
-     
+
     }
   });
 
@@ -743,13 +743,13 @@ setInterval(function() {
       768:{
         slidesPerView: 3
       },
-      992:{ 
+      992:{
         slidesPerView: 4
       },
       1200:{
         slidesPerView: 4
       },
-     
+
     }
   });
 
@@ -772,13 +772,13 @@ setInterval(function() {
       768:{
         slidesPerView: 2
       },
-      992:{ 
+      992:{
         slidesPerView: 2
       },
       1200:{
         slidesPerView: 3
       },
-     
+
     }
   });
 
@@ -800,13 +800,13 @@ setInterval(function() {
       768:{
         slidesPerView: 2
       },
-      992:{ 
+      992:{
         slidesPerView: 3
       },
       1200:{
         slidesPerView: 3
       },
-     
+
     }
   });
 
@@ -828,13 +828,13 @@ setInterval(function() {
       768:{
         slidesPerView: 1
       },
-      992:{ 
+      992:{
         slidesPerView: 1
       },
       1200:{
         slidesPerView: 1
       },
-     
+
     }
   });
 
@@ -842,11 +842,11 @@ setInterval(function() {
 $('.video-frame').magnificPopup({
   type: 'iframe'
 });
-  
-// Nice select
-$('select').niceSelect();
 
-  
+// Nice select
+// $('select').niceSelect();
+
+
   let autoPlayDelay = 4000;
 
   let options = {
@@ -907,7 +907,7 @@ $('select').niceSelect();
   });
 
    // password-hide and show
-   
+
    const togglePassword = document.querySelector('#togglePassword');
 
    const password = document.querySelector('#password');
@@ -921,11 +921,11 @@ $('select').niceSelect();
       this.classList.toggle('bi-eye');
     });
    }
-   
-  
+
+
   // confirm-password
   const togglePassword2= document.getElementById('togglePassword2');
-  
+
   const password2 = document.querySelector('#password2');
 
   if (togglePassword2){

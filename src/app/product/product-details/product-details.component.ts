@@ -8,6 +8,10 @@ import { LefttimeCalculator } from '../../core/common/util/lefttime-calculator';
 import { OrderService } from "../../core/services/order.service";
 import { OrderRequest } from "../../core/interfaces/order-request";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {DIALOG_TYPES} from "../../core/enums/dialog-types";
+import {ErrorResponse} from "../../models/error-response";
+import {API_ERROR_CODES} from "../../core/enums/api-error-codes";
+import {retry} from "rxjs";
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +25,9 @@ export class ProductDetailsComponent implements OnInit {
     display: false,
     message: '',
     buttonClickHandler: this.closeDialog,
-    header: ''
+    header: '',
+    type:DIALOG_TYPES.INFO,
+    isActionButton: false
   }
   productId: any;
   product: Product = new Product("", "");
@@ -70,18 +76,14 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   bidNow(productId: string) {
-    console.log("Submitting");
     if (this.bidForm.valid) {
-      console.log(this.bidForm.value);
       const orderRequest = this.createOrderRequest(productId, this.bidForm.value.quantity)
       this.orderService.makeOrder(orderRequest).subscribe(
         {
           next: (response) => {
-            console.log(response);
             this.orderService.checkoutAndRedirect(response.orderId);
           },
-          error: (err) => {
-            console.log(err);
+          error: (err:ErrorResponse) => {
             this.showErrorDialog(err);
           }
         });
@@ -100,17 +102,20 @@ export class ProductDetailsComponent implements OnInit {
     return order;
   }
 
-  showErrorDialog(message: string) {
-    this.dialog.header = 'Error'
+  showErrorDialog(error: ErrorResponse) {
+      console.log("SHOWING ERROR DIALOG");
+      console.log(error);
+    this.dialog.type = DIALOG_TYPES.ERROR;
     this.dialog.display = true;
-    this.dialog.message = message;
+    this.dialog.message = error.detail;
+    console.log("ERROR CODE");
+    console.log(API_ERROR_CODES.invalid_profile)
+    if(error.code === API_ERROR_CODES.invalid_profile){
+        this.triggerProfileInvalidDialog();
+    }
   }
 
-  redirectLogin() {
-    console.log("OK CLICKED!!");
-    this.router.navigate(['/auth/login'])
-    // this.router.navigate(["/auth/login"]);
-  }
+
 
   closeDialog() {
     this.dialog.display = false;
@@ -132,5 +137,13 @@ export class ProductDetailsComponent implements OnInit {
     }
     this.quantity = quantityData;
     this.total = this.calculateTotalPrice();
+  }
+
+  triggerProfileInvalidDialog(){
+      this.dialog.isActionButton = true;
+      this.dialog.buttonLabel = 'Update your profile';
+      this.dialog.buttonClickHandler = ()=>{
+          this.router.navigate(['/profile'])
+      }
   }
 }
