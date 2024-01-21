@@ -9,6 +9,7 @@ import {ProductModule} from "../product/product.module";
 import { CartComponent } from './cart/cart.component';
 import {PaginatorModule} from "primeng/paginator";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ProfileModule} from "../profile/profile.module";
 
 
 
@@ -25,7 +26,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         SharedModule,
         ProductModule,
         PaginatorModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ProfileModule
     ]
 })
 export class OrderModule { }

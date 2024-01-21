@@ -7,15 +7,24 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { AddressesComponent } from './addresses/addresses.component';
 import {ToastModule} from "primeng/toast";
 import {SharedModule} from "../core/shared/shared.module";
+import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { AddressFormComponent } from './addresses/address-form/address-form.component';
 
 
 
 @NgModule({
-  declarations: [
-    ProfileComponent,
-    ChangePasswordComponent,
-    AddressesComponent,
-  ],
+    declarations: [
+        ProfileComponent,
+        ChangePasswordComponent,
+        AddressesComponent,
+        ProfileFormComponent,
+        AddressFormComponent,
+    ],
+    exports: [
+        ProfileComponent,
+        ProfileFormComponent,
+        AddressFormComponent
+    ],
     imports: [
         CommonModule,
         ProfileRoutingModule,

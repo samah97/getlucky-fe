@@ -16,35 +16,7 @@
       <div class="col-lg-9 mt-8 mt-lg-0 ">
         <div class="tab-content pp-tab-contents" id="v-pills-tabContent">
           <div class="tab-pane fade show active pp-tab-body" id="v-pills-pp1" role="tabpanel" aria-labelledby="v-btn-pp1">
-            <div class="contact-form">
-
-              <p class="error" [textContent]="errorMsg"></p>
-              <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" id="profile-form" method="post">
-                <div class="contact-input-group">
-                  <label for="first-name">First Name</label>
-                  <input type="text" id="first-name" placeholder="" formControlName="firstName">
-                </div>
-                <div class="contact-input-group">
-                  <label for="first-name">Last Name</label>
-                  <input type="text" id="last-name" placeholder="" formControlName="lastName">
-                </div>
-                <div class="contact-input-group">
-                  <label for="email">Email</label>
-                  <input type="text" id="email" placeholder="" formControlName="email">
-                </div>
-                <div class="contact-input-group">
-                  <label for="phone-number">Phone Number</label>
-                  <input type="text" id="phone-number" placeholder="" formControlName="phoneNumber">
-                </div>
-                <div class="contact-input-group">
-                  <label for="date-of-birth">Date Of Birth</label>
-                  <input type="date" id="date-of-birth" placeholder="" formControlName="dateOfBirth">
-                </div>
-                <div class="contact-input-group text-end">
-                  <button type="submit" class="submit-btn" [disabled]="!profileForm.valid">Save Profile</button>
-                </div>
-              </form>
-            </div>
+            <app-profile-form></app-profile-form>
           </div>
           <div class="tab-pane fade show pp-tab-body" id="v-pills-pp2" role="tabpanel" aria-labelledby="v-btn-pp2">
               <app-change-password></app-change-password>
@@ -70,5 +42,5 @@
     </div>
   </div>
 </div>
-<p-toast></p-toast>
+
 <app-dialog></app-dialog>

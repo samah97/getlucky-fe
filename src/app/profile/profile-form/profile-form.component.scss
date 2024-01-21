@@ -1,0 +1,15 @@
+$orange-color:var(--orange-color);
+.contact-form{
+    padding: 10px 10px;
+}
+.contact-form .contact-input-group input, .contact-form .contact-input-group .comment-form textarea, .comment-form .contact-form .contact-input-group textarea{
+    height:40px;
+}
+
+.contact-form .contact-input-group button[type=submit]{
+    background:$orange-color;
+}
+
+.contact-form .contact-input-group label{
+    margin-bottom: 5px;
+}

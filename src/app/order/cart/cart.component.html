@@ -1,6 +1,8 @@
 <app-breadcrumb [title]="'Cart'" ></app-breadcrumb>
 <section class="pt-70">
     <div class="container">
+
+      <ng-template [ngIf]="currentStep === 'cart'" >
         <div class="row justify-content-center" *ngIf="order.items.length>0;else noItems">
             <div class="col-8" >
                 <div class="card" >
@@ -9,17 +11,18 @@
                         <hr>
                         <h6 class="card-text">Number of Items: <span class="fw-bold">{{order.items.length}}</span></h6>
                         <h6 class="card-text">Total Amount: <span class="fw-bold">{{order.price + currency}}</span></h6>
-                        <button *ngIf="order.items.length>0" type="button" class="widget-btn checkout-btn" (click)="performCheckout()">Checkout Now</button>
+                        <button *ngIf="order.items.length>0" type="button" class="widget-btn checkout-btn" (click)="proceedToCheckout()">Proceed to checkout</button>
                     </div>
                 </div>
             </div>
+<!--          -->
             <div  class="col-8">
                 <div class="items-container" *ngIf="order.items.length > 0;else noItems">
                     <div *ngFor="let orderItem of order.items" class="item-info">
-                        <img [src]="'assets/images/product/details1.png'" alt="Item Image">
+                        <img [src]="orderItem.item.imageLink" alt="Item Image">
                         <div class="item-description">
                             <p class="item-p-info item-name"> {{ orderItem.item.name }}</p>
-                            <input type="number" placeholder="1" value="1" min="1" (input)="quantityChange(orderItem.item.id,$event)">
+                            <input type="number" placeholder="1" [value]="orderItem.quantity"  min="1" (input)="quantityChange(orderItem.item.id,$event)">
                             <div class="item-price text-end"><span class="price">{{ orderItem.item.price + currency }}</span></div>
                         </div>
                     </div>
@@ -41,6 +44,27 @@
                 </div>
             </div>
         </ng-template>
-
+      </ng-template>
+      <ng-template [ngIf]="currentStep === 'profile'">
+        <div class="row justify-content-center">
+          <div class="col-8 bg-white">
+            <h4>Update your profile to proceed</h4>
+            <hr>
+            <app-profile-form [profileSavedExtraHandler]="this.profileSavedEventHandler.bind(this)"></app-profile-form>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="currentStep === 'address'">
+        <div class="row justify-content-center">
+          <div class="col-8 bg-white">
+            <h4>Add your address</h4>
+            <hr>
+            <p>Address info</p>
+            <app-address-form></app-address-form>
+          </div>
+        </div>
+      </ng-template>
     </div>
 </section>
+
+

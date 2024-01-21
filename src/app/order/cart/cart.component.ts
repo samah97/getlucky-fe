@@ -3,9 +3,9 @@ import {OrderService} from "../../core/services/order.service";
 import {AppConfig} from "../../core/config/app-config";
 import {CartService} from "../../core/services/cart.service";
 import {Router} from "@angular/router";
-import {OrderItem} from "../../models/order-item";
 import {Order} from "../../models/order";
 import {OrderRequest} from "../../core/interfaces/order-request";
+import {OrderItemRequest} from "../../core/interfaces/order-item-request";
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +16,8 @@ export class CartComponent implements OnInit{
     order:Order;
     currency = AppConfig.CURRENCY;
     orderId:string = "12381923-1238129813-123891238-1238192";
-    orderItems:OrderItem[];
+    orderItems:{ [key: string]: OrderItemRequest } = {};
+    currentStep: string = 'cart';
 
     constructor(private orderService:OrderService, private  cartService:CartService,private router:Router) {
     }
@@ -25,53 +26,88 @@ export class CartComponent implements OnInit{
         this.initData();
     }
 
+
     initData(){
         // this.addDumyItems();
         this.cartService.getCartItems().subscribe({
             next:(response)=>{
                 this.order = response;
-                this.orderItems = response.items;
+                this.fillOrderItems(response);
             }
         })
     }
-    performCheckout(){
+    proceedToCheckout(){
         if(this.orderId){
-            try{
-                this.orderService.checkoutAndRedirect(this.orderId);
-            }catch (error){
-                console.log("ERRRO CAUGHT");
+            if(this.cartItemsUpdated()){
+                console.log("Some items where updated;;;calling API");
+                this.cartService.updateCart(this.buildUpdateCartRequest()).subscribe({
+                    next:()=> this.continueCheckoutProcess()
+                });
+            }else{
+                this.continueCheckoutProcess();
             }
+
+            // try{
+            //     this.orderService.checkoutAndRedirect(this.orderId);
+            // }catch (error){
+            //     console.log("ERRRO CAUGHT");
+            // }
 
         }
     }
 
-    // getTotalPrice() {
-    //     return  this.items.reduce((total, orderItem) => {
-    //         return total + (orderItem.quantity * orderItem.);
-    //     }, 0);
-    // }
+    private continueCheckoutProcess() {
+        this.currentStep = 'profile';
+        console.log("Proceeding with checkout");
+    }
+
 
     navigateProducts() {
         this.router.navigate(['/products/list'])
     }
 
-    protected readonly JSON = JSON;
 
     quantityChange(id: string, event:any) {
-        const newQuantity = parseInt((event.target as HTMLInputElement).value);
-        let orderItem = this.orderItems.find(orderItem=> orderItem.item.id === id)!;
-        orderItem.quantity = newQuantity;
+        let newQuantity = parseInt((event.target as HTMLInputElement).value);
+        // let orderItem = this.orderItems.find(orderItem=> orderItem.item.id === id)!;
+        // orderItem.quantity = newQuantity;
+        let orderItemQ = this.orderItems[id];
+
+        orderItemQ.quantity = newQuantity;
+        console.log(this.orderItems);
+        console.log(this.order.items);
     }
 
-    createOrderRequest(productId: string, quantity: any): OrderRequest {
-
-        const order: OrderRequest = {
-            orderItems: {
-                [productId]: { quantity: quantity },
-            },
+    buildUpdateCartRequest(): OrderRequest {
+        return {
+            orderItems: this.orderItems,
             shippingAddress: null,
             billingAddress: null,
         };
-        return order;
+    }
+
+    private cartItemsUpdated() {
+        let cartItemUpdateExists=false;
+        this.order.items.forEach(orderItem=>{
+            console.log(" IS  "+this.orderItems[orderItem.item.id].quantity+" == "+orderItem.quantity);
+            if(this.orderItems[orderItem.item.id].quantity !== orderItem.quantity){
+                cartItemUpdateExists = true;
+                return;
+            }
+        })
+        return cartItemUpdateExists;
+    }
+
+    fillOrderItems(order:Order){
+        order.items.forEach(orderItem=>{
+            this.orderItems[orderItem.item.id] = {
+                quantity:orderItem.quantity
+            }
+        }) ;
+    }
+
+    async profileSavedEventHandler(){
+        console.log("Handled Profile saved in Cart");
+        this.currentStep = 'address'
     }
 }

@@ -1,7 +1,9 @@
-export interface ItemSummary {
-    id: string;
-    name: string;
-    price: number;
+
+export interface ItemSummary{
+    id:string,
+    name:string
+    price:number,
+    imageLink:string
 }
 
 export class OrderItem {

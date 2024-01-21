@@ -1,0 +1,30 @@
+<div class="contact-form">
+
+  <p class="error" [textContent]="errorMsg"></p>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" id="profile-form" method="post">
+    <div class="contact-input-group">
+      <label for="first-name">First Name</label>
+      <input type="text" id="first-name" placeholder="" formControlName="firstName">
+    </div>
+    <div class="contact-input-group">
+      <label for="first-name">Last Name</label>
+      <input type="text" id="last-name" placeholder="" formControlName="lastName">
+    </div>
+    <div class="contact-input-group">
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="" formControlName="email">
+    </div>
+    <div class="contact-input-group">
+      <label for="phone-number">Phone Number</label>
+      <input type="text" id="phone-number" placeholder="" formControlName="phoneNumber">
+    </div>
+    <div class="contact-input-group">
+      <label for="date-of-birth">Date Of Birth</label>
+      <input type="date" id="date-of-birth" placeholder="" formControlName="dateOfBirth">
+    </div>
+    <div class="contact-input-group text-end">
+      <button type="submit" class="submit-btn" [disabled]="!profileForm.valid">Save Profile</button>
+    </div>
+  </form>
+</div>
+<p-toast></p-toast>
