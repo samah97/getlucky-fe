@@ -8,6 +8,8 @@ import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from "../core/shared/shared.module";
 import { ProductsListComponent } from './products-list/products-list.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {ToastModule} from "primeng/toast";
+import {ButtonModule} from "primeng/button";
 
 
 
@@ -17,17 +19,19 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ProductDetailsComponent,
     ProductsListComponent
   ],
-  imports: [
-    CommonModule,
-    NgIf,
-    CountdownPipe,
-    ProductRoutingModule,
-    CommonModule,
-    CountdownModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        NgIf,
+        CountdownPipe,
+        ProductRoutingModule,
+        CommonModule,
+        CountdownModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ToastModule,
+        ButtonModule,
+    ],
   exports: [
     ProductComponent,
     ProductsListComponent

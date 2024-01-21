@@ -38,4 +38,6 @@ export class ProductComponent implements OnInit {
   redirectToDetails() {
     this.router.navigate(['/products/details/' + this.product.id])
   }
+
+
 }

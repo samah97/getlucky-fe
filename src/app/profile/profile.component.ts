@@ -3,6 +3,7 @@ import { UserService } from "../core/services/user.service";
 import { User } from "../core/interfaces/user";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { CustomValidators } from '../core/common/validators/custom-validators';
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit {
   changePasswordErrorMsg: string = "";
   changePasswordForm: FormGroup = new FormGroup({});
 
-  constructor(private readonly userService: UserService, private fb: FormBuilder) {
+  constructor(private readonly userService: UserService, private fb: FormBuilder,private toastMessageService:MessageService) {
   }
 
   ngOnInit(): void {
@@ -57,11 +58,14 @@ export class ProfileComponent implements OnInit {
         lastName: formData.lastName,
         email: formData.email,
         dateOfBirth: formData.dateOfBirth,
-        phoneNumber: formData.phoneNumber
+        ...(formData.phoneNumber !== '' && { phoneNumber: formData.phoneNumber })
       }
       this.userService.updateProfile(user).subscribe({
         next: value => {
-
+            this.toastMessageService.add({
+                severity:'success',
+                detail:'Profile Saved'
+            })
         },
         error: err => {
           this.errorMsg = err;

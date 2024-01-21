@@ -206,3 +206,13 @@
   </div>
 </section>
 <app-dialog></app-dialog>
+<p-toast key="confirm" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="flex flex-column align-items-start" style="flex: 1">
+            <div class="font-medium text-lg my-3 text-900">{{ message.summary }}</div>
+            <div class="ml-auto"> <!-- Use ml-auto class here -->
+                <p-button class="p-button-sm" label="View My Cart" (click)="viewCartClick()"></p-button>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

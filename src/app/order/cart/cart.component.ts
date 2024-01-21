@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../../core/services/order.service";
 import {AppConfig} from "../../core/config/app-config";
+import {CartService} from "../../core/services/cart.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +13,7 @@ export class CartComponent implements OnInit{
     items: any[] = [];
     currency = AppConfig.CURRENCY;
     orderId:string = "12381923-1238129813-123891238-1238192";
-    constructor(private orderService:OrderService) {
+    constructor(private orderService:OrderService, private  cartService:CartService,private router:Router) {
     }
 
     ngOnInit(): void {
@@ -19,8 +21,8 @@ export class CartComponent implements OnInit{
     }
 
     initData(){
-        this.addDumyItems();
-        this.orderService.getCartOrder().subscribe({
+        // this.addDumyItems();
+        this.cartService.getCartItems().subscribe({
             next:(response)=>{
                 this.orderId = response.id;
                 this.items = response.items;
@@ -55,5 +57,9 @@ export class CartComponent implements OnInit{
         return  this.items.reduce((total, orderItem) => {
             return total + (orderItem.quantity * orderItem.biddingPrice);
         }, 0);
+    }
+
+    navigateProducts() {
+        this.router.navigate(['/products/list'])
     }
 }

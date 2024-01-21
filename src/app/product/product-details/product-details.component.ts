@@ -13,6 +13,7 @@ import {ErrorResponse} from "../../models/error-response";
 import {API_ERROR_CODES} from "../../core/enums/api-error-codes";
 import {AppDialogService} from "../../core/shared/dialog/app-dialog.service";
 import {DialogConfig} from "../../core/shared/dialog/dialog-config";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-product-details',
@@ -40,7 +41,8 @@ export class ProductDetailsComponent implements OnInit {
     private readonly productService: ProductsService,
     private readonly orderService: OrderService,
     private readonly router: Router,
-              private readonly dialogService:AppDialogService
+    private readonly dialogService:AppDialogService,
+    private readonly toastMessageService:MessageService
   ) {
 
     this.dialog = {
@@ -50,7 +52,7 @@ export class ProductDetailsComponent implements OnInit {
           buttonClickHandler: this.closeDialog.bind(this),
           dialogHeader: '',
           dialogType:DIALOG_TYPES.INFO,
-          isActionButton: false
+          isActionButton: false,
       }
     this.route.paramMap.subscribe(params => {
       this.productId = params.get("id");
@@ -79,12 +81,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   bidNow(productId: string) {
+
     if (this.bidForm.valid) {
       const orderRequest = this.createOrderRequest(productId, this.bidForm.value.quantity)
       this.orderService.makeOrder(orderRequest).subscribe(
         {
           next: (response) => {
-            this.orderService.checkoutAndRedirect(response.orderId);
+              this.toastMessageService.add({
+                  key:'confirm',
+                  severity:"success",
+                  summary:"Item added to cart"
+              })
           },
           error: (err:ErrorResponse) => {
             this.showErrorDialog(err);
@@ -119,7 +126,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   calculateTotalPrice(): number {
-
     const quantity = parseInt(this.bidForm.value.quantity ?? '1');
     return quantity * (this.product!.biddingPrice || 0);
   }
@@ -143,4 +149,8 @@ export class ProductDetailsComponent implements OnInit {
           this.router.navigate(['/profile'])
       }
   }
+
+    viewCartClick() {
+        this.router.navigate(['/orders/cart']);
+    }
 }

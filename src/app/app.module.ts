@@ -17,6 +17,8 @@ import { ErrorInterceptor } from "./core/interceptors/error.interceptor";
 import {environment} from "../environments/environment";
 import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
 import {AppErrorHandler} from "./core/handler/app-error-hander";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,18 +27,19 @@ import {AppErrorHandler} from "./core/handler/app-error-hander";
     LoaderComponent,
     ApiLoaderComponent
   ],
-  imports: [
-    BrowserAnimationsModule,
-    CommonModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    SharedModule,
-    RecaptchaV3Module
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        CommonModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        SharedModule,
+        RecaptchaV3Module,
+        ToastModule
+    ],
   providers: [
     provideClientHydration(),
-
+    MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: ErrorHandler, useClass: AppErrorHandler },

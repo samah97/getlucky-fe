@@ -9,12 +9,10 @@ import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { RouterLink } from "@angular/router";
 import {AvatarModule} from "primeng/avatar";
 
-
-
 @NgModule({
   declarations: [
     DialogComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
   ],
     imports: [
         CommonModule,
