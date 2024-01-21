@@ -9,7 +9,7 @@ import { ViewportScroller } from "@angular/common";
   // styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'getlucky-app';
+  title = 'GetLuck';
 
   constructor(private router: Router, private loaderService: LoaderService, private viewportScroller: ViewportScroller) {
     this.router.events.subscribe((event: any) => {
