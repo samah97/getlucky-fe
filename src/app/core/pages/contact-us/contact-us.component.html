@@ -1,68 +1,50 @@
-<app-breadcrumb [title]="'Contact Us'" *ngIf="showBreadcrumb" ></app-breadcrumb>
+<app-breadcrumb [title]="'Contact Us'" *ngIf="showBreadcrumb"></app-breadcrumb>
 <!-- =============== contact wrapper start =============== -->
-<div class="contact-wrapper  mt-110">
+<div class="contact-wrapper mt-110">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header mx-auto text-center">
-          <h3>Got a Question?</h3>
-          <p>Feel free to ask whatever you want, and we will reply as soon as possible!</p>
+          <h3>Got a Question or Comment?</h3>
+          <p>Feel free to contact us. We will try to reply as soon as possible!</p>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-lg-5">
-        <div class="contact-box-wrap">
-          <h4>Contact Us</h4>
-
-          <div class="single-contact-box">
-            <h6>Let’s Talk</h6>
-            <a href="mailto:{{contactEmail}}" class="mail">{{contactEmail}}</a>
-<!--            <a href="mailto:support@example.com" class="mail">support@example.com</a>-->
-<!--            <a href="tel:{{contactNumber}}" class="phone">{{contactNumber}}</a>-->
-          </div>
-          <div class="single-contact-box">
-            <h6>Social Site Link</h6>
-            <a href="javascript:void(0)" class="weblink">Facebook: https://www.facebook.com/egenstheme</a>
-            <a href="javascript:void(0)" class="weblink">Twitter: https://www.twitter.com/egenstheme</a>
-          </div>
-        </div>
-      </div>
-
       <div class="col-lg-7 mt-5 mt-lg-0">
         <div class="contact-form">
           <h4>Questions or Comments?</h4>
-          <form [formGroup]="contactUsForm" (submit)="submitForm()"   action="#" id="contact_form" method="post">
+          <form [formGroup]="contactUsForm" (submit)="submitForm()" action="#" id="contact_form" method="post">
             <div class="contact-input-group">
-              <label for="full-name">Full Name</label>
-              <input type="text" id="full-name" placeholder="Full Name" formControlName="fullName">
+              <label for="your-name">Name</label>
+              <input type="text" id="your-name" placeholder="Your name" formControlName="fullName" />
             </div>
             <div class="contact-input-group">
               <label for="email">Email</label>
-              <input type="text" id="email" placeholder="Enter Your Email"  formControlName="email">
+              <input type="text" id="email" placeholder="Your email" formControlName="email" />
             </div>
             <div class="contact-input-group">
-                <label for="subject" >Subject</label>
-                <select id="subject" formControlName="subject" class="nice-select">
-                    <option *ngFor="let option of subjectsOptions" [value]="option.value">
-                        {{ option.label }}
-                    </option>
-                </select>
-<!--                <ng-select [options]="subjectsOptions" id="subject" formControlName="subject"></ng-select>-->
-<!--                  <ng-select id="subject" class="nice-select" formControlName="subject">-->
-<!--                      <option value="FEEDBACK">Feedback</option>-->
-<!--                      <option value="COMPLAINT">Complaint</option>-->
-<!--                      <option value="GENERAL_SUPPORT">General Support</option>-->
-<!--                      <option value="GENERAL_INFO">General Info</option>-->
-<!--                  </ng-select>-->
+              <label for="subject">Subject</label>
+              <select id="subject" formControlName="subject" class="nice-select">
+                <option *ngFor="let option of subjectsOptions" [value]="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
             </div>
             <div class="contact-input-group">
-              <label for="email">Message</label>
-              <textarea id="massege" cols="30" rows="7" placeholder="Type your Message" formControlName="message"></textarea>
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                cols="30"
+                rows="7"
+                resize="none"
+                placeholder="Type your Message"
+                formControlName="message"
+              ></textarea>
             </div>
             <div class="contact-input-group mt-0 text-end">
-              <button type="submit" class="submit-btn" [disabled]="!contactUsForm.valid">Submit Comment</button>
+              <button type="submit" class="submit-btn" [disabled]="!contactUsForm.valid">Submit</button>
             </div>
           </form>
         </div>
@@ -70,7 +52,9 @@
     </div>
   </div>
 </div>
-<!-- =============== contact wrapper end =============== -->
-<app-dialog [displayDialog]="dialog.display" [dialogMessage]="dialog.message" [buttonClickHandler]="dialog.buttonClickHandler.bind(this)"
-            [buttonLabel]="dialog.buttonLabel"
+<app-dialog
+  [displayDialog]="dialog.display"
+  [dialogMessage]="dialog.message"
+  [buttonClickHandler]="dialog.buttonClickHandler.bind(this)"
+  [buttonLabel]="dialog.buttonLabel"
 ></app-dialog>
