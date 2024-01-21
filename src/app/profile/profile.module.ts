@@ -4,13 +4,15 @@ import { ProfileComponent } from './profile.component';
 import {ProfileRoutingModule} from "./profile-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AddressesComponent } from './addresses/addresses.component';
 
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AddressesComponent,
   ],
   imports: [
     CommonModule,

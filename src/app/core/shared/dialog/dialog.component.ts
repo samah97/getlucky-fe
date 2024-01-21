@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {DIALOG_TYPES} from "../../enums/dialog-types";
 
 
@@ -7,20 +7,25 @@ import {DIALOG_TYPES} from "../../enums/dialog-types";
     templateUrl: './dialog.component.html',
     styleUrl: './dialog.component.scss',
 })
-export class DialogComponent implements OnInit, OnChanges {
+export class DialogComponent implements OnInit, OnChanges,OnDestroy {
     @Input() dialogHeader: string = '';
-    @Input() displayDialog: boolean = false;
+    @Input() displayDialog: boolean = true;
     @Input() dialogMessage: string = '';
     @Input() buttonLabel: string = 'Ok';
     @Input() dialogType: DIALOG_TYPES = DIALOG_TYPES.INFO;
     @Input() isActionButton:boolean = false;
-    @Input() buttonClickHandler: Function;
+    // @Input() buttonClickHandler: Function;
+    @Input() buttonClickHandler: ()=>void;
     imageSrc: string;
     hasImage: boolean = false;
     buttonIcon: string = 'pi pi-check';
 
     constructor() {
 
+    }
+
+    ngOnDestroy(): void {
+        console.log("Dialog Destroyed");
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -42,15 +47,7 @@ export class DialogComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-
-  }
-
-  showDialog(): void {
-    this.displayDialog = true;
-  }
-
-  hideDialog(): void {
-    this.displayDialog = false;
+      console.log('Dialog component initialized');
   }
 
   clickHandler():void{

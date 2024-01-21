@@ -11,7 +11,6 @@ export class ResultComponent implements OnInit {
 
   title: string
   message: string
-  redirectUrl: string;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -23,6 +22,13 @@ export class ResultComponent implements OnInit {
       } else {
         this.title = params?.['title'] ?? 'Thank You';
         this.message = params?.['message'];
+
+        if(params.hasOwnProperty('redirectUrl')){
+            const redirectURL = params?.['redirectUrl'];
+            setTimeout(() => {
+                this.router.navigate([redirectURL]);
+            }, 2000);
+        }
       }
     });
   }

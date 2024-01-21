@@ -28,13 +28,12 @@ export class ErrorInterceptor implements HttpInterceptor {
       .handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
+          console.log("Handling Error in Interceptor");
           if (error.status === 403 || error.status === 401) {
             this.routerStorageService.setRedirectUrl(this.router.url);
             this.tokenStorageService.signOut();
             this.router.navigate(['/auth/login'], { queryParams: { message: message } });
           }
-          //JSON.stringify(error.error)
-          // console.log("Error from backend = "+JSON.stringify(error.error));
           return throwError(() => error.error as ErrorResponse);
         }),
       );

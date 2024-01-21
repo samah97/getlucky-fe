@@ -22,6 +22,7 @@ export class ListErrorsComponent {
   }
 
   @Input() set errorMessage(errorMessage: string) {
+    this.errorList = [];
     this.errorList.push(errorMessage);
   }
 }

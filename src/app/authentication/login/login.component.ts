@@ -9,6 +9,7 @@ import { TokenStorageService } from '../../core/services/authentication/token-st
 import { LoginResponse } from "../interfaces/login-response";
 import { RouterStorageService } from "../../core/services/router-storage.service";
 import {FacebookLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {ErrorResponse} from "../../models/error-response";
 
 @Component({
   selector: 'app-login',
@@ -53,9 +54,9 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(loginFormData.username!, loginFormData.password!)
       .subscribe({
         next: (response) => this.onSuccessfulLogin(response),
-        error: (err) => {
-          this.errorMessage = err.error.detail;
-          console.log(err.error.detail);
+        error: (error:ErrorResponse) => {
+          this.errorMessage = error.detail;
+          console.log(this.errorMessage);
           this.isLoggedIn = false;
         }
       });

@@ -205,6 +205,12 @@
     </div>
   </div>
 </section>
-<app-dialog [displayDialog]="dialog.display" [dialogMessage]="dialog.message" [buttonClickHandler]="dialog.buttonClickHandler.bind(this)"
-  [buttonLabel]="dialog.buttonLabel" [dialogHeader]="dialog.header" [dialogType]="dialog.type" [isActionButton]="dialog.isActionButton"
+<app-dialog *ngIf="dialog.display"
+
+    [dialogMessage]="dialog.message"
+    [buttonClickHandler]="dialog.buttonClickHandler"
+    [buttonLabel]="dialog.buttonLabel"
+    [dialogHeader]="dialog.header"
+    [dialogType]="dialog.type"
+    [isActionButton]="dialog.isActionButton"
 ></app-dialog>

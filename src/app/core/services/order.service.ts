@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import {Observable, throwError} from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { OrderRequest } from "../interfaces/order-request";
 import { Order } from "../../models/order";
 import {environment} from "../../../environments/environment";
+import {AppError} from "../handler/app-error";
 
 const apiRoute = environment.apiVersion+'orders'
 
@@ -15,6 +16,10 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
+  getCartOrder():Observable<Order>{
+      return this.http.get<Order>(apiRoute+'/cart')
+  }
+
   myOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(apiRoute);
   }
@@ -23,7 +28,7 @@ export class OrderService {
     return this.http.post<any>(apiRoute, request);
   }
 
-  hostedCheckout(orderId: string): Observable<any> {
+  private hostedCheckout(orderId: string): Observable<any> {
     return this.http.post<any>(environment.apiVersion+"payments/checkout/hosted/" + orderId, {});
   }
 
@@ -31,6 +36,9 @@ export class OrderService {
     this.hostedCheckout(orderId).subscribe({
       next: (value) => {
         window.location.href = value.url;
+      },
+      error:()=>{
+          throw new AppError('Checkout failed'); // Throw an error
       }
     }
     );

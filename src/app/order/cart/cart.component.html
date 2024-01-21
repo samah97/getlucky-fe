@@ -1,0 +1,29 @@
+<app-breadcrumb [title]="'Cart'" ></app-breadcrumb>
+<section class="pt-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="orange-span fw-bold">Cart Summary</span></h5>
+                        <hr>
+                        <h6 class="card-text">Number of Items: <span class="fw-bold">{{items.length}}</span></h6>
+                        <h6 class="card-text">Total Amount: <span class="fw-bold">{{getTotalPrice() + currency}}</span></h6>
+                        <button type="button" class="widget-btn" (click)="performCheckout()">Checkout Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="items-container">
+                    <div *ngFor="let item of items" class="item-info">
+                        <img [src]="'assets/images/product/details1.png'" alt="Item Image">
+                        <div class="item-description">
+                            <p class="item-p-info item-name"> {{ item.name }}</p>
+                            <div class="item-price text-end"><span class="price">{{ item.biddingPrice + currency }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ErrorInterceptor } from "./core/interceptors/error.interceptor";
 import {environment} from "../environments/environment";
 import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
+import {AppErrorHandler} from "./core/handler/app-error-hander";
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,12 +36,15 @@ import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
   ],
   providers: [
     provideClientHydration(),
+
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: AppErrorHandler },
     {
         provide:RECAPTCHA_V3_SITE_KEY,
         useValue:environment.siteKey
     }
+
   ],
   bootstrap: [AppComponent]
 })

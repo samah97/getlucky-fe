@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { CountdownConfig } from 'ngx-countdown';
@@ -20,15 +20,7 @@ import {retry} from "rxjs";
 })
 export class ProductDetailsComponent implements OnInit {
 
-  dialog = {
-    buttonLabel: 'Ok',
-    display: false,
-    message: '',
-    buttonClickHandler: this.closeDialog,
-    header: '',
-    type:DIALOG_TYPES.INFO,
-    isActionButton: false
-  }
+  dialog:any;
   productId: any;
   product: Product = new Product("", "");
   config: CountdownConfig = {
@@ -46,8 +38,19 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private readonly productService: ProductsService,
     private readonly orderService: OrderService,
-    private readonly router: Router
+    private readonly router: Router,
+              private cdr:ChangeDetectorRef
   ) {
+
+    this.dialog = {
+          buttonLabel: 'Ok',
+          display: false,
+          message: '',
+          buttonClickHandler: this.closeDialog.bind(this),
+          header: '',
+          type:DIALOG_TYPES.INFO,
+          isActionButton: false
+      }
     this.route.paramMap.subscribe(params => {
       this.productId = params.get("id");
     })
@@ -57,7 +60,6 @@ export class ProductDetailsComponent implements OnInit {
     //   this.product = product;
     //   this.productId = productId;
     // })
-    console.log(this.productId);
 
   }
 
@@ -107,6 +109,7 @@ export class ProductDetailsComponent implements OnInit {
       console.log(error);
     this.dialog.type = DIALOG_TYPES.ERROR;
     this.dialog.display = true;
+    this.cdr.detectChanges();
     this.dialog.message = error.detail;
     console.log("ERROR CODE");
     console.log(API_ERROR_CODES.invalid_profile)

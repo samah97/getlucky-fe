@@ -110,6 +110,11 @@
 <!--                        </form>-->
                         <div class="nav-actions d-flex align-items-center">
                             <ul class="d-flex">
+                                <li *ngIf="isLoggedIn | async">
+                                    <a href="" routerLink="/orders/cart">
+                                        <i class="bi bi-cart"></i>
+                                    </a>
+                                </li>
                                 <li class="header-account me-4 position-relative">
                                     <a id="dropdownMenu3" data-bs-toggle="dropdown" >
                                         <i class="bi bi-person"></i>
