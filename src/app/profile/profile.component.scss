@@ -1,12 +1,15 @@
 $orange-color:var(--orange-color);
 
-.contact-form{
-  background: #aeaeae;
+.tab-pane{
+    background: #fff;
+    box-shadow: 0 0 11px $orange-color;
+    border-radius:10px;
+}
+.contact-form,.delete-account-section{
+
   //box-shadow: 0 0 11px #ff552e;
-  box-shadow: 0 0 11px $orange-color;
-  padding: 40px 15px;
-  padding-top: 10px;
-  border-radius:10px;
+    padding: 10px 15px 40px;
+
 }
 .contact-form .contact-input-group input, .contact-form .contact-input-group .comment-form textarea, .comment-form .contact-form .contact-input-group textarea{
   height:40px;
@@ -26,8 +29,33 @@ $orange-color:var(--orange-color);
 .nav-link.active{
   background:$orange-color !important;
 }
+.delete-account-section{
+    color:#000000;
+}
+ul.list-group-dashed {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 5rem;
+
+}
+
+.list-group-item{
+    border:0;
+    padding: .3rem 1rem;
+}
+.delete-account-section h5{
+    border-bottom:1px solid #a3a3a3;
+    padding-bottom:10px;
+    margin-bottom: 20px;
+}
+ul.list-group-dashed li::before {
+    content: "—";
+    margin-right: 5px;
+    font-size: 12px;
+}
+
 @media(max-width: 992px) {
   .nav.flex-column.nav-pills{
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
   }
 }

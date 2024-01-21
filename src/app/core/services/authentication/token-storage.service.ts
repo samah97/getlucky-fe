@@ -23,6 +23,7 @@ export class TokenStorageService {
             localStorage.removeItem(TOKEN_KEY);
           }
           this.isAuthenticated.next(false);
+          resolve();
         }
       });
     });

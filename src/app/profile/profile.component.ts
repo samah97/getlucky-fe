@@ -4,6 +4,9 @@ import { User } from "../core/interfaces/user";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { CustomValidators } from '../core/common/validators/custom-validators';
 import {MessageService} from "primeng/api";
+import {AppDialogService} from "../core/shared/dialog/app-dialog.service";
+import {Router} from "@angular/router";
+import {TokenStorageService} from "../core/services/authentication/token-storage.service";
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +21,12 @@ export class ProfileComponent implements OnInit {
   changePasswordErrorMsg: string = "";
   changePasswordForm: FormGroup = new FormGroup({});
 
-  constructor(private readonly userService: UserService, private fb: FormBuilder,private toastMessageService:MessageService) {
+  constructor(private readonly userService: UserService,
+              private toastMessageService:MessageService,
+              private dialogService:AppDialogService,
+              private router:Router,
+              private tokenStorageService:TokenStorageService
+              ) {
   }
 
   ngOnInit(): void {
@@ -74,7 +82,21 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onSubmitChangePassword() {
+    clickDeleteAccount() {
 
-  }
+        this.userService.removeProfile().subscribe({
+            next:()=>{
+                this.tokenStorageService.signOut().then(()=>{
+                    console.log("SIGNED OUT")
+                    this.toastMessageService.add({
+                        key:'global-toast',
+                        detail:'Your Account has been deleted',
+                        severity:'success'
+                    })
+                    this.router.navigate(["/"]);
+                });
+            }
+        });
+    }
+
 }

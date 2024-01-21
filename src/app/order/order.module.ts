@@ -7,6 +7,8 @@ import {OrderStatusTransformPipe} from "../core/pipes/order-status-transform.pip
 import {SharedModule} from "../core/shared/shared.module";
 import {ProductModule} from "../product/product.module";
 import { CartComponent } from './cart/cart.component';
+import {PaginatorModule} from "primeng/paginator";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -16,12 +18,14 @@ import { CartComponent } from './cart/cart.component';
     MyOrdersComponent,
     CartComponent
   ],
-  imports: [
-    CommonModule,
-    OrderRoutingModule,
-    OrderStatusTransformPipe,
-    SharedModule,
-    ProductModule
-  ]
+    imports: [
+        CommonModule,
+        OrderRoutingModule,
+        OrderStatusTransformPipe,
+        SharedModule,
+        ProductModule,
+        PaginatorModule,
+        ReactiveFormsModule
+    ]
 })
 export class OrderModule { }

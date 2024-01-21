@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AddressesComponent } from './addresses/addresses.component';
 import {ToastModule} from "primeng/toast";
+import {SharedModule} from "../core/shared/shared.module";
 
 
 
@@ -20,7 +21,8 @@ import {ToastModule} from "primeng/toast";
         ProfileRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        ToastModule
+        ToastModule,
+        SharedModule
     ]
 })
 export class ProfileModule { }

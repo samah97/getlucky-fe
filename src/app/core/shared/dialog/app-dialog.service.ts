@@ -17,7 +17,7 @@ export class AppDialogService {
 
     hideDialog(){
         this.displayDialogSource.next(
-            new DialogConfig(false)
+            {displayDialog:false}
         );
     }
 }

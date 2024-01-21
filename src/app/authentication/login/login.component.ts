@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      console.log("Redirection URL = "+this.routerStorageService.getRedirectUrl());
     this.checkUserAlreadyLoggedIn();
     this.checkExistQueryParams();
     if (this.tokenStorageService.getToken()) {
@@ -49,7 +50,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
     const loginFormData = this.loginForm.value;
     this.authenticationService.login(loginFormData.username!, loginFormData.password!)
       .subscribe({
@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
     this.tokenStorageService.saveToken("whatisthis");
     this.isLoggedIn = true;
     const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route
+
     this.routerStorageService.clearRedirectUrl();
     this.router.navigate([redirectUrl]);
   }

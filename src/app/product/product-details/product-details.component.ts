@@ -14,6 +14,7 @@ import {API_ERROR_CODES} from "../../core/enums/api-error-codes";
 import {AppDialogService} from "../../core/shared/dialog/app-dialog.service";
 import {DialogConfig} from "../../core/shared/dialog/dialog-config";
 import {MessageService} from "primeng/api";
+import {CartService} from "../../core/services/cart.service";
 
 @Component({
   selector: 'app-product-details',
@@ -40,6 +41,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private readonly productService: ProductsService,
     private readonly orderService: OrderService,
+    private readonly cartService: CartService,
     private readonly router: Router,
     private readonly dialogService:AppDialogService,
     private readonly toastMessageService:MessageService
@@ -81,10 +83,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   bidNow(productId: string) {
-
     if (this.bidForm.valid) {
       const orderRequest = this.createOrderRequest(productId, this.bidForm.value.quantity)
-      this.orderService.makeOrder(orderRequest).subscribe(
+      this.cartService.updateCart(orderRequest).subscribe(
         {
           next: (response) => {
               this.toastMessageService.add({

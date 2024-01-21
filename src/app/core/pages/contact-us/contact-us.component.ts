@@ -5,6 +5,7 @@ import {CustomValidators} from '../../common/validators/custom-validators';
 import {ReCaptchaV3Service} from 'ng-recaptcha';
 import {DialogConfig} from "../../shared/dialog/dialog-config";
 import {AppDialogService} from "../../shared/dialog/app-dialog.service";
+import {MessageService} from "primeng/api";
 // import {ReCaptchaV3Service} from "ng-recaptcha";
 declare var $: any;
 @Component({
@@ -15,13 +16,6 @@ declare var $: any;
 export class ContactUsComponent {
     @Input() showBreadcrumb = true;
     contactEmail = 'lucky.getluck@gmail.com';
-    dialogConfig = {
-        buttonLabel: 'Perfect',
-        displayDialog: false,
-        dialogMessage: '',
-        buttonClickHandler: this.closeDialog,
-        dialogHeader: ''
-    } as DialogConfig;
 
     subjectsOptions = [
         { value: 'FEEDBACK', label: 'Feedback' },
@@ -53,11 +47,7 @@ export class ContactUsComponent {
 
     constructor(private readonly contactUsService:ContactUsService,
                 private readonly recaptchaV3Service:ReCaptchaV3Service,
-                private dialogService:AppDialogService) {
-    }
-
-    closeDialog() {
-        this.dialogService.hideDialog();
+                private toastMessageService:MessageService) {
     }
 
     submitForm() {
@@ -68,14 +58,14 @@ export class ContactUsComponent {
                     .submit(formData.fullName!, formData.email!, formData.message!, formData.subject!, recaptchaToken)
                     .subscribe({
                         next: () => {
-                            this.showDialog('Thank you for contacting us, we will get back to you ASAP');
+                            this.toastMessageService.add({
+                                detail:'Thank you for contacting us, we will get back to you ASAP',
+                                severity:'success'
+                            })
                             this.contactUsForm.reset();
                         }
                     });
             });
         }
-    }
-    showDialog(message: string) {
-        this.dialogService.showDialog(this.dialogConfig)
     }
 }

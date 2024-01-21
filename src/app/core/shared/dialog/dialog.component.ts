@@ -24,13 +24,13 @@ export class DialogComponent implements OnInit, OnChanges {
 
     constructor(private dialogService:AppDialogService) {
         this.dialogService.displayDialog$.subscribe((config) => {
-            this._displayDialog = config.displayDialog;
-            this._dialogHeader = config.dialogHeader;
-            this._dialogMessage = config.dialogMessage;
-            this._buttonLabel = config.buttonLabel;
-            this._dialogType = config.dialogType;
-            this._isActionButton = config.isActionButton;
-            this._buttonClickHandler = config.buttonClickHandler;
+            this._displayDialog = config.displayDialog ?? true;
+            this._dialogHeader = config.dialogHeader ?? '';
+            this._dialogMessage = config.dialogMessage ?? '';
+            this._buttonLabel = config.buttonLabel ?? 'Ok';
+            this._dialogType = config.dialogType ?? DIALOG_TYPES.INFO;
+            this._isActionButton = config.isActionButton ?? false;
+            this._buttonClickHandler = config.buttonClickHandler ?? this.clickHandler;
         });
     }
 

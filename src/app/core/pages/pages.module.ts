@@ -13,6 +13,7 @@ import { FaqComponent } from './faq/faq.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { ResultComponent } from './result/result.component';
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -33,7 +34,8 @@ import { ResultComponent } from './result/result.component';
         CommonModule,
         PagesRoutingModule,
         SharedModule,
-    ReactiveFormsModule
+        ReactiveFormsModule,
+        ToastModule
     ]
 })
 export class PagesModule { }

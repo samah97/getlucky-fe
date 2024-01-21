@@ -1,3 +1,5 @@
+import {Expose, Type} from "class-transformer";
+
 export interface ItemSummary{
     id:string,
     name:string

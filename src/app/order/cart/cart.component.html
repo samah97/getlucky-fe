@@ -1,25 +1,26 @@
 <app-breadcrumb [title]="'Cart'" ></app-breadcrumb>
 <section class="pt-70">
     <div class="container">
-        <div class="row justify-content-center" *ngIf="items.length>0;else noItems">
+        <div class="row justify-content-center" *ngIf="order.items.length>0;else noItems">
             <div class="col-8" >
                 <div class="card" >
                     <div class="card-body">
                         <h5 class="card-title"><span class="orange-span fw-bold">Cart Summary</span></h5>
                         <hr>
-                        <h6 class="card-text">Number of Items: <span class="fw-bold">{{items.length}}</span></h6>
-                        <h6 class="card-text">Total Amount: <span class="fw-bold">{{getTotalPrice() + currency}}</span></h6>
-                        <button *ngIf="items.length>0" type="button" class="widget-btn checkout-btn" (click)="performCheckout()">Checkout Now</button>
+                        <h6 class="card-text">Number of Items: <span class="fw-bold">{{order.items.length}}</span></h6>
+                        <h6 class="card-text">Total Amount: <span class="fw-bold">{{order.price + currency}}</span></h6>
+                        <button *ngIf="order.items.length>0" type="button" class="widget-btn checkout-btn" (click)="performCheckout()">Checkout Now</button>
                     </div>
                 </div>
             </div>
             <div  class="col-8">
-                <div class="items-container" *ngIf="items.length > 0;else noItems">
-                    <div *ngFor="let item of items" class="item-info">
+                <div class="items-container" *ngIf="order.items.length > 0;else noItems">
+                    <div *ngFor="let orderItem of order.items" class="item-info">
                         <img [src]="'assets/images/product/details1.png'" alt="Item Image">
                         <div class="item-description">
-                            <p class="item-p-info item-name"> {{ item.name }}</p>
-                            <div class="item-price text-end"><span class="price">{{ item.biddingPrice + currency }}</span></div>
+                            <p class="item-p-info item-name"> {{ orderItem.item.name }}</p>
+                            <input type="number" placeholder="1" value="1" min="1" (input)="quantityChange(orderItem.item.id,$event)">
+                            <div class="item-price text-end"><span class="price">{{ orderItem.item.price + currency }}</span></div>
                         </div>
                     </div>
                 </div>

@@ -26,4 +26,8 @@ export class UserService {
         "currentPass": passwordForm.currentPass, "newPass": passwordForm.newPass }
     );
   }
+
+  removeProfile():Observable<any>{
+      return this.httpClient.post<any>(apiRoute+'/remove-profile',{});
+  }
 }
