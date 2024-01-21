@@ -1,17 +1,18 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../models/product';
-import { CountdownConfig } from 'ngx-countdown';
-import { CountdownUtil } from '../../core/common/util/countdown-util';
-import { ProductsService } from '../../core/services/products.service';
-import { LefttimeCalculator } from '../../core/common/util/lefttime-calculator';
-import { OrderService } from "../../core/services/order.service";
-import { OrderRequest } from "../../core/interfaces/order-request";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Product} from '../../models/product';
+import {CountdownConfig} from 'ngx-countdown';
+import {CountdownUtil} from '../../core/common/util/countdown-util';
+import {ProductsService} from '../../core/services/products.service';
+import {LefttimeCalculator} from '../../core/common/util/lefttime-calculator';
+import {OrderService} from "../../core/services/order.service";
+import {OrderRequest} from "../../core/interfaces/order-request";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DIALOG_TYPES} from "../../core/enums/dialog-types";
 import {ErrorResponse} from "../../models/error-response";
 import {API_ERROR_CODES} from "../../core/enums/api-error-codes";
-import {retry} from "rxjs";
+import {AppDialogService} from "../../core/shared/dialog/app-dialog.service";
+import {DialogConfig} from "../../core/shared/dialog/dialog-config";
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +21,7 @@ import {retry} from "rxjs";
 })
 export class ProductDetailsComponent implements OnInit {
 
-  dialog:any;
+  dialog:DialogConfig;
   productId: any;
   product: Product = new Product("", "");
   config: CountdownConfig = {
@@ -39,16 +40,16 @@ export class ProductDetailsComponent implements OnInit {
     private readonly productService: ProductsService,
     private readonly orderService: OrderService,
     private readonly router: Router,
-              private cdr:ChangeDetectorRef
+              private readonly dialogService:AppDialogService
   ) {
 
     this.dialog = {
           buttonLabel: 'Ok',
-          display: false,
-          message: '',
+          displayDialog: false,
+          dialogMessage: '',
           buttonClickHandler: this.closeDialog.bind(this),
-          header: '',
-          type:DIALOG_TYPES.INFO,
+          dialogHeader: '',
+          dialogType:DIALOG_TYPES.INFO,
           isActionButton: false
       }
     this.route.paramMap.subscribe(params => {
@@ -105,23 +106,16 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   showErrorDialog(error: ErrorResponse) {
-      console.log("SHOWING ERROR DIALOG");
-      console.log(error);
-    this.dialog.type = DIALOG_TYPES.ERROR;
-    this.dialog.display = true;
-    this.cdr.detectChanges();
-    this.dialog.message = error.detail;
-    console.log("ERROR CODE");
-    console.log(API_ERROR_CODES.invalid_profile)
+    this.dialog.displayDialog=true;
+    this.dialog.dialogType = DIALOG_TYPES.ERROR;
+    this.dialog.dialogMessage = error.detail;
     if(error.code === API_ERROR_CODES.invalid_profile){
         this.triggerProfileInvalidDialog();
     }
+    this.dialogService.showDialog(this.dialog);
   }
-
-
-
   closeDialog() {
-    this.dialog.display = false;
+    this.dialogService.hideDialog();
   }
 
   calculateTotalPrice(): number {

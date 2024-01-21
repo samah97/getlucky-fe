@@ -4,6 +4,8 @@ import {ContactUsService} from "../../services/contact-us.service";
 import {CustomValidators} from "../../common/validators/custom-validators";
 import {environment} from "../../../../environments/environment";
 import {ReCaptchaV3Service} from "ng-recaptcha";
+import {DialogConfig} from "../../shared/dialog/dialog-config";
+import {AppDialogService} from "../../shared/dialog/app-dialog.service";
 // import {ReCaptchaV3Service} from "ng-recaptcha";
 declare var $: any;
 @Component({
@@ -14,13 +16,14 @@ declare var $: any;
 export class ContactUsComponent {
     @Input() showBreadcrumb = true
     contactEmail = 'lucky.getluck@gmail.com';
-    dialog = {
+    dialogConfig = {
         buttonLabel: 'Perfect',
-        display: false,
-        message: '',
+        displayDialog: false,
+        dialogMessage: '',
         buttonClickHandler: this.closeDialog,
-        header: ''
-    }
+        dialogHeader: ''
+    } as DialogConfig;
+
     subjectsOptions = [
         { value: 'FEEDBACK', label: 'Feedback' },
         { value: 'COMPLAINT', label: 'Complaint' },
@@ -42,10 +45,13 @@ export class ContactUsComponent {
     });
 
 
-    constructor(private readonly contactUsService:ContactUsService, private readonly recaptchaV3Service:ReCaptchaV3Service) {
+    constructor(private readonly contactUsService:ContactUsService,
+                private readonly recaptchaV3Service:ReCaptchaV3Service,
+                private dialogService:AppDialogService) {
     }
+
     closeDialog() {
-        this.dialog.display = false;
+        this.dialogService.hideDialog();
     }
 
   submitForm() {
@@ -62,7 +68,6 @@ export class ContactUsComponent {
       }
   }
     showDialog(message: string) {
-        this.dialog.display = true;
-        this.dialog.message = message;
+        this.dialogService.showDialog(this.dialogConfig)
     }
 }
