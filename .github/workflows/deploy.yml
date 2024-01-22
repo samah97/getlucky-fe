@@ -45,8 +45,10 @@ jobs:
       with:
         name: dist
         
-    - name: Print contents of dist directory
-      run: ls -R 
+    - name: Show ENV_VARIBLES
+      run: echo  ${{ secrets.FTP_SERVER }}
+
+      
 
     - name: FTP Transfer
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
