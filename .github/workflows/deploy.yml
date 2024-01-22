@@ -55,7 +55,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: '31.170.167.199'
-        username: 'github_user'
+        username: 'u565128292.github_user'
         password: 'JusqC7fuZT-K4:P'
         # local-dir: ./getlucky-app/browser/
         local-dir: ./dummy_folder/
