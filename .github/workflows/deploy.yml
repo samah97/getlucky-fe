@@ -54,9 +54,9 @@ jobs:
     - name: FTP Transfer
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: 31.170.167.199:21
-        username: u565128292
-        password: M{y224>E9Q_g
+        server: '31.170.167.199'
+        username: 'u565128292'
+        password: 'M{y224>E9Q_g'
         # local-dir: ./getlucky-app/browser/
         local-dir: ./dummy_folder/
         remote-dir: public_html/
