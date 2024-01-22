@@ -17,12 +17,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 20.11.0
+        registry-url: 'https://registry.yarnpkg.com/'
 
     - name: Install dependencies
-      run: npm install
+      run: yarn install
 
     - name: Build Angular app
-      run: ng build --configuration="production"
+      run: yarn build --configuration="production"
 
   deploy:
     runs-on: ubuntu-latest
