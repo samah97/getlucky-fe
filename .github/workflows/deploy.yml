@@ -59,7 +59,7 @@ jobs:
         # server: '31.170.167.199'
         # username: 'u565128292.github_user'
         # password: 'JusqC7fuZT-K4:P'
-        server: ${{env.FTP_SERVER}}
+        server: ${{FTP_SERVER}}
         username: ${{env.FTP_USERNAME}}
         password: ${{env.FTP_PASSWORD}}
         local-dir: ./getlucky-app/browser/
