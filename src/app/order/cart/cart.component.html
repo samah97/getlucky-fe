@@ -23,7 +23,7 @@
                         <div class="item-description">
                             <p class="item-p-info item-name"> {{ orderItem.item.name }}</p>
                             <input type="number" placeholder="1" [value]="orderItem.quantity"  min="1" (input)="quantityChange(orderItem.item.id,$event)">
-                            <div class="item-price text-end"><span class="price">{{ orderItem.item.price + currency }}</span></div>
+                            <div class="item-price text-end"><span class="price">{{ orderItem.item.biddingPrice + currency }}</span></div>
                         </div>
                     </div>
                 </div>
