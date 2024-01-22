@@ -53,8 +53,8 @@ jobs:
     - name: FTP Transfer
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        server: ftp://getluck.fun
+        username: u565128292
+        password: M{y224>E9Q_g
         local-dir: ./getlucky-app/browser/
         remote-dir: public_html/
