@@ -32,7 +32,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (error.status === 403 || error.status === 401) {
             this.routerStorageService.setRedirectUrl(this.router.url);
             this.tokenStorageService.signOut();
-            this.router.navigate(['/auth/login'], { queryParams: { message: message } });
+            this.router.navigate(['/auth/login/'], { queryParams: { message: message } });
           }
           return throwError(() => error.error as ErrorResponse);
         }),

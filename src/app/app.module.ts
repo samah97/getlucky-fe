@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { ApiInterceptor } from './core/interceptors/api.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import {CommonModule, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { LoaderComponent } from './core/layout/loader/loader.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +40,7 @@ import {MessageService} from "primeng/api";
   providers: [
     provideClientHydration(),
     MessageService,
+    {provide: LocationStrategy, useClass:HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: ErrorHandler, useClass: AppErrorHandler },

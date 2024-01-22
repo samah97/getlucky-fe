@@ -2,7 +2,7 @@
 export interface ItemSummary{
     id:string,
     name:string
-    price:number,
+    biddingPrice:number,
     imageLink:string
 }
 
