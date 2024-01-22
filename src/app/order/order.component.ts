@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
   }
   getTotalPrice():number {
     this.totalPrice = this.order.items.reduce((total, orderItem) => {
-      return total + (orderItem.quantity * orderItem.item.price);
+      return total + (orderItem.quantity * orderItem.item.biddingPrice);
     }, 0);
     return 0;
   }
