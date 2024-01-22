@@ -6,49 +6,50 @@ on:
       - live-version
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  # build:
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20.11.0
-        registry-url: 'https://registry.yarnpkg.com/'
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 20.11.0
+  #       registry-url: 'https://registry.yarnpkg.com/'
 
-    - name: Install dependencies
-      run: yarn install
+  #   - name: Install dependencies
+  #     run: yarn install
 
-    - name: Build Angular app
-      run: yarn build --configuration="production"
+  #   - name: Build Angular app
+  #     run: yarn build --configuration="production"
       
-    - name: Print contents of dist directory
-      run: ls -R  
+  #   - name: Print contents of dist directory
+  #     run: ls -R  
       
-    - name: Archive artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: dist
-        path: dist
+  #   - name: Archive artifacts
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: dist
+  #       path: dist
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    # - name: Checkout repository
+    #   uses: actions/checkout@v2
       
-    - name: Archive artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: dist
+    # - name: Archive artifacts
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #     name: dist
         
-    - name: Show ENV_VARIBLES
-      run: echo  ${{ secrets.FTP_SERVER }}
+    # - name: Show ENV_VARIBLES
+    #   run: echo  ${{ secrets.FTP_SERVER }}
 
-      
+    - name: FTP Transfer
+      run: mkdir dummy_folder; touch some_file.txt
 
     - name: FTP Transfer
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
@@ -56,5 +57,6 @@ jobs:
         server: 31.170.167.199:21
         username: u565128292
         password: M{y224>E9Q_g
-        local-dir: ./getlucky-app/browser/
+        # local-dir: ./getlucky-app/browser/
+        local-dir: ./dummy_folder
         remote-dir: public_html/
