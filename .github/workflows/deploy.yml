@@ -6,7 +6,7 @@ on:
       - live-version
 
 env:
-  # FTP_SERVER: ${{secrets.FTP_SERVER}}
+  FTP_SERVER: ${{vars.FTP_SERVER}}
   FTP_USERNAME: ${{secrets.FTP_USERNAME}}
   FTP_PASSWORD: ${{secrets.FTP_PASSWORD}}
   FTP_DIR: ./
@@ -59,7 +59,7 @@ jobs:
         # server: '31.170.167.199'
         # username: 'u565128292.github_user'
         # password: 'JusqC7fuZT-K4:P'
-        server: ${{FTP_SERVER}}
+        server: ${{env.FTP_SERVER}}
         username: ${{env.FTP_USERNAME}}
         password: ${{env.FTP_PASSWORD}}
         local-dir: ./getlucky-app/browser/
