@@ -19,6 +19,7 @@ export class TokenStorageService {
     return new Promise((resolve, reject) => {
       this.authenticationService.logout().subscribe({
         next: () => {
+            console.log("Logged Out");
           if (isPlatformBrowser(this.platformId)) {
             localStorage.removeItem(TOKEN_KEY);
           }
@@ -26,6 +27,7 @@ export class TokenStorageService {
           resolve();
         }
       });
+      resolve();
     });
   }
 

@@ -16,6 +16,7 @@ export class ConfirmAccountComponent implements OnInit{
     ngOnInit(): void {
         console.log("Confirming Account");
         this.route.params.subscribe((params: any) => {
+            console.log(params);
             // Access the dynamic route parameters
             const id = params['id'];
             const token = params['token'];
