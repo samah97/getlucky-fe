@@ -40,7 +40,7 @@ jobs:
     # - name: Checkout repository
     #   uses: actions/checkout@v2
       
-    - name: Archive artifacts
+    - name: Download artifacts
       uses: actions/download-artifact@v2
       with:
         name: dist
@@ -58,4 +58,4 @@ jobs:
         username: 'u565128292'
         password: 'M{y224>E9Q_g'
         local-dir: ./getlucky-app/browser/
-        remote-dir: public_html/
+        remote-dir: public_html/domains/getluck.fun/public_html/
