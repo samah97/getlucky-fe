@@ -49,7 +49,7 @@ jobs:
     #   run: echo  ${{ secrets.FTP_SERVER }}
 
     - name: FTP Transfer
-      run: mkdir dummy_folder; touch some_file.txt
+      run: mkdir dummy_folder; cd dummy_folder; touch some_file.txt
 
     - name: FTP Transfer
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
