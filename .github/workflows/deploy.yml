@@ -58,5 +58,5 @@ jobs:
         username: u565128292
         password: M{y224>E9Q_g
         # local-dir: ./getlucky-app/browser/
-        local-dir: ./dummy_folder
+        local-dir: ./dummy_folder/
         remote-dir: public_html/
