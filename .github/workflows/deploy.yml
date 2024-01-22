@@ -59,4 +59,4 @@ jobs:
         password: 'JusqC7fuZT-K4:P'
         # local-dir: ./getlucky-app/browser/
         local-dir: ./dummy_folder/
-        remote-dir: /
+        remote-dir: ./
