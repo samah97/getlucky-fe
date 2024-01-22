@@ -35,6 +35,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Print contents of dist directory
+      run: ls -R 
+
     - name: FTP Transfer
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
