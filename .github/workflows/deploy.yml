@@ -27,14 +27,24 @@ jobs:
       
     - name: Print contents of dist directory
       run: ls -R  
-
+      
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist
+        path: dist
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+      
+    - name: Archive artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: dist
+        
     - name: Print contents of dist directory
       run: ls -R 
 
