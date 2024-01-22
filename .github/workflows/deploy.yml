@@ -57,6 +57,5 @@ jobs:
         server: '31.170.167.199'
         username: 'u565128292'
         password: 'M{y224>E9Q_g'
-        # local-dir: ./getlucky-app/browser/
-        local-dir: ./dummy_folder/
+        local-dir: ./getlucky-app/browser/
         remote-dir: public_html/
