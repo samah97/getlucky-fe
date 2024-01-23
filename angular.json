@@ -94,7 +94,6 @@
           "configurations": {
             "production": {
               "buildTarget": "getlucky-app:build:production",
-              "ssl": true
             },
             "development": {
               "buildTarget": "getlucky-app:build:development",
