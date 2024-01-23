@@ -3,6 +3,8 @@ import { CountdownConfig } from 'ngx-countdown';
 import { CountdownUtil } from '../core/common/util/countdown-util';
 import { Router } from '@angular/router';
 import { LefttimeCalculator } from '../core/common/util/lefttime-calculator';
+import {Product} from "../models/product";
+import {ProductUtil} from "../core/common/util/product-util";
 
 @Component({
   selector: 'app-product',
@@ -11,8 +13,10 @@ import { LefttimeCalculator } from '../core/common/util/lefttime-calculator';
 })
 export class ProductComponent implements OnInit {
 
-  @Input() product: any;
-  showProduct: boolean = true;
+  @Input() product: Product
+  @Input() additionalClass: string ='';
+
+  showProduct: boolean = false;
   showCountdown: boolean = false;
 
   config: CountdownConfig = {
@@ -20,14 +24,18 @@ export class ProductComponent implements OnInit {
     prettyText: (text) => CountdownUtil.formatCountdown(text)
   };
 
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.showProduct = this.product.available;
-    if (this.product.drawScheduledAt) {
-      this.showCountdown = true;
-      this.config.leftTime = LefttimeCalculator.calculate(this.product.drawScheduledAt);
+    if(ProductUtil.shouldShowProduct(this.product)){
+        this.showProduct = true;
+        if (this.product.drawScheduledAt) {
+            this.showCountdown = true;
+            this.config.leftTime = LefttimeCalculator.calculate(this.product.drawScheduledAt);
+        }
     }
+
   }
 
   handleEvent(event: any) {

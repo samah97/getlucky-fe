@@ -10,7 +10,11 @@
       </div>
       <div class="row g-4">
         <ng-container *ngIf="products">
-          <app-product *ngFor="let product of products" [product]="product" class="col-lg-4 col-md-6"></app-product>
+
+          <ng-container *ngFor="let product of products">
+            <app-product *ngIf="shouldShowProduct(product)" [product]="product" class="col-lg-4 col-md-6"  >
+            </app-product>
+          </ng-container>
         </ng-container>
       </div>
     </div>
