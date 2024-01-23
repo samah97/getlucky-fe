@@ -1,12 +1,14 @@
-export class Product {
+export interface Product {
 
-    biddingPrice: number;
-    description: string;
-    imageLink: string;
-    drawScheduledAt: string;
-
-    constructor(
-        public id: string,
-        public name: string,
-    ) { }
+    id:string,
+    name:string,
+    biddingPrice?: number,
+    available?:boolean
+    description?: string,
+    imageLink?: string,
+    drawScheduledAt?: string,
+    // constructor(
+    //     public id: string,
+    //     public name: string,
+    // ) { }
 }

@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
 
   dialog:DialogConfig;
   productId: any;
-  product: Product = new Product("", "");
+  product: Product;
   config: CountdownConfig = {
     format: 'dd:HH:mm:ss',
     prettyText: (text) => CountdownUtil.formatCountdown(text)

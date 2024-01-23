@@ -12,8 +12,8 @@ const apiRoute = environment.apiVersion+'items';
 export class ProductsService {
   constructor(private http: HttpClient) { }
 
-  all(): Observable<any> {
-    return this.http.get<any>(apiRoute);
+  all(): Observable<Product[]> {
+    return this.http.get<Product[]>(apiRoute);
   }
 
   findById(id: string): Observable<Product> {

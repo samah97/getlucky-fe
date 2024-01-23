@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../core/services/products.service';
+import {Product} from "../models/product";
+import {ProductUtil} from "../core/common/util/product-util";
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,7 @@ import { ProductsService } from '../core/services/products.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  products: any[] = [];
+  products: Product[];
 
   constructor(private readonly productsService: ProductsService) {
     this.initData();
@@ -19,4 +21,7 @@ export class HomeComponent {
     });
   }
 
+    shouldShowProduct(product: Product):boolean {
+        return ProductUtil.shouldShowProduct(product);
+    }
 }
