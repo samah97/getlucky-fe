@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductsService} from "../../core/services/products.service";
+import {ProductUtil} from "../../core/common/util/product-util";
+import {Product} from "../../models/product";
 
 @Component({
   selector: 'app-products-list',
@@ -7,7 +9,7 @@ import {ProductsService} from "../../core/services/products.service";
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent implements OnInit{
-  products: any[] = [];
+  products: Product[] = [];
   @Input() showBreadcrumb!: boolean;
 
   constructor(private readonly productsService:ProductsService) {
@@ -23,4 +25,7 @@ export class ProductsListComponent implements OnInit{
     });
   }
 
+    shouldShowProduct(product: Product) {
+        return ProductUtil.shouldShowProduct(product);
+    }
 }
