@@ -17,25 +17,19 @@ export class TokenStorageService {
 
   signOut(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.authenticationService.logout().subscribe({
-        next: () => {
-            console.log("Logged Out");
-          if (isPlatformBrowser(this.platformId)) {
-            localStorage.removeItem(TOKEN_KEY);
-          }
-          this.isAuthenticated.next(false);
-          resolve();
-        }
-      });
+      this.authenticationService.logout();
+      if (isPlatformBrowser(this.platformId)) {
+          localStorage.removeItem(TOKEN_KEY);
+      }
+      this.isAuthenticated.next(false);
       resolve();
     });
   }
 
   public saveToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(TOKEN_KEY, token);
       this.isAuthenticated.next(true);
-      console.log("Token Saved");
     }
   }
 
@@ -45,11 +39,6 @@ export class TokenStorageService {
       return localStorage.getItem(TOKEN_KEY);
     }
     return null;
-  }
-
-  public saveUser(user: any): void {
-    // window.sessionStorage.removeItem(USER_KEY);
-    // window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
   isLoggedInObservable(): Observable<boolean> {

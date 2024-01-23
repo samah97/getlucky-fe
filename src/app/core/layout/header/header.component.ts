@@ -16,7 +16,7 @@ export class HeaderComponent {
 
   logout() {
     this.tokenStorageService.signOut().then(()=>{
-      this.router.navigate(["/"]);
+      // this.router.navigate(["/"]);
     });
   }
 }

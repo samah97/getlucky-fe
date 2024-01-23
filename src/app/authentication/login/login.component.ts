@@ -1,6 +1,6 @@
 import {
-  Component,
-  OnInit
+    Component,
+    OnInit, signal
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../core/services/authentication/authentication.service';
@@ -10,6 +10,7 @@ import { LoginResponse } from "../interfaces/login-response";
 import { RouterStorageService } from "../../core/services/router-storage.service";
 import {FacebookLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 import {ErrorResponse} from "../../models/error-response";
+import {TokenGenerationUtil} from "../../core/common/util/token-generation-util";
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      console.log("Redirection URL = "+this.routerStorageService.getRedirectUrl());
     this.checkUserAlreadyLoggedIn();
     this.checkExistQueryParams();
     if (this.tokenStorageService.getToken()) {
@@ -63,10 +63,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessfulLogin = (response: LoginResponse) => {
-    this.tokenStorageService.saveToken("whatisthis");
+    this.tokenStorageService.saveToken(TokenGenerationUtil.generate(40));
     this.isLoggedIn = true;
+    console.log("Redirection URL = "+this.routerStorageService.getRedirectUrl());
     const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route
-
     this.routerStorageService.clearRedirectUrl();
     this.router.navigate([redirectUrl]);
   }
