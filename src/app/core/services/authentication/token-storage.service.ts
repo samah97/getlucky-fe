@@ -53,7 +53,6 @@ export class TokenStorageService {
   }
 
   isLoggedInObservable(): Observable<boolean> {
-    console.log(this.isAuthenticated.asObservable());
     return this.isAuthenticated.asObservable();
   }
 

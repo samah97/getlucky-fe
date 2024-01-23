@@ -17,6 +17,7 @@
           <h4>Questions or Comments?</h4>
           <form [formGroup]="contactUsForm" (submit)="submitForm()" action="#" id="contact_form" method="post">
             <div class="contact-input-group">
+<!--              <p *ngIf="contactUsForm.n"></p>-->
               <label for="your-name">Name</label>
               <input type="text" id="your-name" placeholder="Your name" formControlName="fullName" />
             </div>

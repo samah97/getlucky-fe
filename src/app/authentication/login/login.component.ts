@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessfulLogin = (response: LoginResponse) => {
-    console.info(response);
     this.tokenStorageService.saveToken("whatisthis");
     this.isLoggedIn = true;
     const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route
