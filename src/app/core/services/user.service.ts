@@ -30,4 +30,8 @@ export class UserService {
   removeProfile():Observable<any>{
       return this.httpClient.post<any>(apiRoute+'/remove-profile',{});
   }
+
+  checkProfileStatus():Observable<any>{
+     return this.httpClient.get<any>(apiRoute+'/profile-status');
+  }
 }

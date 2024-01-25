@@ -58,12 +58,17 @@
             </a>
             <div class="d-flex align-items-center gap-4">
               <ul class="nav-actions nav-inner-actions d-flex d-xl-none">
-                <li class="header-account me-4 position-relative">
+                <li *ngIf="isLoggedIn | async">
+                  <a href="" routerLink="/orders/cart">
+                    <i class="bi bi-cart"></i>
+                  </a>
+                </li>
+                <li class="header-account me-4 position-relative" *ngIf="isLoggedIn | async; else loggedOut">
                   <a id="dropdownMenu2" data-bs-toggle="dropdown">
                     <i class="bi bi-person"></i>
                   </a>
                   <ul
-                    *ngIf="isLoggedIn | async; else loggedOut"
+
                     class="dropdown-menu account-list"
                     aria-labelledby="dropdownMenu2"
                   >
@@ -71,13 +76,20 @@
                     <li class="dropdown-item"><a href="" routerLink="/orders/my-orders">My orders</a></li>
                     <li class="dropdown-item"><a href="" (click)="logout()">Logout</a></li>
                   </ul>
-                  <ng-template #loggedOut>
-                    <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu2">
-                      <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
-                      <li class="dropdown-item"><a href="" routerLink="/auth/register">SignUp</a></li>
-                    </ul>
-                  </ng-template>
+
                 </li>
+                <ng-template #loggedOut>
+                  <li class="header-account me-4 position-relative">
+                    <a id="dropdownMenu2L" data-bs-toggle="dropdown">
+                      <i class="bi bi-person"></i>
+                    </a>
+
+                  <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu2L">
+                    <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
+                    <li class="dropdown-item"><a href="" routerLink="/auth/register">SignUp</a></li>
+                  </ul>
+                  </li>
+                </ng-template>
               </ul>
               <div class="mobile-menu d-flex">
                 <a href="javascript:void(0)" class="hamburger d-block d-xl-none">
@@ -124,12 +136,11 @@
                     <i class="bi bi-cart"></i>
                   </a>
                 </li>
-                <li class="header-account me-4 position-relative">
+                <li class="header-account me-4 position-relative" *ngIf="isLoggedIn | async; else loggedOutM">
                   <a id="dropdownMenu3" data-bs-toggle="dropdown">
                     <i class="bi bi-person"></i>
                   </a>
                   <ul
-                    *ngIf="isLoggedIn | async; else loggedOutM"
                     class="dropdown-menu account-list"
                     aria-labelledby="dropdownMenu3"
                   >
@@ -137,13 +148,19 @@
                     <li class="dropdown-item"><a href="" routerLink="/orders/my-orders">My orders</a></li>
                     <li class="dropdown-item"><a href="" (click)="logout()">Logout</a></li>
                   </ul>
-                  <ng-template #loggedOutM>
-                    <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3">
+
+                </li>
+                <ng-template #loggedOutM>
+                  <li class="header-account me-4 position-relative">
+                    <a id="dropdownMenu3L" data-bs-toggle="dropdown">
+                      <i class="bi bi-person"></i>
+                    </a>
+                    <ul class="dropdown-menu account-list" aria-labelledby="dropdownMenu3L">
                       <li class="dropdown-item"><a href="" routerLink="/auth/login">Login</a></li>
                       <li class="dropdown-item"><a href="" routerLink="/auth/register">Sign Up</a></li>
-                    </ul>
-                  </ng-template>
-                </li>
+                   </ul>
+                  </li>
+                </ng-template>
                 <li class="menu-sidebar-btn"><i class="bi bi-list"></i></li>
               </ul>
             </div>

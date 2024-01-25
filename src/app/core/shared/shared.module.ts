@@ -8,11 +8,15 @@ import { AutoFocusModule } from "primeng/autofocus";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { RouterLink } from "@angular/router";
 import {AvatarModule} from "primeng/avatar";
+import { NumberInputComponent } from './number-input/number-input.component';
+import {InputNumberModule} from "primeng/inputnumber";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     DialogComponent,
     BreadcrumbComponent,
+    NumberInputComponent,
   ],
     imports: [
         CommonModule,
@@ -21,11 +25,14 @@ import {AvatarModule} from "primeng/avatar";
         ToastModule,
         AutoFocusModule,
         RouterLink,
-        AvatarModule
+        AvatarModule,
+        InputNumberModule,
+        FormsModule
     ],
-  exports: [
-    DialogComponent,
-    BreadcrumbComponent
-  ]
+    exports: [
+        DialogComponent,
+        BreadcrumbComponent,
+        NumberInputComponent
+    ]
 })
 export class SharedModule { }

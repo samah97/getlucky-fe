@@ -2,27 +2,35 @@
 <section class="pt-70">
     <div class="container">
 
-      <ng-template [ngIf]="currentStep === 'cart'" >
-        <div class="row justify-content-center" *ngIf="order.items.length>0;else noItems">
-            <div class="col-8" >
-                <div class="card" >
+      <ng-container *ngIf="currentStep === 'cart'" >
+        <div class="row justify-content-center" *ngIf="cartNotEmpty();else noItems">
+            <div class="col-lg-8" >
+                <div class="card d-flex flex-column h-100" >
                     <div class="card-body">
                         <h5 class="card-title"><span class="orange-span fw-bold">Cart Summary</span></h5>
                         <hr>
                         <h6 class="card-text">Number of Items: <span class="fw-bold">{{order.items.length}}</span></h6>
-                        <h6 class="card-text">Total Amount: <span class="fw-bold">{{order.price + currency}}</span></h6>
-                        <button *ngIf="order.items.length>0" type="button" class="widget-btn checkout-btn" (click)="proceedToCheckout()">Proceed to checkout</button>
+                        <h6 class="card-text">Total Amount: <span class="fw-bold">{{totalPrice + currency}}</span></h6>
+                        <div class="mt-auto p-3 text-end">
+                          <button *ngIf="order.items.length>0" type="button" class="widget-btn checkout-btn" (click)="proceedToCheckout()">Proceed to checkout</button>
+                        </div>
                     </div>
                 </div>
             </div>
 <!--          -->
-            <div  class="col-8">
-                <div class="items-container" *ngIf="order.items.length > 0;else noItems">
+            <div  class="col-lg-8">
+                <div class="items-container" >
                     <div *ngFor="let orderItem of order.items" class="item-info">
                         <img [src]="orderItem.item.imageLink" alt="Item Image">
                         <div class="item-description">
                             <p class="item-p-info item-name"> {{ orderItem.item.name }}</p>
-                            <input type="number" placeholder="1" [value]="orderItem.quantity"  min="1" (input)="quantityChange(orderItem.item.id,$event)">
+                            <div>
+<!--                              <button (click)="decrement(orderItem.item.id)">-</button>-->
+<!--                              <input type="number" placeholder="1" [value]="orderItem.quantity"  min="1" (input)="quantityChange(orderItem.item.id,$event)">-->
+<!--                              <button (click)="increment(orderItem.item.id)">+</button>-->
+                                  <app-number-input [value]="orderItem.quantity" (valueChange)="quantityChange(orderItem.item.id,$event)"></app-number-input>
+                            </div>
+
                             <div class="item-price text-end"><span class="price">{{ orderItem.item.biddingPrice + currency }}</span></div>
                         </div>
                     </div>
@@ -44,8 +52,8 @@
                 </div>
             </div>
         </ng-template>
-      </ng-template>
-      <ng-template [ngIf]="currentStep === 'profile'">
+      </ng-container>
+      <ng-container *ngIf="currentStep === 'profile'">
         <div class="row justify-content-center">
           <div class="col-8 bg-white">
             <h4>Update your profile to proceed</h4>
@@ -53,8 +61,8 @@
             <app-profile-form [profileSavedExtraHandler]="this.profileSavedEventHandler.bind(this)"></app-profile-form>
           </div>
         </div>
-      </ng-template>
-      <ng-template [ngIf]="currentStep === 'address'">
+      </ng-container>
+      <ng-container *ngIf="currentStep === 'address'">
         <div class="row justify-content-center">
           <div class="col-8 bg-white">
             <h4>Add your address</h4>
@@ -63,7 +71,7 @@
             <app-address-form></app-address-form>
           </div>
         </div>
-      </ng-template>
+      </ng-container>
     </div>
 </section>
 
