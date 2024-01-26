@@ -18,7 +18,7 @@ import {environment} from "../environments/environment";
 import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from "ng-recaptcha";
 import {AppErrorHandler} from "./core/handler/app-error-hander";
 import {ToastModule} from "primeng/toast";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,7 @@ import {MessageService} from "primeng/api";
     ],
   providers: [
     provideClientHydration(),
-    MessageService,
+    MessageService,ConfirmationService,
     {provide: LocationStrategy, useClass:HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

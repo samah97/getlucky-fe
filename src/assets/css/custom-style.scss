@@ -153,3 +153,7 @@ body{
 .orange-span{
     color: variables.$orange-color;
 }
+
+.invalid-input {
+    border: 1px solid red;
+}

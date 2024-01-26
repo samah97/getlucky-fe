@@ -93,11 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "getlucky-app:build:production",
+              "buildTarget": "getlucky-app:build:production"
             },
             "development": {
-              "buildTarget": "getlucky-app:build:development",
-              "ssl": true
+              "buildTarget": "getlucky-app:build:development"
             }
           },
           "defaultConfiguration": "development"

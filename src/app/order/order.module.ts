@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import {PaginatorModule} from "primeng/paginator";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "../profile/profile.module";
+import {StepsModule} from "primeng/steps";
 
 
 
@@ -27,7 +28,8 @@ import {ProfileModule} from "../profile/profile.module";
         ProductModule,
         PaginatorModule,
         ReactiveFormsModule,
-        ProfileModule
+        ProfileModule,
+        StepsModule
     ]
 })
 export class OrderModule { }

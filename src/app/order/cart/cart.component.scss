@@ -1,5 +1,5 @@
 .card{
-    box-shadow: 0 0 11px var(--orange-color);
+    box-shadow: 0 0 8px var(--orange-color);
     .checkout-btn{
         right: 10px;
         bottom: 20px;
@@ -77,4 +77,26 @@ input, .comment-form textarea {
     height: auto;
     width: 15%;
     padding: 7px 8px;
+}
+p-steps.p-element{
+    padding: 20px 0;
+}
+.btn-back{
+    text-align: left;
+    margin-right: auto;
+    border: 0;
+    background-color: transparent;
+
+    i{
+        font-size: 30px;
+        color: #a7a5a5;
+        /* Add a smooth transition for font-size and color changes */
+        transition: font-size 0.8s, color 0.8s;
+    }
+    &:hover{
+        i{
+            color: var(--orange-color);
+            font-size:35px;
+        }
+    }
 }
