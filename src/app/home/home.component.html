@@ -5,15 +5,13 @@
         <div class="col-lg-6">
           <div class="section-title">
             <h3>Live Bidding</h3>
-            <p>No caching issue</p>
           </div>
         </div>
       </div>
       <div class="row g-4">
         <ng-container *ngIf="products">
-
           <ng-container *ngFor="let product of products">
-            <app-product *ngIf="shouldShowProduct(product)" [product]="product" class="col-lg-4 col-md-6"  >
+            <app-product *ngIf="shouldShowProduct(product)" [product]="product" class="col-lg-4 col-md-6">
             </app-product>
           </ng-container>
         </ng-container>
