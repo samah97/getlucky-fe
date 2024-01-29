@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     const loginFormData = this.loginForm.value;
     this.recaptchaV3Service.execute('LOGIN').subscribe((recaptchaToken: string) => {
       this.authenticationService.login(loginFormData.email!, loginFormData.password!, recaptchaToken).subscribe({
-        next: (response) => this.onSuccessfulLogin(response),
+        next: () => this.onSuccessfulLogin(),
         error: (error: ErrorResponse) => {
           if (error.detail) {
             this.errorMessage = error.detail;
