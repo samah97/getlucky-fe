@@ -1,37 +1,36 @@
 <div class="contact-form">
-<!--  <p class="error" [textContent]="errorMsg"></p>-->
+  <!--  <p class="error" [textContent]="errorMsg"></p>-->
   <h5>Billing Address:</h5>
   <form [formGroup]="billingAddressForm" (ngSubmit)="submitForms()" id="billing-address-form" method="post">
     <div class="contact-input-group">
       <label for="address-line-1">Address Line 1 *</label>
-      <input type="text" id="address-line-1" placeholder="" formControlName="line1">
+      <input type="text" id="address-line-1" placeholder="" formControlName="line1" />
     </div>
     <div class="contact-input-group">
       <label for="address-line-2">Address Line 2</label>
-      <input type="text" id="address-line-2" placeholder="" formControlName="line2">
+      <input type="text" id="address-line-2" placeholder="" formControlName="line2" />
     </div>
     <div class="contact-input-group">
-      <label for="postal-code">Postal Code</label>
-      <input type="text" id="postal-code" placeholder="" formControlName="postalCode">
+      <label for="postal-code">Postal Code *</label>
+      <input type="text" id="postal-code" placeholder="" formControlName="postalCode" />
     </div>
     <div class="contact-input-group">
-      <label for="city">City</label>
-      <input type="text" id="city" placeholder="" formControlName="city">
+      <label for="city">City *</label>
+      <input type="text" id="city" placeholder="" formControlName="city" />
     </div>
     <div class="contact-input-group">
-      <label for="country">Country</label>
+      <label for="country">Country *</label>
       <select id="country" formControlName="country" class="nice-select">
         <option *ngFor="let countryCode of countryCodes" [value]="countryCode.code">{{ countryCode.name }}</option>
       </select>
     </div>
-
   </form>
-  <hr>
+  <hr />
   <h5>Shipping Address:</h5>
   <div class="right-form-area">
     <div class="form-inner d-flex justify-content-between flex-wrap">
       <div class="form-group">
-        <input type="checkbox" [(ngModel)]="isChecked" id="address-checkbox" (change)="checkboxChanged()">
+        <input type="checkbox" [(ngModel)]="isChecked" id="address-checkbox" (change)="checkboxChanged()" />
         <label for="address-checkbox">Billing Address is Same as Shipping Address</label>
       </div>
     </div>
@@ -39,28 +38,35 @@
   <form [formGroup]="shippingAddressForm" id="shipping-address-form" method="post" *ngIf="differentAddresses">
     <div class="contact-input-group">
       <label for="sh-address-line-1">Address Line 1 *</label>
-      <input type="text" id="sh-address-line-1" placeholder="" formControlName="line1">
+      <input type="text" id="sh-address-line-1" placeholder="" formControlName="line1" />
     </div>
     <div class="contact-input-group">
       <label for="sh-address-line-2">Address Line 2</label>
-      <input type="text" id="sh-address-line-2" placeholder="" formControlName="line2">
+      <input type="text" id="sh-address-line-2" placeholder="" formControlName="line2" />
     </div>
     <div class="contact-input-group">
-      <label for="sh-postal-code">Postal Code</label>
-      <input type="text" id="sh-postal-code" placeholder="" formControlName="postalCode">
+      <label for="sh-postal-code">Postal Code *</label>
+      <input type="text" id="sh-postal-code" placeholder="" formControlName="postalCode" />
     </div>
     <div class="contact-input-group">
-      <label for="sh-city">City</label>
-      <input type="text" id="sh-city" placeholder="" formControlName="city">
+      <label for="sh-city">City *</label>
+      <input type="text" id="sh-city" placeholder="" formControlName="city" />
     </div>
     <div class="contact-input-group">
-      <label for="sh-country">Country</label>
+      <label for="sh-country">Country *</label>
       <select id="sh-country" formControlName="country" class="nice-select">
         <option *ngFor="let countryCode of countryCodes" [value]="countryCode.code">{{ countryCode.name }}</option>
-      </select>    </div>
+      </select>
+    </div>
   </form>
   <div class="contact-input-group text-end">
-    <button type="button" (click)="submitForms()" class="widget-btn" [disabled]="!billingAddressForm.valid || (!isChecked && !shippingAddressForm.valid)">Continue</button>
+    <button
+      type="button"
+      (click)="submitForms()"
+      class="widget-btn"
+      [disabled]="!billingAddressForm.valid || (!isChecked && !shippingAddressForm.valid)">
+      Continue
+    </button>
   </div>
 </div>
 <p-toast></p-toast>
