@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Errors } from '../../../models/errors';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -10,18 +9,16 @@ import { NgFor, NgIf } from '@angular/common';
   imports: [NgFor, NgIf]
 })
 export class ListErrorsComponent {
-
   errorList: string[] = [];
 
-  @Input() set errors(errorList: Errors | null) {
-    this.errorList = errorList ?
-      Object.keys(errorList.errors || {}).map(
-        (key) => `${key} ${errorList.errors[key]}`
-      )
-      : [];
+  @Input() set errors(errorList: string[]) {
+    console.log('IN ERRORS');
+    console.log(errorList);
+    this.errorList = errorList;
   }
 
   @Input() set errorMessage(errorMessage: string) {
+    console.log('In Error Message');
     this.errorList = [];
     this.errorList.push(errorMessage);
   }

@@ -14,6 +14,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { ResultComponent } from './result/result.component';
 import {ToastModule} from "primeng/toast";
+import {ListErrorsComponent} from "../common/list-errors/list-errors.component";
 
 
 
@@ -35,7 +36,8 @@ import {ToastModule} from "primeng/toast";
         PagesRoutingModule,
         SharedModule,
         ReactiveFormsModule,
-        ToastModule
+        ToastModule,
+        ListErrorsComponent
     ]
 })
 export class PagesModule { }

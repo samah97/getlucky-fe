@@ -1,4 +1,3 @@
-<!--<app-breadcrumb [title]="'Contact Us'" *ngIf="showBreadcrumb"></app-breadcrumb>-->
 <!-- =============== contact wrapper start =============== -->
 <div class="contact-wrapper mt-50">
   <div class="container">
@@ -16,8 +15,8 @@
         <div class="contact-form">
           <h4>Questions or Comments?</h4>
           <form [formGroup]="contactUsForm" (submit)="submitForm()" action="#" id="contact_form" method="post">
+            <app-list-errors *ngIf="errors" [errors]="errors"></app-list-errors>
             <div class="contact-input-group">
-<!--              <p *ngIf="contactUsForm.n"></p>-->
               <label for="your-name">Name</label>
               <input type="text" id="your-name" placeholder="Your name" formControlName="fullName" />
             </div>
@@ -39,10 +38,8 @@
                 id="message"
                 cols="30"
                 rows="7"
-                resize="none"
-                placeholder="Type your Message"
-                formControlName="message"
-              ></textarea>
+                placeholder="Type your message"
+                formControlName="message"></textarea>
             </div>
             <div class="contact-input-group mt-0 text-end">
               <button type="submit" class="submit-btn" [disabled]="!contactUsForm.valid">Submit</button>
@@ -54,5 +51,4 @@
   </div>
 </div>
 <!-- =============== contact wrapper end =============== -->
-<!--<app-dialog></app-dialog>-->
 <p-toast></p-toast>

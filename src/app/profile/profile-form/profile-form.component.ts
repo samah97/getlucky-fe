@@ -30,9 +30,9 @@ export class ProfileFormComponent implements OnInit{
         this.profileForm = new FormGroup({
             firstName: new FormControl('', { validators: [Validators.required, CustomValidators.nameValidator()] }),
             lastName: new FormControl('', { validators: [Validators.required, CustomValidators.nameValidator()] }),
-            email: new FormControl('', [Validators.required, Validators.email]),
+            email: new FormControl({value:'',disabled:true}, [Validators.required, Validators.email]),
             phoneNumber: new FormControl(''),
-            dateOfBirth: new FormControl('', [Validators.required]),
+            dateOfBirth: new FormControl('', [Validators.required],),
         });
     }
 
@@ -56,7 +56,7 @@ export class ProfileFormComponent implements OnInit{
             const user: User = {
                 firstName: formData.firstName,
                 lastName: formData.lastName,
-                email: formData.email,
+                email: this.user.email,
                 dateOfBirth: formData.dateOfBirth,
                 ...(formData.phoneNumber !== '' && { phoneNumber: formData.phoneNumber })
             }
@@ -73,5 +73,9 @@ export class ProfileFormComponent implements OnInit{
                 }
             });
         }
+    }
+
+    handleEmailChange(){
+        this.profileForm.get('email')?.setValue(this.user.email);
     }
 }

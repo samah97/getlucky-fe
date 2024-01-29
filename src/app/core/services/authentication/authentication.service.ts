@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 import { LoginResponse } from '../../../authentication/interfaces/login-response';
@@ -14,9 +14,13 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
-  login(email: string, password: string): Observable<LoginResponse> {
+  login(email: string, password: string, recaptchaToken:string): Observable<LoginResponse> {
     return this.httpClient.post<LoginResponse>(apiRoute+'/login',
-      { email, password }, { withCredentials: true }
+      { email, password }, { withCredentials: true,
+            headers: new HttpHeaders({
+                'RECAPTCHA-TOKEN':recaptchaToken
+            })
+        }
     ).pipe(shareReplay(1));
   }
 
@@ -24,8 +28,12 @@ export class AuthenticationService {
     return this.httpClient.post<LoginResponse>('oauth/google', { "code": credential }, { withCredentials: true });
   }
 
-  register(data: any) {
-    return this.httpClient.post(apiRoute+'/signup', data);
+  register(data: any, recaptchaToken:string) {
+    return this.httpClient.post(apiRoute+'/signup', data,{
+        headers: new HttpHeaders({
+            'RECAPTCHA-TOKEN':recaptchaToken
+        })
+    });
   }
 
   logout() {

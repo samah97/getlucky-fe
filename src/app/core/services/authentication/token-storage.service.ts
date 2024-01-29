@@ -8,7 +8,6 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class TokenStorageService {
-
   private isAuthenticated = new BehaviorSubject<boolean>(false);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private authenticationService: AuthenticationService) {
@@ -34,7 +33,6 @@ export class TokenStorageService {
   }
 
   public getToken(): string | null {
-
     if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem(TOKEN_KEY);
     }

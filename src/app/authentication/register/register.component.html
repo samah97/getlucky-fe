@@ -1,54 +1,80 @@
 <section class="register-section">
-    <div class="container">
-        <div class="row d-flex justify-content-center text-center">
-            <div class="col-12">
-                <div class="register-btn-group">
-                    <a href="" routerLink="/auth/register" class="register-btn">Register</a>
-                    <a href="" routerLink="/auth/login" class="login-btn">Login</a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row d-flex justify-content-center text-center">
+      <div class="col-12">
+        <div class="register-btn-group">
+          <a href="" routerLink="/auth/register" class="register-btn">Register</a>
+          <a href="" routerLink="/auth/login" class="login-btn">Login</a>
         </div>
-        <div class="row d-flex justify-content-center gy-4">
-            <div class="col-lg-6">
-                <div class="right-form-area">
-                    <h3>Register</h3>
-                    <app-list-errors *ngIf="errorMessage" [errorMessage]="errorMessage"></app-list-errors>
-                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-100">
-                        <div class="form-inner">
-                            <label for="email">Email *</label>
-                            <input type="text" id="email" placeholder="Your email" formControlName="email">
-                        </div>
-                        <div class="form-inner">
-                            <label for="password">Password *</label>
-                            <input type="password" name="password" formControlName="password" id="password"
-                                placeholder="Password" />
-                            <i class="bi bi-eye-slash" id="togglePassword"></i>
-                        </div>
-                        <div class="form-inner">
-                            <label for="password2">Confirm Password *</label>
-                            <input type="password" formControlName="confirmPassword" id="password2"
-                                placeholder="Confirm Password" />
-                            <i class="bi bi-eye-slash" id="togglePassword2"></i>
-                        </div>
-                        <div class="form-inner d-flex justify-content-between flex-wrap">
-                            <div class="form-group">
-                                <input type="checkbox" id="consent" formControlName="consent">
-                                <label for="consent">I agree to the Terms of Service & Privacy Policy *</label>
-                            </div>
-                        </div>
-                        <button type="submit" [disabled]="!registerForm.valid" class="account-btn">CREATE AN
-                            ACCOUNT</button>
-                    </form>
-                    <div class="alternate-signup-box">
-                        <h6>&mdash; or &mdash;</h6>
-                        <div class="btn-group gap-4">
-                            <google-login [successfulLogin]="handleGoogleSuccess"></google-login>
-                            <a href="javascript:void(0);" (click)="loginWithFacebook()" class="facebook-btn d-flex align-items-center"><i
-                                    class='bx bxl-facebook'></i>Login with Facebook</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row d-flex justify-content-center gy-4">
+      <div class="col-lg-6">
+        <div class="right-form-area">
+          <h3>Register</h3>
+          <app-list-errors *ngIf="errorMessage" [errorMessage]="errorMessage"></app-list-errors>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-100">
+            <div class="form-inner">
+              <label for="email">Email *</label>
+              <input type="text" id="email" placeholder="Your email" formControlName="email" />
+            </div>
+            <div class="form-inner">
+              <label for="password">Password *</label>
+              <input
+                [type]="passwordInClear ? 'text' : 'password'"
+                formControlName="password"
+                name="password"
+                id="password"
+                placeholder="Password" />
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-eye-slash': !passwordInClear,
+                  'bi-eye': passwordInClear
+                }"
+                (click)="togglePasswordInClear()"
+                id="togglePassword"></i>
+            </div>
+            <div class="form-inner">
+              <label for="password2">Confirm Password *</label>
+              <input
+                [type]="password2InClear ? 'text' : 'password'"
+                formControlName="confirmPassword"
+                name="confirmPassword"
+                id="password2"
+                placeholder="Confirm Password" />
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-eye-slash': !password2InClear,
+                  'bi-eye': password2InClear
+                }"
+                (click)="togglePassword2InClear()"
+                id="togglePassword2"></i>
+            </div>
+            <div class="form-inner d-flex justify-content-between flex-wrap">
+              <div class="form-group">
+                <input type="checkbox" id="consent" formControlName="consent" />
+                <label for="consent">I agree to the Terms of Service & Privacy Policy *</label>
+              </div>
+            </div>
+            <button type="submit" [disabled]="!registerForm.valid" class="account-btn">CREATE AN ACCOUNT</button>
+          </form>
+          <div class="alternate-signup-box">
+            <h6>&mdash;&mdash; or &mdash;&mdash;</h6>
+            <div class="btn-group gap-4">
+              <google-login [successfulLogin]="handleGoogleSuccess"></google-login>
+              <!--a
+                href="javascript:void(0);"
+                (click)="loginWithFacebook()"
+                class="facebook-btn d-flex align-items-center"
+              >
+                <i class="bx bxl-facebook"></i>Login with Facebook
+              </a-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

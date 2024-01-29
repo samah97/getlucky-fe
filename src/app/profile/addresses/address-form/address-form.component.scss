@@ -17,3 +17,10 @@ $orange-color:var(--orange-color);
     padding: 0px;
     background-color: #fff;
 }
+.widget-btn:disabled{
+    background: #9f9f9f;
+}
+.widget-btn:disabled:hover{
+    background: #9f9f9f;
+    color:#fff;
+}
