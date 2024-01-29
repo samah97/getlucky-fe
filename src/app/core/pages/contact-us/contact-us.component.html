@@ -15,6 +15,7 @@
         <div class="contact-form">
           <h4>Questions or Comments?</h4>
           <form [formGroup]="contactUsForm" (submit)="submitForm()" action="#" id="contact_form" method="post">
+            <app-list-errors *ngIf="errors" [errors]="errors"></app-list-errors>
             <div class="contact-input-group">
               <label for="your-name">Name</label>
               <input type="text" id="your-name" placeholder="Your name" formControlName="fullName" />
@@ -37,7 +38,6 @@
                 id="message"
                 cols="30"
                 rows="7"
-                resize="none"
                 placeholder="Type your message"
                 formControlName="message"></textarea>
             </div>

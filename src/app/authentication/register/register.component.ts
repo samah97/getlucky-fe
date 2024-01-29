@@ -3,8 +3,8 @@ import { AuthenticationService } from '../../core/services/authentication/authen
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../core/services/authentication/token-storage.service';
-import { LoginResponse } from '../interfaces/login-response';
 import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 const SUCCESS_MESSAGE = 'Registration successful; you will receive an email shortly to confirm your account!';
 
@@ -28,7 +28,8 @@ export class RegisterComponent {
     private readonly authenticationService: AuthenticationService,
     private router: Router,
     private tokenStorageService: TokenStorageService,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) {}
 
   onSubmit() {
@@ -36,22 +37,24 @@ export class RegisterComponent {
       this.errorMessage = "The passwords don't match";
       return;
     }
-
-    this.authenticationService.register(this.registerForm.value).subscribe({
-      next: (response) => {
-        this.router.navigate(['/pages/result'], {
-          queryParams: { message: SUCCESS_MESSAGE },
-          skipLocationChange: true
-        });
-      },
-      error: (err) => {
-        this.errorMessage = err.error.detail;
-        console.log(err.error.detail);
-      }
+    this.recaptchaV3Service.execute('SIGN_UP').subscribe((recaptchaToken: string) => {
+      this.authenticationService.register(this.registerForm.value, recaptchaToken).subscribe({
+        next: () => {
+          this.router.navigate(['/pages/result'], {
+            queryParams: { message: SUCCESS_MESSAGE },
+            skipLocationChange: true
+          });
+        },
+        error: (error) => {
+          if (error.detail) {
+            this.errorMessage = error.detail;
+          }
+        }
+      });
     });
   }
 
-  handleGoogleSuccess = (response: LoginResponse) => {
+  handleGoogleSuccess = () => {
     this.tokenStorageService.saveToken('whatinthegoogleisthis');
     this.router.navigate(['/']);
   };

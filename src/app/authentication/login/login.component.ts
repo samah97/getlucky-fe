@@ -3,11 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../core/services/authentication/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from '../../core/services/authentication/token-storage.service';
-import { LoginResponse } from "../interfaces/login-response";
-import { RouterStorageService } from "../../core/services/router-storage.service";
-import {FacebookLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
-import {ErrorResponse} from "../../models/error-response";
-import {TokenGenerationUtil} from "../../core/common/util/token-generation-util";
+import { RouterStorageService } from '../../core/services/router-storage.service';
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { ErrorResponse } from '../../models/error-response';
+import { TokenGenerationUtil } from '../../core/common/util/token-generation-util';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,10 @@ import {TokenGenerationUtil} from "../../core/common/util/token-generation-util"
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    email: new FormControl('', { validators: [Validators.required, Validators.email], nonNullable: true }),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+      nonNullable: true
+    }),
     password: new FormControl('', { validators: [Validators.required], nonNullable: true })
   });
   errorMessage: string = '';
@@ -29,7 +32,8 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private tokenStorageService: TokenStorageService,
     private routerStorageService: RouterStorageService,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) {}
 
   ngOnInit(): void {
@@ -48,20 +52,22 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     const loginFormData = this.loginForm.value;
-    this.authenticationService.login(loginFormData.email!, loginFormData.password!).subscribe({
-      next: (response) => this.onSuccessfulLogin(response),
-      error: (error: ErrorResponse) => {
-        this.errorMessage = error.detail;
-        console.log(this.errorMessage);
-        this.isLoggedIn = false;
-      }
+    this.recaptchaV3Service.execute('LOGIN').subscribe((recaptchaToken: string) => {
+      this.authenticationService.login(loginFormData.email!, loginFormData.password!, recaptchaToken).subscribe({
+        next: (response) => this.onSuccessfulLogin(response),
+        error: (error: ErrorResponse) => {
+          if (error.detail) {
+            this.errorMessage = error.detail;
+          }
+          this.isLoggedIn = false;
+        }
+      });
     });
   }
-
-  onSuccessfulLogin = (response: LoginResponse) => {
+  onSuccessfulLogin = () => {
     this.tokenStorageService.saveToken(TokenGenerationUtil.generate(40));
     this.isLoggedIn = true;
-    console.log("Redirection URL = "+this.routerStorageService.getRedirectUrl());
+
     const redirectUrl = this.routerStorageService.getRedirectUrl() || '/'; // Default redirect if no stored route
     this.routerStorageService.clearRedirectUrl();
     this.router.navigate([redirectUrl]);
