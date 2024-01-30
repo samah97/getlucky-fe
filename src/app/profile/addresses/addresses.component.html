@@ -1,15 +1,13 @@
 <div class="addresses-wrapper">
-    <ng-template *ngIf="addressesList;else noAddresses"></ng-template>
-    <div class="card" *ngFor="let address of addressesList">
-<!--    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">-->
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is some content inside the card. You can add more text or other elements here.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+  <ng-template *ngIf="addressesList; else noAddresses"></ng-template>
+  <div class="card" *ngFor="let address of addressesList">
+    <div class="card-body">
+      <h5 class="card-title">Address</h5>
+      <p class="card-text">TODO</p>
     </div>
-    <ng-template #noAddresses>
-        <p>Addresses you added when creating a new order will be shown here</p>
-        <h5 class="text-center mt-5 fw-bold" ><span class="orange-span">Currently You don't have any address.</span> </h5>
-    </ng-template>
+  </div>
+  <ng-template #noAddresses>
+    <p>Addresses you added when creating a new order will be shown below</p>
+    <h5 class="text-center mt-5 fw-bold"><span class="orange-span">You don't have any address.</span></h5>
+  </ng-template>
 </div>

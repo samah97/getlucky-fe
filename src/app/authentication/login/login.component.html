@@ -11,7 +11,7 @@
     <div class="row d-flex justify-content-center gy-4">
       <div class="col-lg-6">
         <div class="right-form-area">
-          <h3>Login Your Account</h3>
+          <h3>Login</h3>
           <app-list-errors *ngIf="errorMessage" [errorMessage]="errorMessage"></app-list-errors>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-100">
             <div class="form-inner">
@@ -38,7 +38,7 @@
             <div class="d-flex flex-wrap mb-3">
               <a href="#" routerLink="/auth/forget-password">Forgotten Password?</a>
             </div>
-            <button type="submit" class="account-btn" [disabled]="!loginForm.valid">LOGIN ACCOUNT</button>
+            <button type="submit" class="account-btn" [disabled]="!loginForm.valid">LOGIN</button>
           </form>
           <div class="alternate-signup-box">
             <h6>&mdash;&mdash; or &mdash;&mdash;</h6>

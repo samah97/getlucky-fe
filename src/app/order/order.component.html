@@ -1,26 +1,27 @@
 <div class="container">
   <div class="row">
-      <div class="col-lg-12">
-        <div class="order-container">
-          <div *ngIf="order" class="order-details">
-            <div class="item-info">
-              <img [src]="'assets/images/product/details1.png'" alt="Item Image">
-              <div class="item-description">
-                  <p class="order-info item-name"> {{ order.items[0].item.name }}</p>
-                  <p class="order-date">{{ order.createdAt | date }}</p>
-                  <p class="order-info"> {{ order.items.length }} Item(s)</p>
-                  <p class="order-info status" [class]="order.status | orderStatusTransform:'styleClassName'"  >
-                    {{ order.status | orderStatusTransform:'displayValue'}}
-                  </p>
-                  <div class="order-price text-end"><span class="price">{{ getTotalPrice() }}</span></div>
-                  <div *ngIf="showPaymentButton" class="widget-form text-end">
-                    <button type="button" (click)="payOrder()" class="widget-btn">Pay Now</button>
-                  </div>
+    <div class="col-lg-12">
+      <div class="order-container">
+        <div *ngIf="order" class="order-details">
+          <div class="item-info">
+            <img [src]="order.items[0].item.imageLink" alt="Item img" />
+            <div class="item-description">
+              <p class="order-info item-name">{{ order.items[0].item.name }}</p>
+              <p class="order-date">{{ order.createdAt | date }}</p>
+              <p class="order-info">{{ order.items.length }} Item(s)</p>
+              <p class="order-info status" [class]="order.status | orderStatusTransform: 'styleClassName'">
+                {{ order.status | orderStatusTransform: 'displayValue' }}
+              </p>
+              <div class="order-price text-end">
+                <span class="price">{{ getTotalPrice() }}</span>
+              </div>
+              <div *ngIf="showPaymentButton" class="widget-form text-end">
+                <button type="button" (click)="payOrder()" class="widget-btn">Pay Now</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
-
